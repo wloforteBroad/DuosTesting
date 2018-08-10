@@ -13,7 +13,7 @@ public class AdminConsolePage {
 	    PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(id="dacUser") 
+	@FindBy(how = How.XPATH, using = "//h2[contains(text(),'Welcome Walter Lo Forte!')]")
 	private WebElement lbl_UserName;
 	
 	@FindBy(how = How.XPATH, using = "//div[contains(text(),'Manage Data Use Limitations')]") 

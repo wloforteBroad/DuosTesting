@@ -25,7 +25,7 @@ Feature: Title of your feature
     And user navigates to Login Page
     When user enters correct AdminUserName and AdminPassword
 	
-	@ignoress
+	##@ignore
   Scenario: Dac Chairperson positive vote Collection
     Given The user is on Dac Console
     And The user search the consent

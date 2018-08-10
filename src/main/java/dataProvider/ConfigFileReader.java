@@ -91,6 +91,12 @@ public class ConfigFileReader {
 		else throw new RuntimeException("memberPassword not specified in the Configuration.properties file.");
 	}
 	
+	public String getReportConfigPath(){
+		String reportConfigPath = properties.getProperty("reportConfigPath");
+		if(reportConfigPath!= null) return reportConfigPath;
+		else throw new RuntimeException("Report Config Path not specified in the Configuration.properties file for the Key:reportConfigPath");		
+	}
+	
 	public DriverType getBrowser() {
 		String browserName = properties.getProperty("browser");
 		if(browserName == null || browserName.equals("firefox")) return DriverType.FIREFOX;

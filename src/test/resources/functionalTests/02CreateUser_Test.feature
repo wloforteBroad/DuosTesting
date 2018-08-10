@@ -25,7 +25,7 @@ Feature: Title of your feature
     And user navigates to Login Page
     When user enters correct AdminUserName and AdminPassword
 	
-	@ignore
+	##@ignore
   Scenario: Successful creation of User
     Given The user is in the Admin Console
     And clicks in Add User button
