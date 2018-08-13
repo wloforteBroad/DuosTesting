@@ -17,7 +17,7 @@
 ## (Comments)
 #Sample Feature Definition Template
 @tag
-Feature: Title of your feature
+Feature: DUL ELECTION VOTING - CHAIRPERSON COLLECT VOTES AND CLOSE ELECTION
   I want to use this template for my feature file
 
   Background:
