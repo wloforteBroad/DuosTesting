@@ -17,7 +17,7 @@
 ## (Comments)
 #Sample Feature Definition Template
 @tag
-Feature: Title of your feature
+Feature: OPEN DUL ELECTION
   I want to use this template for my feature file
 
   Background:

@@ -5,6 +5,7 @@ public enum DriverType {
 	FIREFOX,
 	CHROME,
 	INTERNETEXPLORER,
-	SAFARI
+	SAFARI, 
+	FIREFOX_HEADLESS
 
 }

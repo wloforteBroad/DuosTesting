@@ -17,7 +17,7 @@
 ## (Comments)
 #Sample Feature Definition Template
 @tag
-Feature: Title of your feature
+Feature: LOG IN
   I want to use this template for my feature file
 
 	##@ignore
