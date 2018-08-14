@@ -85,6 +85,18 @@ public class ConfigFileReader {
 		else throw new RuntimeException("memberUserName not specified in the Configuration.properties file.");
 	}
 	
+	public String getMockUserName() {
+		String mockUserName = properties.getProperty("mockUserName");
+		if(mockUserName != null) return mockUserName;
+		else throw new RuntimeException("mockUserName not specified in the Configuration.properties file.");
+	}
+	
+	public String getMockUserMail() {
+		String mockUserMail = properties.getProperty("mockUserMail");
+		if(mockUserMail != null) return mockUserMail;
+		else throw new RuntimeException("mockUserMail not specified in the Configuration.properties file.");
+	}
+	
 	public String getMemberPassword() {
 		String password = properties.getProperty("password");
 		if(password != null) return password;
@@ -97,12 +109,31 @@ public class ConfigFileReader {
 		else throw new RuntimeException("Report Config Path not specified in the Configuration.properties file for the Key:reportConfigPath");		
 	}
 	
+	public String getCorrectDatasetPath(){
+		String datasetCorrectFile = properties.getProperty("datasetCorrectFile");
+		if(datasetCorrectFile!= null) return datasetCorrectFile;
+		else throw new RuntimeException("Correct Dataset File Path not specified in the Configuration.properties file for the Key:reportConfigPath");		
+	}
+	
+	public String getConsentId(){
+		String consentId = properties.getProperty("consentId");
+		if(consentId!= null) return consentId;
+		else throw new RuntimeException("Consent ID not specified in the Configuration.properties file for the Key:reportConfigPath");		
+	}
+	
+	public String getDatasetId(){
+		String datasetId = properties.getProperty("datasetId");
+		if(datasetId!= null) return datasetId;
+		else throw new RuntimeException("Dataset ID not specified in the Configuration.properties file for the Key:reportConfigPath");		
+	}
+	
 	public DriverType getBrowser() {
 		String browserName = properties.getProperty("browser");
 		if(browserName == null || browserName.equals("firefox")) return DriverType.FIREFOX;
 		else if(browserName.equalsIgnoreCase("chrome")) return DriverType.CHROME;
 		else if(browserName.equals("iexplorer")) return DriverType.INTERNETEXPLORER;
 		else if(browserName.equals("safari")) return DriverType.SAFARI;
+		else if(browserName.equals("firefox_headless")) return DriverType.FIREFOX_HEADLESS;
 		else throw new RuntimeException("Browser Name Key value in Configuration.properties is not matched : " + browserName);
 	}
  

@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import cucumber.TestContext;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import managers.FileReaderManager;
 import pageObjects.ManageDulPage;
 import pageObjects.ModalPage;
 
@@ -23,7 +24,7 @@ public class ManageDulSteps {
 	@When("^user searchs for consent$")
 	public void user_searchs_for_consent() throws Throwable {
 	    Thread.sleep(1000);
-	    manageDulPage.findConsent("ORSP-627");
+	    manageDulPage.findConsent(FileReaderManager.getInstance().getConfigReader().getConsentId());
 	}
 	
 	@When("^clicks on create button$")

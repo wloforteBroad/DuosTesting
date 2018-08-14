@@ -44,5 +44,10 @@ public class AdminConsoleSteps {
 	public void clicks_in_Manage_DUL_button() throws Throwable {
 	   adminConsolePage.clickOn_ManageDul();
 	}
+	
+	@Given("^The user clicks on Add Dataset button$")
+	public void the_user_clicks_on_Add_Dataset_button() throws Throwable {
+	    adminConsolePage.clickOn_AddDatasets();
+	}
 
 }

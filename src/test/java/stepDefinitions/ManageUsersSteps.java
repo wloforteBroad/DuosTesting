@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 
 import cucumber.TestContext;
 import cucumber.api.java.en.Then;
+import managers.FileReaderManager;
 import pageObjects.ManageUsersPage;
 
 public class ManageUsersSteps {
@@ -19,7 +20,7 @@ public class ManageUsersSteps {
 	@Then("^new user appears in Manage Users Page$")
 	public void new_user_appears_in_Manage_Users_Page() throws Throwable {
 		Thread.sleep(1000);
-		manageUsersPage.findUser("test.user@gmail.com");
+		manageUsersPage.findUser(FileReaderManager.getInstance().getConfigReader().getMockUserMail());
 		Thread.sleep(2000);
 		assert manageUsersPage.isUserDisplayed();
 	}
