@@ -2,10 +2,12 @@ package managers;
 
 import org.openqa.selenium.WebDriver;
 
+import pageObjects.AddDatasetPage;
 import pageObjects.AddUserPage;
 import pageObjects.AdminConsolePage;
 import pageObjects.DulCollectVotesPage;
 import pageObjects.DacConsolePage;
+import pageObjects.DatasetCatalogPage;
 import pageObjects.DulVotingPage;
 import pageObjects.GoogleSignInPage;
 import pageObjects.HeaderPage;
@@ -28,6 +30,8 @@ public class PageObjectManager {
 	private DacConsolePage dacConsolePage;
 	private DulVotingPage dulVotingPage;
 	private DulCollectVotesPage collectVotesPage;
+	private AddDatasetPage addDatasetPage;
+	private DatasetCatalogPage datasetCatalogPage;
 	
 	public PageObjectManager(WebDriver driver) {
 		this.driver = driver;
@@ -75,6 +79,14 @@ public class PageObjectManager {
 	
 	public DulCollectVotesPage getCollectVotesPage() {
 		return (collectVotesPage == null) ? collectVotesPage = new DulCollectVotesPage(driver) : collectVotesPage;
+	}
+	
+	public AddDatasetPage getAddDatasetPage() {
+		return (addDatasetPage == null) ? addDatasetPage = new AddDatasetPage(driver) : addDatasetPage;
+	}
+	
+	public DatasetCatalogPage getDatasetCatalogPage() {
+		return (datasetCatalogPage == null) ? datasetCatalogPage = new DatasetCatalogPage(driver) : datasetCatalogPage;
 	}
 
 }

@@ -46,6 +46,7 @@ public class GoogleSignInPage {
 	}
 	
 	public void signInAdmin() throws InterruptedException {
+		Thread.sleep(1000);
 		enter_UserName(FileReaderManager.getInstance().getConfigReader().getAdminUserName());
 		Thread.sleep(1000);
 		clickOn_Next();
@@ -55,6 +56,7 @@ public class GoogleSignInPage {
 	}
 	
 	public void signInMember1() throws InterruptedException {
+		Thread.sleep(1000);
 		enter_UserName(FileReaderManager.getInstance().getConfigReader().getMemberUserName1());
 		Thread.sleep(1000);
 		clickOn_Next();
@@ -64,6 +66,7 @@ public class GoogleSignInPage {
 	}
 	
 	public void signInMember2() throws InterruptedException {
+		Thread.sleep(1000);
 		enter_UserName(FileReaderManager.getInstance().getConfigReader().getMemberUserName2());
 		Thread.sleep(1000);
 		clickOn_Next();
@@ -73,6 +76,7 @@ public class GoogleSignInPage {
 	}
 	
 	public void signInMember3() throws InterruptedException {
+		Thread.sleep(1000);
 		enter_UserName(FileReaderManager.getInstance().getConfigReader().getMemberUserName3());
 		Thread.sleep(1000);
 		clickOn_Next();
