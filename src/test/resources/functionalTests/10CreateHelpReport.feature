@@ -17,7 +17,7 @@
 ## (Comments)
 #Sample Feature Definition Template
 @tag
-Feature: OPEN DUL ELECTION
+Feature: CREATE HELP REPORT
   I want to use this template for my feature file
 
   Background:
@@ -26,10 +26,11 @@ Feature: OPEN DUL ELECTION
     When user enters correct AdminUserName and AdminPassword
 	
 	@ignore
-  Scenario: Admin opens election successfuly
-    Given The user is in the Admin Console
-    And clicks in Manage DUL button
-    When user searchs for consent
-    And clicks on create button
-    Then election status changes to Open
-
+  Scenario: User creates help report successfuly
+    Given The user is on Dac Console
+    And The user clicks on Request Help on the header
+    And The user clicks on Create a Report option
+    When User is on Request Help Modal 
+    And completes Subject and Description
+    And clicks Submit button
+    Then the user navigates to Request Help Reports Page and created Report is displayed

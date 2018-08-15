@@ -15,6 +15,8 @@ import pageObjects.HomePage;
 import pageObjects.ManageDulPage;
 import pageObjects.ManageUsersPage;
 import pageObjects.ModalPage;
+import pageObjects.RequestHelpPage;
+import pageObjects.RequestHelpReportsPage;
 
 public class PageObjectManager {
 	
@@ -32,6 +34,8 @@ public class PageObjectManager {
 	private DulCollectVotesPage collectVotesPage;
 	private AddDatasetPage addDatasetPage;
 	private DatasetCatalogPage datasetCatalogPage;
+	private RequestHelpPage requestHelpPage;
+	private RequestHelpReportsPage requestHelpReportsPage;
 	
 	public PageObjectManager(WebDriver driver) {
 		this.driver = driver;
@@ -87,6 +91,14 @@ public class PageObjectManager {
 	
 	public DatasetCatalogPage getDatasetCatalogPage() {
 		return (datasetCatalogPage == null) ? datasetCatalogPage = new DatasetCatalogPage(driver) : datasetCatalogPage;
+	}
+	
+	public RequestHelpPage getRequestHelpPage() {
+		return (requestHelpPage == null) ? requestHelpPage = new RequestHelpPage(driver) : requestHelpPage;
+	}
+	
+	public RequestHelpReportsPage getRequestHelpReportsPage() {
+		return (requestHelpReportsPage == null) ? requestHelpReportsPage = new RequestHelpReportsPage(driver) : requestHelpReportsPage;
 	}
 
 }

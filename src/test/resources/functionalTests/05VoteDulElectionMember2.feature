@@ -25,7 +25,7 @@ Feature: DUL ELECTION VOTING - MEMBER 2
     And user navigates to Login Page
     When user enters correct MemberUserNameTwo and MemberPassword
 	
-	##@ignore
+	@ignore
   Scenario: Dac Member positive vote on Open Election
     Given The user is on Dac Console
     And The user search the consent
