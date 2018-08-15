@@ -111,15 +111,15 @@ WebDriver driver;
 		btn_DatasetCatalog.click();
 	}
 	
-	public void clickOn_CreateHelpReport() throws InterruptedException {
+	public void clickOn_RequestHelp() throws InterruptedException {
 		btn_RequestHelp.click();
-		Thread.sleep(500);
+	}
+	
+	public void clickOn_CreateReport() throws InterruptedException {
 		btn_CreateReport.click();
 	}
 	
 	public void clickOn_ListReports() throws InterruptedException {
-		btn_RequestHelp.click();
-		Thread.sleep(500);
 		btn_ListReports.click();
 	}
 

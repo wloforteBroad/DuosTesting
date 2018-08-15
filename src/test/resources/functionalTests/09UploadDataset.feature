@@ -24,7 +24,7 @@ Feature: UPLOAD DATASET
     And user navigates to Login Page
     When user enters correct AdminUserName and AdminPassword
 	
-	##@ignore
+	@ignore
   Scenario: Admin Upload correct Dataset
     Given The user is in the Admin Console
     And The user clicks on Add Dataset button

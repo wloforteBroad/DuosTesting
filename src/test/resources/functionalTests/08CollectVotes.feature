@@ -25,7 +25,7 @@ Feature: DUL ELECTION VOTING - CHAIRPERSON COLLECT VOTES AND CLOSE ELECTION
     And user navigates to Login Page
     When user enters correct AdminUserName and AdminPassword
 	
-	##@ignore
+	@ignore
   Scenario: Dac Chairperson positive vote Collection
     Given The user is on Dac Console
     And The user search the consent

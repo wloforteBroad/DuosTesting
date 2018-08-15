@@ -7,21 +7,34 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import managers.FileReaderManager;
 import pageObjects.DacConsolePage;
+import pageObjects.HeaderPage;
 
 public class DacConsoleSteps {
 	TestContext testContext;
 	DacConsolePage dacConsolePage;
+	HeaderPage headerPage;
 	WebDriver driver;
 	
 	public DacConsoleSteps(TestContext context) {
 		testContext = context;
 		dacConsolePage = testContext.getPageObjectManager().getDacConsolePage();
+		headerPage = testContext.getPageObjectManager().getHeaderPage();
 	}
 	
 	@Given("^The user is on Dac Console$")
 	public void the_user_is_on_Dac_Console() throws Throwable {
 		Thread.sleep(500);
 	    dacConsolePage.isUserOnDacConsole();
+	}
+	
+	@Given("^The user clicks on Request Help on the header$")
+	public void the_user_clicks_on_Request_Help_on_the_header() throws Throwable {
+	    headerPage.clickOn_RequestHelp();;
+	}
+	
+	@Given("^The user clicks on Create a Report option$")
+	public void the_user_clicks_on_Create_a_Report_option() throws Throwable {
+	    headerPage.clickOn_CreateReport();
 	}
 	
 	@Given("^The user search the consent$")

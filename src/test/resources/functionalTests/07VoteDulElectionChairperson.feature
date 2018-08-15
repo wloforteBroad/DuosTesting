@@ -25,7 +25,7 @@ Feature: DUL ELECTION VOTING - CHAIRPERSON
     And user navigates to Login Page
     When user enters correct AdminUserName and AdminPassword
 	
-	##@ignore
+	@ignore
   Scenario: Dac Chairperson positive vote on Open Election
     Given The user is on Dac Console
     And The user search the consent
