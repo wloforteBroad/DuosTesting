@@ -24,5 +24,7 @@ public class TestRunner {
 	@AfterClass
 	public static void writeExtentReport() {
 		Reporter.loadXMLConfig(new File(FileReaderManager.getInstance().getConfigReader().getReportConfigPath()));
+		Reporter.setSystemInfo("User Name", System.getProperty("user.name"));
+	    Reporter.setSystemInfo("Time Zone", System.getProperty("user.timezone"));
 	}
 }

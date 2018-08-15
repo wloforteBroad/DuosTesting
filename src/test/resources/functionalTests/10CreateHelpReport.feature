@@ -16,7 +16,7 @@
 #""
 ## (Comments)
 #Sample Feature Definition Template
-@tag
+
 Feature: CREATE HELP REPORT
   I want to use this template for my feature file
 
