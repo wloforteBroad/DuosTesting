@@ -11,10 +11,10 @@
     <protocol>https</protocol>
     
     <!-- title of the document -->
-    <documentTitle>ToolsQA - Cucumber Framework</documentTitle>
+    <documentTitle>BROAD DUOS - Automated Testing Framework</documentTitle>
     
     <!-- report name - displayed at top-nav -->
-    <reportName>ToolsQA - Cucumber Report</reportName>
+    <reportName>BROAD DUOS - Automated Testing Framework</reportName>
     
     <!-- global date format override -->  <!-- defaults to yyyy-MM-dd -->
     <dateFormat>yyyy-MM-dd</dateFormat>
