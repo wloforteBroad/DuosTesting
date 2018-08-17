@@ -1,5 +1,6 @@
 package pageObjects;
 
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -62,6 +63,12 @@ WebDriver driver;
 	@FindBy(how = How.XPATH, using = "//a[contains(text(),'List of Reports')]") 
 	private WebElement btn_ListReports;
 	
+	@FindBy(how = How.ID, using = "dacUserMail") 
+	private WebElement btn_User;
+	
+	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Sign out')]") 
+	private WebElement btn_SignOut;
+	
 	
 	public void clickOn_About() {
 		btn_About.click();
@@ -121,6 +128,30 @@ WebDriver driver;
 	
 	public void clickOn_ListReports() throws InterruptedException {
 		btn_ListReports.click();
+	}
+	
+	public void clickOn_User() throws InterruptedException {
+		btn_User.click();
+	}
+	
+	public void clickOn_SignOut() throws InterruptedException {
+		btn_SignOut.click();
+	}
+	
+	public boolean isUserLoguedOut() {
+		try {
+			return btn_SignIn.isDisplayed();
+		}catch(NoSuchElementException e) {
+			return false;
+		}	
+	}
+	
+	public boolean isUserLoguedIn() {
+		try {
+			return btn_User.isDisplayed();
+		}catch(NoSuchElementException e) {
+			return false;
+		}	
 	}
 
 }
