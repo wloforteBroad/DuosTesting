@@ -6,8 +6,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-import managers.FileReaderManager;
-
 public class GoogleSignInPage {
 	WebDriver driver;
 	
@@ -45,44 +43,14 @@ public class GoogleSignInPage {
 		btn_PasswordNext.click();
 	}
 	
-	public void signInAdmin() throws InterruptedException {
+	public void signIn(String user, String password) throws InterruptedException {
 		Thread.sleep(1000);
-		enter_UserName(FileReaderManager.getInstance().getConfigReader().getAdminUserName());
+		enter_UserName(user);
 		Thread.sleep(1000);
 		clickOn_Next();
 		Thread.sleep(3000);
-		enter_Password(FileReaderManager.getInstance().getConfigReader().getAdminPassword());
+		enter_Password(password);
 		clickOn_PasswordNext();	
-	}
-	
-	public void signInMember1() throws InterruptedException {
-		Thread.sleep(1000);
-		enter_UserName(FileReaderManager.getInstance().getConfigReader().getMemberUserName1());
-		Thread.sleep(1000);
-		clickOn_Next();
-		Thread.sleep(3000);
-		enter_Password(FileReaderManager.getInstance().getConfigReader().getMemberPassword());
-		clickOn_PasswordNext();
-	}
-	
-	public void signInMember2() throws InterruptedException {
-		Thread.sleep(1000);
-		enter_UserName(FileReaderManager.getInstance().getConfigReader().getMemberUserName2());
-		Thread.sleep(1000);
-		clickOn_Next();
-		Thread.sleep(3000);
-		enter_Password(FileReaderManager.getInstance().getConfigReader().getMemberPassword());
-		clickOn_PasswordNext();
-	}
-	
-	public void signInMember3() throws InterruptedException {
-		Thread.sleep(1000);
-		enter_UserName(FileReaderManager.getInstance().getConfigReader().getMemberUserName3());
-		Thread.sleep(1000);
-		clickOn_Next();
-		Thread.sleep(3000);
-		enter_Password(FileReaderManager.getInstance().getConfigReader().getMemberPassword());
-		clickOn_PasswordNext();
 	}
 	
 

@@ -5,6 +5,7 @@ import java.util.Set;
 
 import cucumber.TestContext;
 import cucumber.api.java.en.When;
+import managers.FileReaderManager;
 import pageObjects.GoogleSignInPage;
 
 public class GoogleSingInSteps {
@@ -31,7 +32,7 @@ public class GoogleSingInSteps {
 			// If it's not Parent do things
 			if (!parent.equals(child_window)) {
 				testContext.getWebDriverManager().switchWindow(child_window);
-				googleSignInPage.signInAdmin();
+				googleSignInPage.signIn(FileReaderManager.getInstance().getConfigReader().getAdminUserName(), FileReaderManager.getInstance().getConfigReader().getAdminPassword());
 			}
 		}
 		// Switch back to parent window
@@ -51,7 +52,7 @@ public class GoogleSingInSteps {
 			// If it's not Parent do things
 			if (!parent.equals(child_window)) {
 				testContext.getWebDriverManager().switchWindow(child_window);
-				googleSignInPage.signInMember1();
+				googleSignInPage.signIn(FileReaderManager.getInstance().getConfigReader().getMemberUserName1(), FileReaderManager.getInstance().getConfigReader().getMemberPassword());
 			}
 		}
 		// Switch back to parent window
@@ -71,7 +72,7 @@ public class GoogleSingInSteps {
 			// If it's not Parent do things
 			if (!parent.equals(child_window)) {
 				testContext.getWebDriverManager().switchWindow(child_window);
-				googleSignInPage.signInMember2();
+				googleSignInPage.signIn(FileReaderManager.getInstance().getConfigReader().getMemberUserName2(), FileReaderManager.getInstance().getConfigReader().getMemberPassword());
 			}
 		}
 		// Switch back to parent window
@@ -91,7 +92,7 @@ public class GoogleSingInSteps {
 			// If it's not Parent do things
 			if (!parent.equals(child_window)) {
 				testContext.getWebDriverManager().switchWindow(child_window);
-				googleSignInPage.signInMember3();
+				googleSignInPage.signIn(FileReaderManager.getInstance().getConfigReader().getMemberUserName3(), FileReaderManager.getInstance().getConfigReader().getMemberPassword());
 			}
 		}
 		// Switch back to parent window
