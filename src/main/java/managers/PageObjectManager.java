@@ -3,6 +3,7 @@ package managers;
 import org.openqa.selenium.WebDriver;
 
 import pageObjects.AddDatasetPage;
+import pageObjects.AddDulPage;
 import pageObjects.AddUserPage;
 import pageObjects.AdminConsolePage;
 import pageObjects.DulCollectVotesPage;
@@ -36,6 +37,7 @@ public class PageObjectManager {
 	private DatasetCatalogPage datasetCatalogPage;
 	private RequestHelpPage requestHelpPage;
 	private RequestHelpReportsPage requestHelpReportsPage;
+	private AddDulPage addDulPage;
 	
 	public PageObjectManager(WebDriver driver) {
 		this.driver = driver;
@@ -99,6 +101,10 @@ public class PageObjectManager {
 	
 	public RequestHelpReportsPage getRequestHelpReportsPage() {
 		return (requestHelpReportsPage == null) ? requestHelpReportsPage = new RequestHelpReportsPage(driver) : requestHelpReportsPage;
+	}
+	
+	public AddDulPage getAddDulPage() {
+		return (addDulPage == null) ? addDulPage = new AddDulPage(driver) : addDulPage;
 	}
 
 }

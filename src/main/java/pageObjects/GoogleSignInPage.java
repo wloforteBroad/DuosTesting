@@ -44,13 +44,12 @@ public class GoogleSignInPage {
 	}
 	
 	public void signIn(String user, String password) throws InterruptedException {
-		Thread.sleep(1000);
+		Thread.sleep(1500);
 		enter_UserName(user);
-		Thread.sleep(1000);
 		clickOn_Next();
 		Thread.sleep(3000);
 		enter_Password(password);
-		clickOn_PasswordNext();	
+		clickOn_PasswordNext();
 	}
 	
 

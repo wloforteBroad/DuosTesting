@@ -17,7 +17,7 @@ public class HomePage {
 	    PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(how = How.CSS, using = "[id*=not_signed_in]") 
+	@FindBy(how = How.XPATH, using = "//span[contains(text(),'Sign in with Google')]") 
 	private WebElement btn_SignInGoogle;
 	
 	public void navigateTo_HomePage() {

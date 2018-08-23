@@ -1,5 +1,6 @@
 package pageObjects;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,10 +16,10 @@ WebDriver driver;
 	    PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(how = How.XPATH, using = "//div[contains(text(),'About')]") 
+	@FindBy(how = How.XPATH, using = "//a[contains(text(),'About')]") 
 	private WebElement btn_About;
 	
-	@FindBy(how = How.XPATH, using = "//div[contains(text(),'Help')]") 
+	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Help')]") 
 	private WebElement btn_Help;
 	
 	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Sign In')]") 
@@ -30,7 +31,7 @@ WebDriver driver;
 	@FindBy(how = How.XPATH, using = "//a[contains(text(),'DAC Console')]") 
 	private WebElement btn_DacConsole;
 	
-	@FindBy(how = How.LINK_TEXT, using = "Admin Console") 
+	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Admin Console')]") 
 	private WebElement btn_AdminConsole;
 	
 	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Researcher Console')]") 
@@ -138,12 +139,21 @@ WebDriver driver;
 		btn_SignOut.click();
 	}
 	
+	public void signOut() throws InterruptedException {
+		btn_User.click();
+		btn_SignOut.click();
+	}
+	
 	public boolean isUserLoguedOut() {
 		try {
 			return btn_SignIn.isDisplayed();
 		}catch(NoSuchElementException e) {
 			return false;
 		}	
+	}
+	
+	public void refreshPage() {
+		btn_Help.sendKeys(Keys.F5);
 	}
 	
 	public boolean isUserLoguedIn() {
