@@ -18,11 +18,42 @@
 #Sample Feature Definition Template
 @tag
 Feature: ADMIN CAPABILITIES
-  As an Admin a user would like to Manage:
-   - Data use Limitation
-   - Data Access Requests
-   - Users
-   - Datasets
+- As an Admin a user would like to Manage Data Use Limitations:
+	- View List of DULs
+	- Add
+	- Edit
+	- Open Election
+	- Cancel Election
+	- Archive Election
+	- Delete Record
+	- Open New version of Election
+	- View DUL Preview
+	- View Election Preview
+	- Search DUL
+- As an Admin a user would like to Manage Users:
+	- View List of Users
+	- Add
+	- Edit
+	- Review Researcher Profile
+	- Search User
+- As an Admin, a user would like to Manage Data Access Requests:
+	- View List of DARs
+	- Open Election
+	- Cancel Election
+	- View Application Summary
+	- View Election Preview
+	- Search DAR
+	- DAR that need Data Owner Approval
+- As an Admin, a user would like to Manage Datasets:
+	- Upload Datasets file
+	- Download selected Dataset/s
+	- Search Dataset
+	- Delete
+	- Disable
+	- Connect with Data Owner
+	- View Structured DUL
+	- Download Approved Requestors
+
 
   @ignore
   Scenario: Manage DUL - View List of DUL's
@@ -42,7 +73,7 @@ Feature: ADMIN CAPABILITIES
   Scenario: Manage DUL - Succesfully Add DUL
   	Given The user is logged in and in the Admin Console
     And The user clicks on Manage Data Use Limitations
-    And The user clicks on Add Data Use Limitations
+    When The user clicks on Add Data Use Limitations
     Then cancel button should be disabled
     
   @ignore
@@ -77,12 +108,61 @@ Feature: ADMIN CAPABILITIES
     When The user click on create button for a given Consent
     Then The Election Status should be Open
     
+  @ignore 
+  @twoMembers
+  Scenario: Manage DUL - Open election fails [Not enough DAC Members]
+    Given The user clicks on Manage Data Use Limitations
+    And All elections are closed
+    When The user click on create button for a given Consent
+    Then The user should see the error message
+    
   @ignore
-  Scenario: Manage DUL - Succesfully open election
+  Scenario: Manage DUL - Succesfully cancel election
   	Given The user is logged in and in the Admin Console
     And The user clicks on Manage Data Use Limitations
     And One election is opened
     When The user cancel a given election
     Then The Election Status should be Canceled
+    
+  @ignore
+  Scenario: Manage DUL - Succesfully archive election
+  	Given The user is logged in and in the Admin Console
+    And The user clicks on Manage Data Use Limitations
+    When The user archive a given election
+    Then The Election should be Archived
+    
+  @ignore
+  Scenario: Manage DUL - Succesfully delete election
+  	Given The user is logged in and in the Admin Console
+    And The user clicks on Manage Data Use Limitations
+    When The user delete a given election
+    Then The Election should no longer appear on the list
+    
+  @ignore
+  Scenario: Manage DUL - Succesfully open new version of election
+  	Given The user is logged in and in the Admin Console
+    And The user clicks on Manage Data Use Limitations
+    And All elections are closed
+    And The user click on create button for a given Consent
+    When The user cancel a given election
+    And The user click on create button for the same Consent again
+    Then The Election Status should be Open and the new version should be increased by one
+    
+  @ignore
+  Scenario: Manage DUL - View DUL preview
+  	Given The user is logged in and in the Admin Console
+    And The user clicks on Manage Data Use Limitations
+    When The user clicks on Consent Id for a given Consent
+    Then The user should see the preview page of that Dul
+    
+  @ignore
+  Scenario: Manage DUL - View DUL preview
+  	Given The user is logged in and in the Admin Console
+    And The user clicks on Manage Data Use Limitations
+    When The user clicks on Election Status for a given Consent
+    Then The user should see the preview page of that Election depending on the status
+    
+    
+
   
 

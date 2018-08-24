@@ -22,7 +22,7 @@ public class AddUserSteps {
 	    addUserPage.enter_Name(FileReaderManager.getInstance().getConfigReader().getMockUserName());
 	    addUserPage.enter_Mail(FileReaderManager.getInstance().getConfigReader().getMockUserMail());
 	    Thread.sleep(5000);
-	    addUserPage.clickOn_AdminRole();
+	    addUserPage.check_AdminRole();
 	}
 	
 	@When("^clicks in add button$")

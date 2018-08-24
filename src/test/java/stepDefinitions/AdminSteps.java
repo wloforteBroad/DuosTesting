@@ -10,12 +10,15 @@ import managers.FileReaderManager;
 import pageObjects.AddDulPage;
 import pageObjects.AdminConsolePage;
 import pageObjects.DacConsolePage;
+import pageObjects.DulCollectVotesPage;
+import pageObjects.DulResultRecordPage;
 import pageObjects.DulVotingPage;
 import pageObjects.GoogleSignInPage;
 import pageObjects.HeaderPage;
 import pageObjects.HomePage;
 import pageObjects.ManageDulPage;
 import pageObjects.ModalPage;
+import pageObjects.PreviewResultsPage;
 
 public class AdminSteps {
 	TestContext testContext;
@@ -27,8 +30,13 @@ public class AdminSteps {
 	AdminConsolePage adminConsolePage;
 	DacConsolePage dacConsolePage;
 	DulVotingPage dulVotingPage;
+	DulCollectVotesPage dulCollectVotesPage;
+	DulResultRecordPage dulResultRecordPage;
 	AddDulPage addDulPage;
+	PreviewResultsPage previewResultsPage;
 	WebDriver driver;
+	private String versionNumber;
+	private String electionStatus;
 	
 	public AdminSteps(TestContext context) {
 		testContext = context;
@@ -41,6 +49,9 @@ public class AdminSteps {
 		dacConsolePage = testContext.getPageObjectManager().getDacConsolePage();
 		dulVotingPage = testContext.getPageObjectManager().getDulVotingPage();
 		addDulPage = testContext.getPageObjectManager().getAddDulPage();
+		previewResultsPage = testContext.getPageObjectManager().getPreviewResultsPage();
+		dulCollectVotesPage = testContext.getPageObjectManager().getDulCollectVotesPage();
+		dulResultRecordPage = testContext.getPageObjectManager().getDulResultRecordPage();
 	}
 	
 	@Given("^The user is logged in and in the Admin Console$")
@@ -74,6 +85,7 @@ public class AdminSteps {
 		manageDulPage.findConsent(FileReaderManager.getInstance().getConfigReader().getConsentId());
 		if (manageDulPage.isElectionOpen()) {
 			manageDulPage.clickOn_Cancel();
+			modalPage.check_Archive();
 			modalPage.clickOn_Yes();
 		}
 	}
@@ -82,7 +94,6 @@ public class AdminSteps {
 	public void one_election_is_opened() throws Throwable {
 		manageDulPage.findConsent(FileReaderManager.getInstance().getConfigReader().getConsentId());
 		if (!manageDulPage.isElectionOpen()) {
-			System.out.println("---------------------------------" + manageDulPage.isElectionOpen());
 			manageDulPage.clickOn_Create();
 			modalPage.clickOn_Yes();
 		}
@@ -111,18 +122,64 @@ public class AdminSteps {
 	    manageDulPage.findConsent(FileReaderManager.getInstance().getConfigReader().getConsentId());
 	    manageDulPage.clickOn_Create();
 	    modalPage.clickOn_Yes();
+		this.versionNumber = manageDulPage.getVersion();
 	}
 	
 	@When("^The user cancel a given election$")
 	public void the_user_cancel_a_given_election() throws Throwable {
 		manageDulPage.findConsent(FileReaderManager.getInstance().getConfigReader().getConsentId());
 		manageDulPage.clickOn_Cancel();
+		modalPage.check_Archive();
 		modalPage.clickOn_Yes();
+	}
+	
+	@When("^The user archive a given election$")
+	public void the_user_archive_a_given_election() throws Throwable {
+	    manageDulPage.clickOn_Archive();
+	    modalPage.clickOn_Yes();
+	}
+	
+	@When("^The user delete a given election$")
+	public void the_user_delete_a_given_election() throws Throwable {
+	    manageDulPage.findConsent("ORSP-Delete");
+	    manageDulPage.clickOn_Delete();
+	    modalPage.clickOn_Yes();
+	}
+	
+	@When("^The user click on create button for the same Consent again$")
+	public void the_user_click_on_create_button_for_the_same_Consent_again() throws Throwable {
+		manageDulPage.findConsent(FileReaderManager.getInstance().getConfigReader().getConsentId());
+	    manageDulPage.clickOn_Create();
+	    modalPage.clickOn_Yes();
+	}
+	
+	@When("^The user clicks on Consent Id for a given Consent$")
+	public void the_user_clicks_on_Consent_Id_for_a_given_Consent() throws Throwable {
+	    manageDulPage.findConsent(FileReaderManager.getInstance().getConfigReader().getConsentId());
+	    manageDulPage.clickOn_PreviewDul();
+	}
+	
+	@When("^The user clicks on Election Status for a given Consent$")
+	public void the_user_clicks_on_Election_Status_for_a_given_Consent() throws Throwable {
+		manageDulPage.findConsent(FileReaderManager.getInstance().getConfigReader().getConsentId());
+	    if (manageDulPage.isElectionOpen()) {
+	    	this.electionStatus = "Open";
+			manageDulPage.clickOn_StatusOpen();
+		} else if (manageDulPage.isElectionCanceled()) {
+			this.electionStatus = "Canceled";
+			manageDulPage.clickOn_StatusCanceled();
+		} else if (manageDulPage.isElectionReviewed()) {
+			this.electionStatus = "Reviewed";
+			manageDulPage.clickOn_StatusReviewed();
+		} else {
+			this.electionStatus = "UnReviewed";
+			manageDulPage.clickOn_StatusUnReviewed();
+		}
 	}
 	
 	@Then("^the user should see the new DUL on the Manage Dul list$")
 	public void the_user_should_see_the_new_DUL_on_the_Manage_Dul_list() throws Throwable {
-	    assert manageDulPage.isNewDulDisplayed("001_Name");
+	    assert manageDulPage.isDulDisplayed("001_Name");
 	}
 	
 	@Then("^The user should see the error message$")
@@ -147,6 +204,40 @@ public class AdminSteps {
 	    assert manageDulPage.isElectionCanceled();
 	}
 	
+	@Then("^The Election should be Archived$")
+	public void the_Election_should_be_Archived() throws Throwable {
+	    assert manageDulPage.isElectionArchived();
+	}
+	
+	@Then("^The Election should no longer appear on the list$")
+	public void the_Election_should_no_longer_appear_on_the_list() throws Throwable {
+		manageDulPage.findConsent("ORSP-Delete");
+	    assert manageDulPage.isDulNotDisplayed("ORSP-Delete");
+	}
+	
+	@Then("^The Election Status should be Open and the new version should be increased by one$")
+	public void the_Election_Status_should_be_Open_and_the_new_version_should_be_increased_by_one() throws Throwable {
+	    assert Integer.valueOf(manageDulPage.getVersion()) == Integer.valueOf(this.versionNumber)+1; 
+	}
+	
+	@Then("^The user should see the preview page of that Dul$")
+	public void the_user_should_see_the_preview_page_of_that_Dul() throws Throwable {
+	    assert previewResultsPage.isUserOnPreviewResultsPage();
+	}
+	
+	@Then("^The user should see the preview page of that Election depending on the status$")
+	public void the_user_should_see_the_preview_page_of_that_Election_depending_on_the_status() throws Throwable {
+	    if (this.electionStatus == "Open") {
+			assert dulCollectVotesPage.isUserOnDulCollectPage();
+		} else if (this.electionStatus == "Canceled") {
+			assert previewResultsPage.isUserOnPreviewResultsPage();
+		} else if (this.electionStatus == "Reviewed") {
+			assert dulResultRecordPage.isUserOnDulResultRecordPage();
+		} else {
+			assert previewResultsPage.isUserOnPreviewResultsPage();
+		}
+	}
+
 	
 
 }
