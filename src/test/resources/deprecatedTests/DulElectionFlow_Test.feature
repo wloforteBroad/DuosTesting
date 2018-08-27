@@ -17,19 +17,13 @@
 ## (Comments)
 #Sample Feature Definition Template
 @tag
-Feature: OPEN DUL ELECTION
+Feature: Title of your feature
   I want to use this template for my feature file
 
-  Background:
-    Given The user is in the Home Page
-    And user navigates to Login Page
-    When user enters correct AdminUserName and AdminPassword
-	
-	@ignore
-  Scenario: Admin opens election successfuly
-    Given The user is in the Admin Console
-    And clicks in Manage DUL button
-    When user searchs for consent
-    And clicks on create button
-    Then election status changes to Open
-
+  @ignore
+  Scenario: DUL election Approved
+    Given the Admin user opens a DUL election
+    When all DAC users votes on it
+    And Chairperson collect votes
+    Then the election is closed as Approved
+    And appears in the Reviewed Cases Record Page

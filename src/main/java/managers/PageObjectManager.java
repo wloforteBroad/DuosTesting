@@ -3,9 +3,11 @@ package managers;
 import org.openqa.selenium.WebDriver;
 
 import pageObjects.AddDatasetPage;
+import pageObjects.AddDulPage;
 import pageObjects.AddUserPage;
 import pageObjects.AdminConsolePage;
 import pageObjects.DulCollectVotesPage;
+import pageObjects.DulResultRecordPage;
 import pageObjects.DacConsolePage;
 import pageObjects.DatasetCatalogPage;
 import pageObjects.DulVotingPage;
@@ -15,6 +17,7 @@ import pageObjects.HomePage;
 import pageObjects.ManageDulPage;
 import pageObjects.ManageUsersPage;
 import pageObjects.ModalPage;
+import pageObjects.PreviewResultsPage;
 import pageObjects.RequestHelpPage;
 import pageObjects.RequestHelpReportsPage;
 
@@ -32,10 +35,13 @@ public class PageObjectManager {
 	private DacConsolePage dacConsolePage;
 	private DulVotingPage dulVotingPage;
 	private DulCollectVotesPage collectVotesPage;
+	private DulResultRecordPage dulResultRecordPage;
 	private AddDatasetPage addDatasetPage;
 	private DatasetCatalogPage datasetCatalogPage;
 	private RequestHelpPage requestHelpPage;
 	private RequestHelpReportsPage requestHelpReportsPage;
+	private AddDulPage addDulPage;
+	private PreviewResultsPage previewResultsPage;
 	
 	public PageObjectManager(WebDriver driver) {
 		this.driver = driver;
@@ -81,7 +87,7 @@ public class PageObjectManager {
 		return (dulVotingPage == null) ? dulVotingPage = new DulVotingPage(driver) : dulVotingPage;
 	}
 	
-	public DulCollectVotesPage getCollectVotesPage() {
+	public DulCollectVotesPage getDulCollectVotesPage() {
 		return (collectVotesPage == null) ? collectVotesPage = new DulCollectVotesPage(driver) : collectVotesPage;
 	}
 	
@@ -99,6 +105,18 @@ public class PageObjectManager {
 	
 	public RequestHelpReportsPage getRequestHelpReportsPage() {
 		return (requestHelpReportsPage == null) ? requestHelpReportsPage = new RequestHelpReportsPage(driver) : requestHelpReportsPage;
+	}
+	
+	public AddDulPage getAddDulPage() {
+		return (addDulPage == null) ? addDulPage = new AddDulPage(driver) : addDulPage;
+	}
+	
+	public PreviewResultsPage getPreviewResultsPage() {
+		return (previewResultsPage == null) ? previewResultsPage = new PreviewResultsPage(driver) : previewResultsPage;
+	}
+	
+	public DulResultRecordPage getDulResultRecordPage() {
+		return (dulResultRecordPage == null) ? dulResultRecordPage = new DulResultRecordPage(driver) : dulResultRecordPage;
 	}
 
 }

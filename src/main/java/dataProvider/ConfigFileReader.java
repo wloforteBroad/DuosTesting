@@ -112,19 +112,31 @@ public class ConfigFileReader {
 	public String getCorrectDatasetPath(){
 		String datasetCorrectFile = properties.getProperty("datasetCorrectFile");
 		if(datasetCorrectFile!= null) return datasetCorrectFile;
-		else throw new RuntimeException("Correct Dataset File Path not specified in the Configuration.properties file for the Key:reportConfigPath");		
+		else throw new RuntimeException("Correct Dataset File Path not specified in the Configuration.properties file for the Key:datasetCorrectFile");		
+	}
+	
+	public String getDownloadPath(){
+		String downloadPath = properties.getProperty("downloadPath");
+		if(downloadPath!= null) return downloadPath;
+		else throw new RuntimeException("Download File Path not specified in the Configuration.properties file for the Key:downloadPath");		
 	}
 	
 	public String getConsentId(){
 		String consentId = properties.getProperty("consentId");
 		if(consentId!= null) return consentId;
-		else throw new RuntimeException("Consent ID not specified in the Configuration.properties file for the Key:reportConfigPath");		
+		else throw new RuntimeException("Consent ID not specified in the Configuration.properties file for the Key:consentId");		
 	}
 	
 	public String getDatasetId(){
 		String datasetId = properties.getProperty("datasetId");
 		if(datasetId!= null) return datasetId;
-		else throw new RuntimeException("Dataset ID not specified in the Configuration.properties file for the Key:reportConfigPath");		
+		else throw new RuntimeException("Dataset ID not specified in the Configuration.properties file for the Key:datasetId");		
+	}
+	
+	public String getStructuredDul(){
+		String structuredDul = properties.getProperty("structuredDul");
+		if(structuredDul!= null) return structuredDul;
+		else throw new RuntimeException("structuredDul not specified in the Configuration.properties file for the Key:structuredDul");		
 	}
 	
 	public DriverType getBrowser() {

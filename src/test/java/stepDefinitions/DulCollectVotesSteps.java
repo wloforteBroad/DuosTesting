@@ -15,7 +15,7 @@ public class DulCollectVotesSteps {
 	
 	public DulCollectVotesSteps(TestContext context) {
 		testContext = context;
-		dulCollectVotesPage = testContext.getPageObjectManager().getCollectVotesPage();
+		dulCollectVotesPage = testContext.getPageObjectManager().getDulCollectVotesPage();
 		modalPage = testContext.getPageObjectManager().getModalPage();
 	}
 	

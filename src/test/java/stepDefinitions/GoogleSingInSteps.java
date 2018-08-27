@@ -1,8 +1,5 @@
 package stepDefinitions;
 
-import java.util.Iterator;
-import java.util.Set;
-
 import cucumber.TestContext;
 import cucumber.api.java.en.When;
 import managers.FileReaderManager;
@@ -20,83 +17,23 @@ public class GoogleSingInSteps {
 	
 	@When("^user enters correct AdminUserName and AdminPassword$")
 	public void user_enters_correct_UserName_and_Password() throws InterruptedException {
-
-		// Set Parent Window
-		String parent = testContext.getWebDriverManager().getWindowsHandle();
-		// Number of Windows
-		Set<String> s1 = testContext.getWebDriverManager().getWindowsHandles();
-		// Iterate
-		Iterator<String> I1 = s1.iterator();
-		while (I1.hasNext()) {
-			String child_window = I1.next();
-			// If it's not Parent do things
-			if (!parent.equals(child_window)) {
-				testContext.getWebDriverManager().switchWindow(child_window);
-				googleSignInPage.signIn(FileReaderManager.getInstance().getConfigReader().getAdminUserName(), FileReaderManager.getInstance().getConfigReader().getAdminPassword());
-			}
-		}
-		// Switch back to parent window
-		testContext.getWebDriverManager().switchWindow(parent);
+		testContext.getWebDriverManager().changeWinSignIn(googleSignInPage, FileReaderManager.getInstance().getConfigReader().getAdminUserName(), FileReaderManager.getInstance().getConfigReader().getAdminPassword());
 	}
+
 
 	@When("^user enters correct MemberUserNameOne and MemberPassword$")
 	public void user_enters_correct_MemberUserNameOne_and_MemberPassword() throws Throwable {
-		// Set Parent Window
-		String parent = testContext.getWebDriverManager().getWindowsHandle();
-		// Number of Windows
-		Set<String> s1 = testContext.getWebDriverManager().getWindowsHandles();
-		// Iterate
-		Iterator<String> I1 = s1.iterator();
-		while (I1.hasNext()) {
-			String child_window = I1.next();
-			// If it's not Parent do things
-			if (!parent.equals(child_window)) {
-				testContext.getWebDriverManager().switchWindow(child_window);
-				googleSignInPage.signIn(FileReaderManager.getInstance().getConfigReader().getMemberUserName1(), FileReaderManager.getInstance().getConfigReader().getMemberPassword());
-			}
-		}
-		// Switch back to parent window
-		testContext.getWebDriverManager().switchWindow(parent);
+		testContext.getWebDriverManager().changeWinSignIn(googleSignInPage, FileReaderManager.getInstance().getConfigReader().getMemberUserName1(), FileReaderManager.getInstance().getConfigReader().getMemberPassword());
 	}
 
 	@When("^user enters correct MemberUserNameTwo and MemberPassword$")
 	public void user_enters_correct_MemberUserNameTwo_and_Password() throws Throwable {
-		// Set Parent Window
-		String parent = testContext.getWebDriverManager().getWindowsHandle();
-		// Number of Windows
-		Set<String> s1 = testContext.getWebDriverManager().getWindowsHandles();
-		// Iterate
-		Iterator<String> I1 = s1.iterator();
-		while (I1.hasNext()) {
-			String child_window = I1.next();
-			// If it's not Parent do things
-			if (!parent.equals(child_window)) {
-				testContext.getWebDriverManager().switchWindow(child_window);
-				googleSignInPage.signIn(FileReaderManager.getInstance().getConfigReader().getMemberUserName2(), FileReaderManager.getInstance().getConfigReader().getMemberPassword());
-			}
-		}
-		// Switch back to parent window
-		testContext.getWebDriverManager().switchWindow(parent);
+		testContext.getWebDriverManager().changeWinSignIn(googleSignInPage, FileReaderManager.getInstance().getConfigReader().getMemberUserName2(), FileReaderManager.getInstance().getConfigReader().getMemberPassword());
 	}
 
 	@When("^user enters correct MemberUserNameThree and MemberPassword$")
 	public void user_enters_correct_MemberUserNameThree_and_Password() throws Throwable {
-		// Set Parent Window
-		String parent = testContext.getWebDriverManager().getWindowsHandle();
-		// Number of Windows
-		Set<String> s1 = testContext.getWebDriverManager().getWindowsHandles();
-		// Iterate
-		Iterator<String> I1 = s1.iterator();
-		while (I1.hasNext()) {
-			String child_window = I1.next();
-			// If it's not Parent do things
-			if (!parent.equals(child_window)) {
-				testContext.getWebDriverManager().switchWindow(child_window);
-				googleSignInPage.signIn(FileReaderManager.getInstance().getConfigReader().getMemberUserName3(), FileReaderManager.getInstance().getConfigReader().getMemberPassword());
-			}
-		}
-		// Switch back to parent window
-		testContext.getWebDriverManager().switchWindow(parent);
+		testContext.getWebDriverManager().changeWinSignIn(googleSignInPage, FileReaderManager.getInstance().getConfigReader().getMemberUserName3(), FileReaderManager.getInstance().getConfigReader().getMemberPassword());
 	}
 
 }

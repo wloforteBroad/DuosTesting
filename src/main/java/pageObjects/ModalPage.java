@@ -23,6 +23,9 @@ WebDriver driver;
 	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Ok')]") 
 	private WebElement btn_Ok;
 	
+	@FindBy(how = How.CLASS_NAME, using = "regular-checkbox") 
+	private WebElement chkbx_Archive;
+	
 	public void clickOn_Yes() {
 		btn_Yes.click();
 	}
@@ -34,6 +37,9 @@ WebDriver driver;
 	public void clickOn_Ok() {
 		btn_Ok.click();
 	}
-
+	
+	public void check_Archive() {
+		chkbx_Archive.click();
+	}
 
 }

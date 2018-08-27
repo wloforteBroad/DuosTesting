@@ -1,9 +1,12 @@
 package managers;
 
+import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -11,6 +14,7 @@ import org.openqa.selenium.safari.SafariDriver;
 
 import enums.DriverType;
 import enums.EnvironmentType;
+import pageObjects.GoogleSignInPage;
 
 public class WebDriverManager {
 	
@@ -51,12 +55,17 @@ public class WebDriverManager {
  
 	private WebDriver createLocalDriver() {
         switch (driverType) {	    
-        case FIREFOX : 
+        case FIREFOX :
         	driver = new FirefoxDriver();
 	    	break;
         case CHROME : 
         	System.setProperty(CHROME_DRIVER_PROPERTY, FileReaderManager.getInstance().getConfigReader().getDriverPath());
-        	driver = new ChromeDriver();
+        	ChromeOptions chromeOpts = new ChromeOptions();
+        	chromeOpts.addArguments("start-maximized");
+//        	chromeOpts.addArguments("browser.download.folderList=2");
+//        	chromeOpts.addArguments("browser.helperApps.neverAsk.saveToDisk=text/plain");
+//        	chromeOpts.addArguments("browser.download.dir=" + FileReaderManager.getInstance().getConfigReader().getDownloadPath());
+        	driver = new ChromeDriver(chromeOpts);
     		break;
         case INTERNETEXPLORER : 
         	driver = new InternetExplorerDriver();
@@ -65,9 +74,9 @@ public class WebDriverManager {
         	driver = new SafariDriver();
 		break;
         case FIREFOX_HEADLESS : 
-        	FirefoxOptions opts = new FirefoxOptions();
-            opts.setHeadless(true);
-        	driver = new FirefoxDriver(opts);
+        	FirefoxOptions FirefoxOpts = new FirefoxOptions();
+        	FirefoxOpts.setHeadless(true);
+        	driver = new FirefoxDriver(FirefoxOpts);
 	    break;
         }
  
@@ -85,6 +94,25 @@ public class WebDriverManager {
 	
 	public void switchWindow(String window) {
 		driver.switchTo().window(window);
+	}
+	
+	public void changeWinSignIn(GoogleSignInPage googleSignInPage, String user, String password) throws InterruptedException {
+		// Set Parent Window
+		String parent = getWindowsHandle();
+		// Number of Windows
+		Set<String> s1 = getWindowsHandles();
+		// Iterate
+		Iterator<String> I1 = s1.iterator();
+		while (I1.hasNext()) {
+			String child_window = I1.next();
+			// If it's not Parent do things
+			if (!parent.equals(child_window)) {
+				switchWindow(child_window);
+				googleSignInPage.signIn(user, password);
+			}
+		}
+		// Switch back to parent window
+		switchWindow(parent);
 	}
  
 	public void closeDriver() {

@@ -54,6 +54,18 @@ WebDriver driver;
 		btn_Vote.click();
 	}
 	
+	public void voteYes(String rationale) {
+		lbl_Yes.click();
+		txtbx_Rationale.sendKeys(rationale);
+		btn_Vote.click();
+	}
+	
+	public void voteNo(String rationale) {
+		lbl_No.click();
+		txtbx_Rationale.sendKeys(rationale);
+		btn_Vote.click();
+	}
+	
 	
 
 }

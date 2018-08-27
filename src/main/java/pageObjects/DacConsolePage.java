@@ -53,6 +53,16 @@ WebDriver driver;
 		txtbx_SearchConsent.sendKeys(consent);
 	}
 	
+	public void findConsentAndVote(String consent) {
+		txtbx_SearchConsent.sendKeys(consent);
+		btn_Vote.click();
+	}
+	
+	public void findConsentAndCollect(String consent) {
+		txtbx_SearchConsent.sendKeys(consent);
+		btn_Vote.click();
+	}
+	
 	public boolean isConsentEditable() {
 		try {
 			return lbl_Editable.isDisplayed();
