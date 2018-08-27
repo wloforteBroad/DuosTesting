@@ -90,5 +90,12 @@ WebDriver driver;
 	public void clickOn_Save() {
 		btn_Save.click();
 	}
-
+	
+	public void createMockUser(String name, String mail) {
+		this.enter_Name(name);
+		this.enter_Mail(mail);
+		this.check_AdminRole();
+		this.clickOn_Add();
+	}
+	
 }

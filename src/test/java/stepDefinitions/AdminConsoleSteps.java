@@ -35,19 +35,9 @@ public class AdminConsoleSteps {
 		assert adminConsolePage.isUserGreetDisplayed();
 	}
 	
-	@Given("^clicks in Add User button$")
-	public void clicks_in_Add_User_button() throws Throwable {
-		adminConsolePage.clickOn_AddUser();
-	}
-	
 	@Given("^clicks in Manage DUL button$")
 	public void clicks_in_Manage_DUL_button() throws Throwable {
 	   adminConsolePage.clickOn_ManageDul();
-	}
-	
-	@Given("^The user clicks on Add Dataset button$")
-	public void the_user_clicks_on_Add_Dataset_button() throws Throwable {
-	    adminConsolePage.clickOn_AddDatasets();
 	}
 
 }

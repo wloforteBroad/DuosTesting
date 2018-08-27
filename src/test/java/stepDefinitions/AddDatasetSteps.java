@@ -20,16 +20,5 @@ public class AddDatasetSteps {
 	public void user_is_on_Add_Dataset_Modal() throws Throwable {
 	    assert addDatasetPage.isUserOnAddDatasetPage();
 	}
-	
-	@When("^clicks on Upload file button and selects file$")
-	public void clicks_on_Upload_file_button_and_selects_file() throws Throwable {
-	    addDatasetPage.upload_CorrectDataset();
-	    addDatasetPage.clickOn_Overwrite();
-	}
-	
-	@When("^clicks on Add button$")
-	public void clicks_on_Add_button() throws Throwable {
-	    addDatasetPage.clickOn_Add();
-	}
 
 }

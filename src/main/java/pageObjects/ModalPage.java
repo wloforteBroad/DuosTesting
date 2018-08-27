@@ -42,5 +42,4 @@ WebDriver driver;
 		chkbx_Archive.click();
 	}
 
-
 }

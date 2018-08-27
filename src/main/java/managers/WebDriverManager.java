@@ -62,6 +62,9 @@ public class WebDriverManager {
         	System.setProperty(CHROME_DRIVER_PROPERTY, FileReaderManager.getInstance().getConfigReader().getDriverPath());
         	ChromeOptions chromeOpts = new ChromeOptions();
         	chromeOpts.addArguments("start-maximized");
+//        	chromeOpts.addArguments("browser.download.folderList=2");
+//        	chromeOpts.addArguments("browser.helperApps.neverAsk.saveToDisk=text/plain");
+//        	chromeOpts.addArguments("browser.download.dir=" + FileReaderManager.getInstance().getConfigReader().getDownloadPath());
         	driver = new ChromeDriver(chromeOpts);
     		break;
         case INTERNETEXPLORER : 

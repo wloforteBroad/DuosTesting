@@ -33,6 +33,8 @@ WebDriver driver;
 	
 	public void upload_CorrectDataset() {
 		btn_Upload.sendKeys(filePath);
+		this.clickOn_Overwrite();
+		this.clickOn_Add();
 	}
 	
 	public void clickOn_Overwrite() {

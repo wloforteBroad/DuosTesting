@@ -34,9 +34,9 @@ Feature: ADMIN CAPABILITIES
 	- View List of Users
 	- Add
 	- Edit
-	- Review Researcher Profile
+	- Review Researcher Profile****
 	- Search User
-- As an Admin, a user would like to Manage Data Access Requests:
+- As an Admin, a user would like to Manage Data Access Requests:****
 	- View List of DARs
 	- Open Election
 	- Cancel Election
@@ -46,13 +46,13 @@ Feature: ADMIN CAPABILITIES
 	- DAR that need Data Owner Approval
 - As an Admin, a user would like to Manage Datasets:
 	- Upload Datasets file
-	- Download selected Dataset/s
+	- Download selected Dataset/s****
 	- Search Dataset
 	- Delete
-	- Disable
-	- Connect with Data Owner
+	- Disable/Enable
+	- Connect with Data Owner****
 	- View Structured DUL
-	- Download Approved Requestors
+	- Download Approved Requestors****
 
 
   @ignore
@@ -161,6 +161,70 @@ Feature: ADMIN CAPABILITIES
     And The user clicks on Manage Data Use Limitations
     When The user clicks on Election Status for a given Consent
     Then The user should see the preview page of that Election depending on the status
+    
+  @ignore
+  Scenario: Manage USERS - View list of USERS
+  	Given The user is logged in and in the Admin Console
+  	When The user clicks on Manage Users
+  	Then The user should see a list of Users
+  	
+  @ignore
+  Scenario: Manage USERS - Successfuly create User
+    Given The user is logged in and in the Admin Console
+    And clicks in Add User button
+    When The user complete and submits the User form
+    Then new user appears in Manage Users Page
+    
+  @ignore
+  Scenario: Manage USERS - Successfuly create User
+    Given The user is logged in and in the Admin Console
+  	When The user clicks on Manage Users
+    When The user edits a given user
+    Then edited user appears in Manage Users Page
+    
+  @ignore
+  Scenario: Manage DATASET - Upload correct Dataset
+    Given The user is logged in and in the Admin Console
+    And The user clicks on Add Dataset button
+    When The user selects the file and clicks Add button
+    Then the uploaded dataset is shown in Dataset Catalog Page
+    
+  @ignore
+  Scenario: Manage DATASET - Donwload Selected Datasets ****
+    Given The user is logged in and in the Admin Console
+    And there are datasets in the Catalog
+    When The user selects all Datasets and clicks Download Selection
+    Then the file should be downloaded
+    
+  @ignore
+  Scenario: Manage DATASET - Delete Dataset 
+    Given The user is logged in and in the Admin Console
+    And there are datasets in the Catalog
+    When The user clicks on the bin icon and accepts prompt
+    Then dataset is no longer shown in Dataset Catalog Page
+    
+  @ignore
+  Scenario: Manage DATASET - Disable Dataset 
+    Given The user is logged in and in the Admin Console
+    And there are datasets in the Catalog
+    And the dataset is enabled
+    When The user clicks on the Disable Dataset icon and accepts prompt
+    Then dataset appears as disabled in Dataset Catalog Page
+    
+  @ignore
+  Scenario: Manage DATASET - Disable Dataset 
+    Given The user is logged in and in the Admin Console
+    And there are datasets in the Catalog
+    And the dataset is disabled
+    When The user clicks on the Enable Dataset icon and accepts prompt
+    Then dataset appears as enabled in Dataset Catalog Page
+    
+  @ignore
+  Scenario: Manage DATASET - View Translated DUL 
+    Given The user is logged in and in the Admin Console
+    And there are datasets in the Catalog
+    When The user clicks on View translated DUL
+    Then correct translated DUL should appear in the Modal
     
     
 

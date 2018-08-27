@@ -47,7 +47,7 @@ public class GoogleSignInPage {
 		Thread.sleep(1500);
 		enter_UserName(user);
 		clickOn_Next();
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		enter_Password(password);
 		clickOn_PasswordNext();
 	}

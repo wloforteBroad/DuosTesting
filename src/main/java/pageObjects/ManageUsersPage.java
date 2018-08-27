@@ -2,7 +2,6 @@ package pageObjects;
 
 import java.util.List;
 
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -17,9 +16,6 @@ WebDriver driver;
 		this.driver = driver;
 	    PageFactory.initElements(driver, this);
 	}
-
-	@FindBy(how = How.XPATH, using = "//div[contains(text(),'test.user@gmail.com')]") 
-	private WebElement lbl_Mail;
 	
 	@FindBy(how = How.CSS, using = ".users-search") 
 	private WebElement txtbx_SearchUser;
@@ -30,27 +26,21 @@ WebDriver driver;
 	@FindBy(how = How.CLASS_NAME, using = "admin-manage-buttons") 
 	private WebElement btn_Edit;
 	
-	@FindBys(@FindBy(css=".ng-scope[ng-if*='role.name == 'Member'']"))
-	private List<WebElement> allMembers;
+	@FindBys(@FindBy(css=".ng-scope[ng-repeat*='searchUsers']"))
+	private List<WebElement> allUsers;
 	
-	public boolean isUserDisplayed() {
-		try {
-			return lbl_Mail.isDisplayed();
-		}catch(NoSuchElementException e) {
-			return false;
-		}	
-	}
 	
 	public void clickOn_Edit() {
 		btn_Edit.click();
 	}
 	
-	public void findUser(String userMail) {
-		txtbx_SearchUser.sendKeys(userMail);
+	public void findUser(String searchTerm) {
+		txtbx_SearchUser.clear();
+		txtbx_SearchUser.sendKeys(searchTerm);
 	}
 	
 	public List<WebElement> getAllMembers() {
-        return allMembers;
+        return allUsers;
     }
 	
 
