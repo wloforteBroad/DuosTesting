@@ -1,5 +1,6 @@
 package pageObjects;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -7,6 +8,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HeaderPage {
 WebDriver driver;
@@ -31,7 +34,7 @@ WebDriver driver;
 	@FindBy(how = How.XPATH, using = "//a[contains(text(),'DAC Console')]") 
 	private WebElement btn_DacConsole;
 	
-	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Admin Console')]") 
+	@FindBy(how = How.ID, using = "adminConsole") 
 	private WebElement btn_AdminConsole;
 	
 	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Researcher Console')]") 
@@ -163,5 +166,9 @@ WebDriver driver;
 			return false;
 		}	
 	}
+	
+	public void waitForElementToLoad() {
+        new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.id("adminConsole")));
+    }
 
 }

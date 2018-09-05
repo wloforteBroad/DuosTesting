@@ -39,7 +39,7 @@ public class DacConsoleSteps {
 	
 	@Given("^The user search the consent$")
 	public void the_user_search_the_consent() throws Throwable {
-	    dacConsolePage.findConsent(FileReaderManager.getInstance().getConfigReader().getConsentId());
+	    dacConsolePage.findConsent(FileReaderManager.getInstance().getConfigReader().getConsentIdAdmin());
 	}
 	
 	@Given("^The user clicks on Vote button$")
@@ -55,14 +55,14 @@ public class DacConsoleSteps {
 	@Then("^the user navigates to Dac Console and consent is on Editable Status$")
 	public void the_user_navigates_to_Dac_Console_and_consent_is_on_Editable_Status() throws Throwable {
 		Thread.sleep(500);
-	    dacConsolePage.findConsent(FileReaderManager.getInstance().getConfigReader().getConsentId());
-	    dacConsolePage.isConsentEditable();
+	    dacConsolePage.findConsent(FileReaderManager.getInstance().getConfigReader().getConsentIdAdmin());
+	    dacConsolePage.isVoteEditable();
 	}
 	
 	@Then("^the user navigates to Dac Console and Chaiperson can Collect Votes$")
 	public void the_user_navigates_to_Dac_Console_and_chairperson_can_collect_votes() throws Throwable {
 		Thread.sleep(500);
-	    dacConsolePage.findConsent(FileReaderManager.getInstance().getConfigReader().getConsentId());
+	    dacConsolePage.findConsent(FileReaderManager.getInstance().getConfigReader().getConsentIdAdmin());
 	    dacConsolePage.isCollectVotesDisplayed();
 	}
 	

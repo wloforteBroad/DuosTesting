@@ -13,7 +13,6 @@ import cucumber.TestContext;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
-import managers.FileReaderManager;
 import pageObjects.AddUserPage;
 import pageObjects.AdminConsolePage;
 import pageObjects.GoogleSignInPage;
@@ -34,6 +33,9 @@ public class Hooks {
 	AddUserPage addUserPage;
 	ManageDulPage manageDulPage;
 	ModalPage modalPage;
+	AdminManageDulSteps adminSteps;
+	MySQLDBHelper db = new MySQLDBHelper();
+	MongoDBHelper mongodb = new MongoDBHelper();
 	 
 	public Hooks(TestContext context) {
 		testContext = context;
@@ -59,49 +61,53 @@ public class Hooks {
 		*/
 	}
 	
-	@Before("@twoMembers")
-	public void memberToAlumni() throws InterruptedException {
-		homePage.navigateTo_HomePage();
-		headerPage.clickOn_SignIn();
-		homePage.clickOn_SignInGoogle();
-		testContext.getWebDriverManager().changeWinSignIn(signInPage, FileReaderManager.getInstance().getConfigReader().getAdminUserName(), FileReaderManager.getInstance().getConfigReader().getAdminPassword());
-		Thread.sleep(3000);
-		headerPage.clickOn_AdminConsole();
-		adminConsolePage.clickOn_ManageDul();
-		manageDulPage.findConsent(FileReaderManager.getInstance().getConfigReader().getConsentId());
-		if (manageDulPage.isElectionOpen()) {
-			manageDulPage.clickOn_Cancel();
-			modalPage.check_Archive();
-			modalPage.clickOn_Yes();
-		}
-		headerPage.clickOn_AdminConsole();
-		adminConsolePage.clickOn_ManageUsers();
-		manageUsersPage.findUser(FileReaderManager.getInstance().getConfigReader().getMemberUserName1());
-		manageUsersPage.clickOn_Edit();
-		addUserPage.check_MemberRole();
-		addUserPage.check_AlumniRole();
-		addUserPage.clickOn_Save();
-		Thread.sleep(1000);
-		headerPage.clickOn_AdminConsole();
+	@Before("@dacmemberDul")
+	public void openElection() throws Throwable {
+		db.addDulElectionOpened();
 	}
 	
-	@After("@twoMembers")
-	public void alumniToMember() {
-		modalPage.clickOn_No();
-		headerPage.clickOn_AdminConsole();
-		adminConsolePage.clickOn_ManageUsers();
-		manageUsersPage.findUser(FileReaderManager.getInstance().getConfigReader().getMemberUserName1());
-		manageUsersPage.clickOn_Edit();
-		addUserPage.check_AlumniRole();
-		addUserPage.check_MemberRole();
-		addUserPage.clickOn_Save();
-		
+	@After("@dacmemberDul")
+	public void closeElection() throws Throwable {
+		db.deleteDulElection();
+	}
+	
+	@Before("@dacmemberDar")
+	public void insertDocumentAndElection() throws Throwable {
+		//Consent association between ORSP-628 and Dataset with Object-id SC-20660 previously inserted on DB
+		mongodb.insertDocument();
+		db.addDulElectionClosed();
+		String darId = mongodb.getDocumentId();
+		db.addDarElection(darId);	
+	}
+	
+	@After("@dacmemberDar")
+	public void deleteDocumentAndElection() throws Throwable {
+		String darId = mongodb.getDocumentId();
+		mongodb.deleteDocument();
+		db.deleteDulElection();
+		db.deleteDarElection(darId);
+	}
+	
+	@Before("@deleteDul")
+	public void AddDulToDelete() throws Throwable {
+		db.addDulToDelete();
+	}
+	
+	@After("@addDul, @deleteDul")
+	public void deleteDul() throws Throwable {
+		db.deletedULIfNotDeleted();
+	}
+	
+	@Before("@changeRoles")
+	@After("@changeRoles")
+	public void memberToAlumni() throws InterruptedException {
+		db.changeRoles();
 	}
 	
  
 	@After (order = 0)
 	public void AfterSteps() {
-		System.out.println("CERRANDO EL DRIVER---------------------------------------------------------");
+		System.out.println("CLOSING DRIVER---------------------------------------------------------");
 		testContext.getWebDriverManager().closeDriver();
 	}
 	

@@ -38,6 +38,15 @@ WebDriver driver;
 		}	
 	}
 	
+	public boolean isVoteEnabled() {
+		try {
+			return btn_Vote.isEnabled();
+		}catch(NoSuchElementException e) {
+			return false;
+		}	
+	}
+	
+	
 	public void clickOn_Yes() {
 		lbl_Yes.click();
 	}
@@ -47,6 +56,7 @@ WebDriver driver;
 	}
 	
 	public void enter_Rationale(String rationale) {
+		txtbx_Rationale.clear();
 		txtbx_Rationale.sendKeys(rationale);
 	}
 	
@@ -66,6 +76,8 @@ WebDriver driver;
 		btn_Vote.click();
 	}
 	
-	
+	public String getRationale() {
+		return txtbx_Rationale.getText();
+	}	
 
 }

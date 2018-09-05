@@ -48,7 +48,7 @@ public class DulElectionSteps {
 		Thread.sleep(2000);
 		headerPage.clickOn_AdminConsole();
 		adminConsolePage.clickOn_ManageDul();
-		manageDulPage.findConsent(FileReaderManager.getInstance().getConfigReader().getConsentId());
+		manageDulPage.findConsent(FileReaderManager.getInstance().getConfigReader().getConsentIdAdmin());
 		manageDulPage.clickOn_Create();
 	    Thread.sleep(500);
 	    modalPage.clickOn_Yes();
@@ -60,13 +60,13 @@ public class DulElectionSteps {
 	@When("^all DAC users votes on it$")
 	public void all_DAC_users_votes_on_it() throws Throwable {
 		Thread.sleep(1000);
-		userVoting("Because Yes", FileReaderManager.getInstance().getConfigReader().getMemberUserName1(), FileReaderManager.getInstance().getConfigReader().getMemberPassword(),FileReaderManager.getInstance().getConfigReader().getConsentId());
+		userVoting("Because Yes", FileReaderManager.getInstance().getConfigReader().getMemberUserName1(), FileReaderManager.getInstance().getConfigReader().getMemberPassword(),FileReaderManager.getInstance().getConfigReader().getConsentIdAdmin());
 		Thread.sleep(1000);
-		userVoting("Because Yes", FileReaderManager.getInstance().getConfigReader().getMemberUserName2(), FileReaderManager.getInstance().getConfigReader().getMemberPassword(),FileReaderManager.getInstance().getConfigReader().getConsentId());
+		userVoting("Because Yes", FileReaderManager.getInstance().getConfigReader().getMemberUserName2(), FileReaderManager.getInstance().getConfigReader().getMemberPassword(),FileReaderManager.getInstance().getConfigReader().getConsentIdAdmin());
 		Thread.sleep(1000);
-		userVoting("Because Yes", FileReaderManager.getInstance().getConfigReader().getMemberUserName3(), FileReaderManager.getInstance().getConfigReader().getMemberPassword(),FileReaderManager.getInstance().getConfigReader().getConsentId());
+		userVoting("Because Yes", FileReaderManager.getInstance().getConfigReader().getMemberUserName3(), FileReaderManager.getInstance().getConfigReader().getMemberPassword(),FileReaderManager.getInstance().getConfigReader().getConsentIdAdmin());
 		Thread.sleep(1000);
-		userVoting("Because Yes", FileReaderManager.getInstance().getConfigReader().getAdminUserName(), FileReaderManager.getInstance().getConfigReader().getAdminPassword(),FileReaderManager.getInstance().getConfigReader().getConsentId());
+		userVoting("Because Yes", FileReaderManager.getInstance().getConfigReader().getAdminUserName(), FileReaderManager.getInstance().getConfigReader().getAdminPassword(),FileReaderManager.getInstance().getConfigReader().getConsentIdAdmin());
 		Thread.sleep(1000);
 	}
 	

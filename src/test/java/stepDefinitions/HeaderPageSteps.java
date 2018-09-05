@@ -33,6 +33,7 @@ public class HeaderPageSteps {
 	
 	@Then("^Sign in button is diplayed in header$")
 	public void sign_in_button_is_diplayed_in_header() throws Throwable {
+		Thread.sleep(1000);
 	    assert headerPage.isUserLoguedOut();
 	}
 	

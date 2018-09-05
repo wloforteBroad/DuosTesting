@@ -26,25 +26,3 @@ Feature: LOG IN
     And user navigates to Login Page
     When user enters correct AdminUserName and AdminPassword
     Then user navigates to Admin Console
-    
-  @ignore  
-  Scenario: Successful Login as a member1
-    Given The user is in the Home Page
-    And user navigates to Login Page
-    When user enters correct MemberUserNameOne and MemberPassword
-    Then user navigates to DAC Console
-    
-  @ignore 
-	Scenario: Successful Login as a member2
-    Given The user is in the Home Page
-    And user navigates to Login Page
-    When user enters correct MemberUserNameTwo and Password
-    Then user navigates to DAC Console
-    
-  @ignore
-  Scenario: Successful Login as a member3
-    Given The user is in the Home Page
-    And user navigates to Login Page
-    When user enters correct MemberUserNameThree and Password
-    Then user navigates to DAC Console 
-   

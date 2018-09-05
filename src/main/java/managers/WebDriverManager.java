@@ -16,12 +16,14 @@ import enums.DriverType;
 import enums.EnvironmentType;
 import pageObjects.GoogleSignInPage;
 
+
 public class WebDriverManager {
 	
 	private WebDriver driver;
 	private static DriverType driverType;
 	private static EnvironmentType environmentType;
 	private static final String CHROME_DRIVER_PROPERTY = "webdriver.chrome.driver";
+	private String browserName;
  
 	public WebDriverManager() {
 		driverType = FileReaderManager.getInstance().getConfigReader().getBrowser();
@@ -56,12 +58,17 @@ public class WebDriverManager {
 	private WebDriver createLocalDriver() {
         switch (driverType) {	    
         case FIREFOX :
-        	driver = new FirefoxDriver();
+        	FirefoxOptions FirefoxOpts = new FirefoxOptions();
+        	browserName = FirefoxOpts.getBrowserName().toLowerCase();
+        	System.out.println(browserName);
+        	driver = new FirefoxDriver(FirefoxOpts);
 	    	break;
         case CHROME : 
         	System.setProperty(CHROME_DRIVER_PROPERTY, FileReaderManager.getInstance().getConfigReader().getDriverPath());
         	ChromeOptions chromeOpts = new ChromeOptions();
         	chromeOpts.addArguments("start-maximized");
+        	String browserName = chromeOpts.getBrowserName().toLowerCase();
+        	System.out.println(browserName);
 //        	chromeOpts.addArguments("browser.download.folderList=2");
 //        	chromeOpts.addArguments("browser.helperApps.neverAsk.saveToDisk=text/plain");
 //        	chromeOpts.addArguments("browser.download.dir=" + FileReaderManager.getInstance().getConfigReader().getDownloadPath());
@@ -74,9 +81,9 @@ public class WebDriverManager {
         	driver = new SafariDriver();
 		break;
         case FIREFOX_HEADLESS : 
-        	FirefoxOptions FirefoxOpts = new FirefoxOptions();
-        	FirefoxOpts.setHeadless(true);
-        	driver = new FirefoxDriver(FirefoxOpts);
+        	FirefoxOptions FirefoxHeadlessOpts = new FirefoxOptions();
+        	FirefoxHeadlessOpts.setHeadless(true);
+        	driver = new FirefoxDriver(FirefoxHeadlessOpts);
 	    break;
         }
  
@@ -117,6 +124,17 @@ public class WebDriverManager {
  
 	public void closeDriver() {
 		driver.quit();
+	}
+	
+	public void deleteAllCookies() {
+		driver.manage().deleteAllCookies();
+		if (browserName == "chrome") {
+			((ChromeDriver) driver).getSessionStorage().clear();
+			((ChromeDriver) driver).getLocalStorage().clear();
+		} else if (browserName == "firefox") {
+			((FirefoxDriver) driver).getSessionStorage().clear();
+			((FirefoxDriver) driver).getLocalStorage().clear();
+		}
 	}
 
 }

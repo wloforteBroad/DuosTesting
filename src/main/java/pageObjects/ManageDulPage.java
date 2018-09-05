@@ -160,7 +160,6 @@ WebDriver driver;
 			WebElement consent = driver.findElement(By.xpath("//a[contains(text(),'"+ consentName +"')]"));
 			return consent.isDisplayed()? false : true;
 		}catch(NoSuchElementException e) {
-			System.out.println(e);
 			return true;
 		}	
 	}
