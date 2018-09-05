@@ -9,6 +9,7 @@ import pageObjects.AdminConsolePage;
 import pageObjects.DulCollectVotesPage;
 import pageObjects.DulResultRecordPage;
 import pageObjects.DacConsolePage;
+import pageObjects.DarVotingPage;
 import pageObjects.DatasetCatalogPage;
 import pageObjects.DulVotingPage;
 import pageObjects.GoogleSignInPage;
@@ -34,6 +35,7 @@ public class PageObjectManager {
 	private ModalPage modalPage;
 	private DacConsolePage dacConsolePage;
 	private DulVotingPage dulVotingPage;
+	private DarVotingPage darVotingPage;
 	private DulCollectVotesPage collectVotesPage;
 	private DulResultRecordPage dulResultRecordPage;
 	private AddDatasetPage addDatasetPage;
@@ -117,6 +119,10 @@ public class PageObjectManager {
 	
 	public DulResultRecordPage getDulResultRecordPage() {
 		return (dulResultRecordPage == null) ? dulResultRecordPage = new DulResultRecordPage(driver) : dulResultRecordPage;
+	}
+	
+	public DarVotingPage getDarVotingPage() {
+		return (darVotingPage == null) ? darVotingPage = new DarVotingPage(driver) : darVotingPage;
 	}
 
 }

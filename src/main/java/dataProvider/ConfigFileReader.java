@@ -115,16 +115,28 @@ public class ConfigFileReader {
 		else throw new RuntimeException("Correct Dataset File Path not specified in the Configuration.properties file for the Key:datasetCorrectFile");		
 	}
 	
+	public String getjSonFilePath(){
+		String jSonFile = properties.getProperty("jSonFile");
+		if(jSonFile!= null) return jSonFile;
+		else throw new RuntimeException("jSonFile Path not specified in the Configuration.properties file for the Key:jSonFile");		
+	}
+	
 	public String getDownloadPath(){
 		String downloadPath = properties.getProperty("downloadPath");
 		if(downloadPath!= null) return downloadPath;
 		else throw new RuntimeException("Download File Path not specified in the Configuration.properties file for the Key:downloadPath");		
 	}
 	
-	public String getConsentId(){
-		String consentId = properties.getProperty("consentId");
-		if(consentId!= null) return consentId;
-		else throw new RuntimeException("Consent ID not specified in the Configuration.properties file for the Key:consentId");		
+	public String getConsentIdAdmin(){
+		String consentIdAdmin = properties.getProperty("consentIdAdmin");
+		if(consentIdAdmin!= null) return consentIdAdmin;
+		else throw new RuntimeException("Consent ID Admin not specified in the Configuration.properties file for the Key:consentIdAdmin");		
+	}
+	
+	public String getConsentIdMember(){
+		String consentIdMember = properties.getProperty("consentIdMember");
+		if(consentIdMember!= null) return consentIdMember;
+		else throw new RuntimeException("Consent ID Member not specified in the Configuration.properties file for the Key:consentIdMember");		
 	}
 	
 	public String getDatasetId(){
@@ -137,6 +149,48 @@ public class ConfigFileReader {
 		String structuredDul = properties.getProperty("structuredDul");
 		if(structuredDul!= null) return structuredDul;
 		else throw new RuntimeException("structuredDul not specified in the Configuration.properties file for the Key:structuredDul");		
+	}
+	
+	public String getDbUrl(){
+		String dbUrl = properties.getProperty("dbUrl");
+		if(dbUrl!= null) return dbUrl;
+		else throw new RuntimeException("dbUrl not specified in the Configuration.properties file for the Key:dbUrl");		
+	}
+	
+	public String getDbUser(){
+		String dbUser = properties.getProperty("dbUser");
+		if(dbUser!= null) return dbUser;
+		else throw new RuntimeException("dbUser not specified in the Configuration.properties file for the Key:dbUser");		
+	}
+	
+	public String getDbPass(){
+		String dbPass = properties.getProperty("dbPass");
+		if(dbPass!= null) return dbPass;
+		else throw new RuntimeException("dbPass not specified in the Configuration.properties file for the Key:dbPass");		
+	}
+	
+	public String getAdminId(){
+		String adminId = properties.getProperty("adminId");
+		if(adminId!= null) return adminId;
+		else throw new RuntimeException("adminId not specified in the Configuration.properties file for the Key:adminId");		
+	}
+	
+	public String getMember1Id(){
+		String member1Id = properties.getProperty("member1Id");
+		if(member1Id!= null) return member1Id;
+		else throw new RuntimeException("member1Id not specified in the Configuration.properties file for the Key:member1Id");		
+	}
+	
+	public String getmember2Id(){
+		String member2Id = properties.getProperty("member2Id");
+		if(member2Id!= null) return member2Id;
+		else throw new RuntimeException("member2Id not specified in the Configuration.properties file for the Key:member2Id");		
+	}
+	
+	public String getMember3Id(){
+		String member3Id = properties.getProperty("member3Id");
+		if(member3Id!= null) return member3Id;
+		else throw new RuntimeException("member3Id not specified in the Configuration.properties file for the Key:member3Id");		
 	}
 	
 	public DriverType getBrowser() {

@@ -23,6 +23,7 @@ public class GoogleSingInSteps {
 
 	@When("^user enters correct MemberUserNameOne and MemberPassword$")
 	public void user_enters_correct_MemberUserNameOne_and_MemberPassword() throws Throwable {
+		Thread.sleep(5000);
 		testContext.getWebDriverManager().changeWinSignIn(googleSignInPage, FileReaderManager.getInstance().getConfigReader().getMemberUserName1(), FileReaderManager.getInstance().getConfigReader().getMemberPassword());
 	}
 

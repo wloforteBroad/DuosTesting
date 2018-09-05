@@ -36,7 +36,7 @@ public class ManageDulSteps {
 	@When("^user searchs for consent$")
 	public void user_searchs_for_consent() throws Throwable {
 	    Thread.sleep(1000);
-	    manageDulPage.findConsent(FileReaderManager.getInstance().getConfigReader().getConsentId());
+	    manageDulPage.findConsent(FileReaderManager.getInstance().getConfigReader().getConsentIdAdmin());
 	}
 	
 	@When("^clicks on create button$")

@@ -1,0 +1,79 @@
+{
+    "eraAuthorized" : "true",
+    "nihUsername" : "PI NIH",
+    "investigator" : "PI NAME",
+    "institution" : "BelaxNEW",
+    "department" : "QANEW",
+    "division" : null,
+    "address1" : "san martin 972NEW",
+    "address2" : null,
+    "city" : "mendozaNEW",
+    "zipcode" : "5500",
+    "country" : "ArgentinaNEW",
+    "state" : "mendozaNEW",
+    "eraDate" : null,
+    "projectTitle" : "ERA 2",
+    "rus" : "efsefse",
+    "non_tech_rus" : "sfefse",
+    "diseases" : true,
+    "forProfit" : false,
+    "onegender" : false,
+    "pediatric" : false,
+    "addiction" : false,
+    "illegalbehave" : false,
+    "sexualdiseases" : false,
+    "stigmatizediseases" : false,
+    "vulnerablepop" : false,
+    "popmigration" : false,
+    "psychtraits" : false,
+    "nothealth" : false,
+    "userId" : 8889,
+    "restriction" : {
+        "type" : "and",
+        "operands" : [ 
+            {
+                "type" : "and",
+                "operands" : [ 
+                    {
+                        "type" : "not",
+                        "operand" : {
+                            "type" : "named",
+                            "name" : "http://purl.obolibrary.org/obo/DUO_0000015"
+                        }
+                    }, 
+                    {
+                        "type" : "not",
+                        "operand" : {
+                            "type" : "named",
+                            "name" : "http://purl.obolibrary.org/obo/DUO_0000011"
+                        }
+                    }, 
+                    {
+                        "type" : "not",
+                        "operand" : {
+                            "type" : "named",
+                            "name" : "http://www.broadinstitute.org/ontologies/DUOS/control"
+                        }
+                    }
+                ]
+            }, 
+            {
+                "type" : "named",
+                "name" : "http://purl.obolibrary.org/obo/DUO_0000018"
+            }
+        ]
+    },
+    "valid_restriction" : true,
+    "translated_restriction" : "Samples will be used under the following conditions:<br>Data will be used for health/medical/biomedical research [HMB(CC)]<br>Data will not be used for commercial purpose<br>",
+    "sortDate" : ISODate("2018-08-21T13:01:10.826Z"),
+    "datasetId" : [ 
+        "SC-20659"
+    ],
+    "datasetDetail" : [ 
+        {
+            "datasetId" : "SC-20659",
+            "name" : "(Bucienne Monco) - Muc-1 Kidney Disease"
+        }
+    ],
+    "dar_code" : "DAR-1001"
+}
