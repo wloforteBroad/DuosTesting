@@ -10,6 +10,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ManageDulPage {
 WebDriver driver;	
@@ -171,5 +173,9 @@ WebDriver driver;
 	public String getVersion() {
 		return lbl_versionNumber.getText();
 	}
+	
+	public void waitForElementToLoad() {
+        new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.id("versionNumber")));
+    }
 
 }

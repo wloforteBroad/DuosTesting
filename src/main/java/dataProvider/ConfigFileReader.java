@@ -133,6 +133,12 @@ public class ConfigFileReader {
 		else throw new RuntimeException("Consent ID Admin not specified in the Configuration.properties file for the Key:consentIdAdmin");		
 	}
 	
+	public String getConsentIdAdminDar(){
+		String consentIdAdminDar = properties.getProperty("consentIdAdminDar");
+		if(consentIdAdminDar!= null) return consentIdAdminDar;
+		else throw new RuntimeException("Consent ID Admin DAR not specified in the Configuration.properties file for the Key:consentIdAdminDar");		
+	}
+	
 	public String getConsentIdMember(){
 		String consentIdMember = properties.getProperty("consentIdMember");
 		if(consentIdMember!= null) return consentIdMember;
@@ -143,6 +149,18 @@ public class ConfigFileReader {
 		String datasetId = properties.getProperty("datasetId");
 		if(datasetId!= null) return datasetId;
 		else throw new RuntimeException("Dataset ID not specified in the Configuration.properties file for the Key:datasetId");		
+	}
+	
+	public String getObjectIdAdmin(){
+		String objectIdAdmin = properties.getProperty("objectIdAdmin");
+		if(objectIdAdmin!= null) return objectIdAdmin;
+		else throw new RuntimeException("Object ID Admin not specified in the Configuration.properties file for the Key:objectIdAdmin");		
+	}
+	
+	public String getObjectIdMember(){
+		String objectIdMember = properties.getProperty("objectIdMember");
+		if(objectIdMember!= null) return objectIdMember;
+		else throw new RuntimeException("Object ID Member not specified in the Configuration.properties file for the Key:objectIdMember");		
 	}
 	
 	public String getStructuredDul(){

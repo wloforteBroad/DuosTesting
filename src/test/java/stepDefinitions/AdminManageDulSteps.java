@@ -99,6 +99,7 @@ public class AdminManageDulSteps {
 	    manageDulPage.findConsent(FileReaderManager.getInstance().getConfigReader().getConsentIdAdmin());
 	    manageDulPage.clickOn_Create();
 	    modalPage.clickOn_Yes();
+	    Thread.sleep(2000);
 		this.versionNumber = manageDulPage.getVersion();
 	}
 	
@@ -112,7 +113,8 @@ public class AdminManageDulSteps {
 	
 	@When("^The user archive a given election$")
 	public void the_user_archive_a_given_election() throws Throwable {
-	    manageDulPage.clickOn_Archive();
+	    Thread.sleep(1000);
+		manageDulPage.clickOn_Archive();
 	    modalPage.clickOn_Yes();
 	}
 	
@@ -195,7 +197,9 @@ public class AdminManageDulSteps {
 	
 	@Then("^The Election Status should be Open and the new version should be increased by one$")
 	public void the_Election_Status_should_be_Open_and_the_new_version_should_be_increased_by_one() throws Throwable {
-	    assert Integer.valueOf(manageDulPage.getVersion()) == Integer.valueOf(this.versionNumber)+1; 
+	    manageDulPage.waitForElementToLoad();
+	    assert manageDulPage.isElectionOpen();
+		assert Integer.valueOf(manageDulPage.getVersion()) == Integer.valueOf(this.versionNumber)+1; 
 	}
 	
 	@Then("^The user should see the preview page of that Dul$")
