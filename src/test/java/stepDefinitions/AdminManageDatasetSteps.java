@@ -54,7 +54,7 @@ public class AdminManageDatasetSteps {
 	
 	@Given("^the dataset is enabled$")
 	public void the_dataset_is_enabled() throws Throwable {
-	    datasetCatalogPage.findDataset("SC-20660");
+	    datasetCatalogPage.findDataset(FileReaderManager.getInstance().getConfigReader().getDatasetId());
 	    if (datasetCatalogPage.isDatasetDisabled() ) {
 	    	datasetCatalogPage.clickOn_Enable();
 	    	modalPage.clickOn_Yes();
@@ -63,7 +63,7 @@ public class AdminManageDatasetSteps {
 	
 	@Given("^the dataset is disabled$")
 	public void the_dataset_is_disabled() throws Throwable {
-		datasetCatalogPage.findDataset("SC-20660");
+		datasetCatalogPage.findDataset(FileReaderManager.getInstance().getConfigReader().getDatasetId());
 	    if (datasetCatalogPage.isDatasetEnabled() ) {
 	    	datasetCatalogPage.clickOn_Disable();
 	    	modalPage.clickOn_Yes();
@@ -72,7 +72,7 @@ public class AdminManageDatasetSteps {
 	
 	@When("^The user clicks on the bin icon and accepts prompt$")
 	public void the_user_clicks_on_the_bin_icon_and_accepts_prompt() throws Throwable {
-	    datasetCatalogPage.findDataset("SC-20660");
+	    datasetCatalogPage.findDataset(FileReaderManager.getInstance().getConfigReader().getDatasetId());
 	    datasetCatalogPage.clickOn_Delete();
 	    Thread.sleep(1000);
 	    modalPage.clickOn_Yes();
@@ -105,14 +105,14 @@ public class AdminManageDatasetSteps {
 	
 	@When("^The user clicks on the Disable Dataset icon and accepts prompt$")
 	public void the_user_clicks_on_the_Disable_Dataset_icon_and_accepts_prompt() throws Throwable {
-		datasetCatalogPage.findDataset("SC-20660");
+		datasetCatalogPage.findDataset(FileReaderManager.getInstance().getConfigReader().getDatasetId());
 	    datasetCatalogPage.clickOn_Disable();
 	    modalPage.clickOn_Yes();
 	}
 	
 	@When("^The user clicks on the Enable Dataset icon and accepts prompt$")
 	public void the_user_clicks_on_the_Enable_Dataset_icon_and_accepts_prompt() throws Throwable {
-		datasetCatalogPage.findDataset("SC-20660");
+		datasetCatalogPage.findDataset(FileReaderManager.getInstance().getConfigReader().getDatasetId());
 	    datasetCatalogPage.clickOn_Enable();
 	    modalPage.clickOn_Yes();
 	}
@@ -131,19 +131,19 @@ public class AdminManageDatasetSteps {
 	@Then("^dataset is no longer shown in Dataset Catalog Page$")
 	public void dataset_is_no_longer_shown_in_Dataset_Catalog_Page() throws Throwable {
 		Thread.sleep(1000);
-	    datasetCatalogPage.findDataset("SC-20660");
+	    datasetCatalogPage.findDataset(FileReaderManager.getInstance().getConfigReader().getDatasetId());
 	    assert datasetCatalogPage.getAllDatasets().size() == 0;
 	}
 
 	@Then("^dataset appears as disabled in Dataset Catalog Page$")
 	public void dataset_appears_as_disabled_in_Dataset_Catalog_Page() throws Throwable {
-	    datasetCatalogPage.findDataset("SC-20660");
+	    datasetCatalogPage.findDataset(FileReaderManager.getInstance().getConfigReader().getDatasetId());
 	    assert datasetCatalogPage.isDatasetDisabled();
 	}
 	
 	@Then("^dataset appears as enabled in Dataset Catalog Page$")
 	public void dataset_appears_as_enabled_in_Dataset_Catalog_Page() throws Throwable {
-		datasetCatalogPage.findDataset("SC-20660");
+		datasetCatalogPage.findDataset(FileReaderManager.getInstance().getConfigReader().getDatasetId());
 	    assert datasetCatalogPage.isDatasetEnabled();
 	}
 	

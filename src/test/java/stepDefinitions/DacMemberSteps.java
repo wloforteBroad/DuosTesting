@@ -1,7 +1,5 @@
 package stepDefinitions;
 
-import org.openqa.selenium.WebDriver;
-
 import cucumber.TestContext;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -19,7 +17,6 @@ public class DacMemberSteps {
 	DarVotingPage darVotingPage;
 	ModalPage modalPage;
 	MySQLDBHelper db = new MySQLDBHelper();
-	WebDriver driver;
 	
 	
 	public DacMemberSteps(TestContext context) {
@@ -88,7 +85,7 @@ public class DacMemberSteps {
 	public void the_user_should_see_the_DUL_vote_with_the_new_rationale() throws Throwable {
 		dacConsolePage.findConsent(FileReaderManager.getInstance().getConfigReader().getConsentIdMember());
 		dacConsolePage.clickOn_Edit();
-		assert db.checkRationale().equals("Because YES EDITED");
+		assert db.checkRationale(FileReaderManager.getInstance().getConfigReader().getConsentIdMember()).equals("Because YES EDITED");
 	}
 	
 	@Then("^the Vote button should be disabled$")

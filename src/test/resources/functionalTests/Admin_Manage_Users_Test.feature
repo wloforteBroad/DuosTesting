@@ -32,6 +32,7 @@ As an Admin a user would like to Manage Users:
   	Then The user should see a list of Users
   	
   @ignore
+  @deleteUser
   Scenario: Manage USERS - Successfuly create User
     Given The user is logged in and in the Admin Console
     And clicks in Add User button

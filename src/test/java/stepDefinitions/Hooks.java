@@ -13,79 +13,49 @@ import cucumber.TestContext;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
-import pageObjects.AddUserPage;
-import pageObjects.AdminConsolePage;
-import pageObjects.GoogleSignInPage;
-import pageObjects.HeaderPage;
-import pageObjects.HomePage;
-import pageObjects.ManageDulPage;
-import pageObjects.ManageUsersPage;
-import pageObjects.ModalPage;
+import managers.FileReaderManager;
 
 public class Hooks {
 	
 	TestContext testContext;
-	HomePage homePage;
-	GoogleSignInPage signInPage;
-	HeaderPage headerPage;
-	AdminConsolePage adminConsolePage;
-	ManageUsersPage manageUsersPage;
-	AddUserPage addUserPage;
-	ManageDulPage manageDulPage;
-	ModalPage modalPage;
-	AdminManageDulSteps adminSteps;
 	MySQLDBHelper db = new MySQLDBHelper();
 	MongoDBHelper mongodb = new MongoDBHelper();
 	 
 	public Hooks(TestContext context) {
 		testContext = context;
-		homePage = testContext.getPageObjectManager().getHomePage();
-		signInPage = testContext.getPageObjectManager().getGoogleSignInPage();
-		headerPage = testContext.getPageObjectManager().getHeaderPage();
-		adminConsolePage = testContext.getPageObjectManager().getAdminConsolePage();
-		manageUsersPage = testContext.getPageObjectManager().getManageUsersPage();
-		addUserPage = testContext.getPageObjectManager().getAddUserPage();
-		manageDulPage = testContext.getPageObjectManager().getManageDulPage();
-		modalPage = testContext.getPageObjectManager().getModalPage();
 	}
  
 	@Before
 	public void BeforeSteps() {
-		/*What all you can perform here
-			Starting a webdriver
-			Setting up DB connections
-			Setting up test data
-			Setting up browser cookies
-			Navigating to certain page
-			or anything before the test
-		*/
 	}
 	
 	@Before("@dacmemberDul")
 	public void openElection() throws Throwable {
-		db.addDulElectionOpened();
+		db.addElection(FileReaderManager.getInstance().getConfigReader().getConsentIdMember(),"Open", "TranslateDUL", null);
 	}
 	
 	@After("@dacmemberDul")
 	public void closeElection() throws Throwable {
-		db.deleteDulElection();
+		db.deleteElection(FileReaderManager.getInstance().getConfigReader().getConsentIdMember());
 	}
 	
 	@Before("@dacmemberDar")
 	public void insertDocumentAndElection() throws Throwable {
-		//Consent association between ORSP-628 and Dataset with Object-id SC-20660 previously inserted on DB
-		mongodb.insertDocument();
-		db.addDulElectionClosed();
+		db.addDataset(FileReaderManager.getInstance().getConfigReader().getObjectIdMember(), FileReaderManager.getInstance().getConfigReader().getConsentIdMember());
+		db.addElection(FileReaderManager.getInstance().getConfigReader().getConsentIdMember(), "Closed", "TranslateDUL", 1);
+		mongodb.insertDocument(FileReaderManager.getInstance().getConfigReader().getObjectIdMember());
 		String darId = mongodb.getDocumentId();
-		db.addDarElection(darId);	
+		db.addElection(darId, "Open", "DataAccess", null);	
+		db.addElection(darId, "Open", "RP", null);
 	}
 	
 	@After("@dacmemberDar")
 	public void deleteDocumentAndElection() throws Throwable {
 		String darId = mongodb.getDocumentId();
 		mongodb.deleteDocument();
-		db.deleteDulElection();
-		db.deleteDarElection(darId);
+		db.deleteElection(FileReaderManager.getInstance().getConfigReader().getConsentIdMember());
+		db.deleteElection(darId);
+		db.deleteDataset(FileReaderManager.getInstance().getConfigReader().getObjectIdMember());
 	}
 	
 	@Before("@deleteDul")
@@ -102,6 +72,17 @@ public class Hooks {
 	@After("@changeRoles")
 	public void memberToAlumni() throws InterruptedException {
 		db.changeRoles();
+	}
+	
+	@Before("@deleteUser")
+	@After("@deleteUser")
+	public void deleteUser() throws InterruptedException {
+		db.deleteUser();
+	}
+	
+	@After("@adminDul")
+	public void adminDul() throws InterruptedException {
+		db.deleteElection(FileReaderManager.getInstance().getConfigReader().getConsentIdAdmin());
 	}
 	
  

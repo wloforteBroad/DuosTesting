@@ -88,6 +88,7 @@ Feature: ADMIN MANAGE DUL
     Then The user should see the error message
     
   @ignore
+  @adminDul
   Scenario: Manage DUL - Succesfully open election
   	Given The user is logged in and in the Admin Console
     And The user clicks on Manage Data Use Limitations
@@ -105,6 +106,7 @@ Feature: ADMIN MANAGE DUL
     Then The user should see the error message
     
   @ignore
+  @adminDul
   Scenario: Manage DUL - Succesfully cancel election
   	Given The user is logged in and in the Admin Console
     And The user clicks on Manage Data Use Limitations
@@ -113,9 +115,11 @@ Feature: ADMIN MANAGE DUL
     Then The Election Status should be Canceled
     
   @ignore
+  @adminDul
   Scenario: Manage DUL - Succesfully archive election
   	Given The user is logged in and in the Admin Console
     And The user clicks on Manage Data Use Limitations
+    And One election is opened
     When The user archive a given election
     Then The Election should be Archived
   
@@ -128,6 +132,7 @@ Feature: ADMIN MANAGE DUL
     Then The Election should no longer appear on the list
     
   @ignore
+  @adminDul
   Scenario: Manage DUL - Succesfully open new version of election
   	Given The user is logged in and in the Admin Console
     And The user clicks on Manage Data Use Limitations
