@@ -85,6 +85,24 @@ public class Hooks {
 		db.deleteElection(FileReaderManager.getInstance().getConfigReader().getConsentIdAdmin());
 	}
 	
+	@Before("@adminDar")
+	public void AddDarAdmin() throws Throwable {
+		db.addDataset(FileReaderManager.getInstance().getConfigReader().getObjectIdAdmin(), FileReaderManager.getInstance().getConfigReader().getConsentIdAdminDar());
+		db.addElection(FileReaderManager.getInstance().getConfigReader().getConsentIdAdminDar(), "Closed", "TranslateDUL", 1);
+		mongodb.insertDocument(FileReaderManager.getInstance().getConfigReader().getObjectIdAdmin());
+		
+	}
+	
+	@After("@adminDar")
+	public void deleteDarAdmin() throws Throwable {
+		System.out.println("BORRANDO TODO---------------------------------------------------------");
+		String darId = mongodb.getDocumentId();
+		mongodb.deleteDocument();
+		db.deleteElection(FileReaderManager.getInstance().getConfigReader().getConsentIdAdminDar());
+		db.deleteElection(darId);
+		db.deleteDataset(FileReaderManager.getInstance().getConfigReader().getObjectIdAdmin());
+	}
+	
  
 	@After (order = 0)
 	public void AfterSteps() {

@@ -1,7 +1,5 @@
 package stepDefinitions;
 
-import org.openqa.selenium.WebDriver;
-
 import cucumber.TestContext;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -13,7 +11,7 @@ import pageObjects.DulCollectVotesPage;
 import pageObjects.DulResultRecordPage;
 import pageObjects.ManageDulPage;
 import pageObjects.ModalPage;
-import pageObjects.PreviewResultsPage;
+import pageObjects.DulPreviewResultsPage;
 
 public class AdminManageDulSteps {
 	TestContext testContext;
@@ -23,9 +21,7 @@ public class AdminManageDulSteps {
 	DulCollectVotesPage dulCollectVotesPage;
 	DulResultRecordPage dulResultRecordPage;
 	AddDulPage addDulPage;
-	PreviewResultsPage previewResultsPage;
-	WebDriver driver;
-	MySQLDBHelper db = new MySQLDBHelper();
+	DulPreviewResultsPage previewResultsPage;
 	private String versionNumber;
 	private String electionStatus;
 	
@@ -35,7 +31,7 @@ public class AdminManageDulSteps {
 		modalPage = testContext.getPageObjectManager().getModalPage();
 		adminConsolePage = testContext.getPageObjectManager().getAdminConsolePage();
 		addDulPage = testContext.getPageObjectManager().getAddDulPage();
-		previewResultsPage = testContext.getPageObjectManager().getPreviewResultsPage();
+		previewResultsPage = testContext.getPageObjectManager().getDulPreviewResultsPage();
 		dulCollectVotesPage = testContext.getPageObjectManager().getDulCollectVotesPage();
 		dulResultRecordPage = testContext.getPageObjectManager().getDulResultRecordPage();
 	}

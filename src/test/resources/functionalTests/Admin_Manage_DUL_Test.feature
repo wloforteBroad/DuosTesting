@@ -30,14 +30,6 @@ Feature: ADMIN MANAGE DUL
 	- View DUL Preview
 	- View Election Preview
 	- Search DUL
-- As an Admin, a user would like to Manage Data Access Requests:****
-	- View List of DARs
-	- Open Election
-	- Cancel Election
-	- View Application Summary
-	- View Election Preview
-	- Search DAR
-	- DAR that need Data Owner Approval
 
 
   @ignore

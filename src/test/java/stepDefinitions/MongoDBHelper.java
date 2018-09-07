@@ -29,42 +29,45 @@ public class MongoDBHelper {
 		open();
 		MongoCollection<Document> collection = db.getCollection("dataAccessRequest");
 
-		String jsonlist = "{\"eraAuthorized\" : \"true\",\n" + "    \"nihUsername\" : \"PI NIH\",\n"
-				+ "    \"investigator\" : \"PI NAME\",\n" + "    \"institution\" : \"BelaxNEW\",\n"
-				+ "    \"department\" : \"QANEW\",\n" + "    \"division\" : null,\n"
-				+ "    \"address1\" : \"san martin 972NEW\",\n" + "    \"address2\" : null,\n"
-				+ "    \"city\" : \"mendozaNEW\",\n" + "    \"zipcode\" : \"5500\",\n"
-				+ "    \"country\" : \"ArgentinaNEW\",\n" + "    \"state\" : \"mendozaNEW\",\n"
-				+ "    \"eraDate\" : null,\n" + "    \"projectTitle\" : \"ERA 2\",\n" + "    \"rus\" : \"efsefse\",\n"
-				+ "    \"non_tech_rus\" : \"sfefse\",\n" + "    \"diseases\" : true,\n" + "    \"forProfit\" : false,\n"
-				+ "    \"onegender\" : false,\n" + "    \"pediatric\" : false,\n" + "    \"addiction\" : false,\n"
-				+ "    \"illegalbehave\" : false,\n" + "    \"sexualdiseases\" : false,\n"
-				+ "    \"stigmatizediseases\" : false,\n" + "    \"vulnerablepop\" : false,\n"
-				+ "    \"popmigration\" : false,\n" + "    \"psychtraits\" : false,\n" + "    \"nothealth\" : false,\n"
-				+ "    \"userId\" : 8889,\n" + "    \"restriction\" : {\n" + "        \"type\" : \"and\",\n"
-				+ "        \"operands\" : [ \n" + "            {\n" + "                \"type\" : \"and\",\n"
-				+ "                \"operands\" : [ \n" + "                    {\n"
-				+ "                        \"type\" : \"not\",\n" + "                        \"operand\" : {\n"
-				+ "                            \"type\" : \"named\",\n"
-				+ "                            \"name\" : \"http://purl.obolibrary.org/obo/DUO_0000015\"\n"
-				+ "                        }\n" + "                    }, \n" + "                    {\n"
-				+ "                        \"type\" : \"not\",\n" + "                        \"operand\" : {\n"
-				+ "                            \"type\" : \"named\",\n"
-				+ "                            \"name\" : \"http://purl.obolibrary.org/obo/DUO_0000011\"\n"
-				+ "                        }\n" + "                    }, \n" + "                    {\n"
-				+ "                        \"type\" : \"not\",\n" + "                        \"operand\" : {\n"
-				+ "                            \"type\" : \"named\",\n"
-				+ "                            \"name\" : \"http://www.broadinstitute.org/ontologies/DUOS/control\"\n"
-				+ "                        }\n" + "                    }\n" + "                ]\n"
-				+ "            }, \n" + "            {\n" + "                \"type\" : \"named\",\n"
-				+ "                \"name\" : \"http://purl.obolibrary.org/obo/DUO_0000018\"\n" + "            }\n"
-				+ "        ]\n" + "    },\n" + "    \"valid_restriction\" : true,\n"
-				+ "    \"translated_restriction\" : \"Samples will be used under the following conditions:<br>Data will be used for health/medical/biomedical research [HMB(CC)]<br>Data will not be used for commercial purpose<br>\",\n"
-				+ "    \"sortDate\" : ISODate(\"2018-08-21T13:01:10.826Z\"),\n" + "    \"datasetId\" : [ \n"
-				+ "        \"SC-20659\"\n" + "    ],\n" + "    \"datasetDetail\" : [ \n" + "        {\n"
-				+ "            \"datasetId\" : \"" + objectId + "\",\n"
-				+ "            \"name\" : \"(Bucienne Monco) - Muc-1 Kidney Disease\"\n" + "        }\n" + "    ],\n"
-				+ "    \"dar_code\" : \"DAR-1000\"\n" + "}";
+		String jsonlist = "{\n" + 
+				"    \"investigator\" : \"Walter Lo Forte\",\n" + 
+				"    \"institution\" : \"Belax\",\n" + 
+				"    \"department\" : \"QA\",\n" + 
+				"    \"division\" : null,\n" + 
+				"    \"address1\" : \"123 Fake St.\",\n" + 
+				"    \"address2\" : null,\n" + 
+				"    \"city\" : \"Mendoza\",\n" + 
+				"    \"zipcode\" : \"55000\",\n" + 
+				"    \"country\" : \"Argentina\",\n" + 
+				"    \"state\" : \"Mendoza\",\n" + 
+				"    \"projectTitle\" : \"sfefse\",\n" + 
+				"    \"rus\" : \"sefesfe\",\n" + 
+				"    \"non_tech_rus\" : \"fsef\",\n" + 
+				"    \"diseases\" : true,\n" + 
+				"    \"forProfit\" : false,\n" + 
+				"    \"onegender\" : false,\n" + 
+				"    \"pediatric\" : false,\n" + 
+				"    \"illegalbehave\" : false,\n" + 
+				"    \"addiction\" : false,\n" + 
+				"    \"sexualdiseases\" : false,\n" + 
+				"    \"stigmatizediseases\" : false,\n" + 
+				"    \"vulnerablepop\" : false,\n" + 
+				"    \"popmigration\" : false,\n" + 
+				"    \"psychtraits\" : false,\n" + 
+				"    \"nothealth\" : false,\n" + 
+				"    \"userId\" : 3333,\n" + 
+				"    \"sortDate\" : ISODate(\"2018-09-06T13:11:26.505Z\"),\n" + 
+				"    \"datasetId\" : [ \n" + 
+				"        \""+objectId+"\"\n" + 
+				"    ],\n" + 
+				"    \"datasetDetail\" : [ \n" + 
+				"        {\n" + 
+				"            \"datasetId\" : \""+objectId+"\",\n" + 
+				"            \"name\" : \"Test Name\"\n" + 
+				"        }\n" + 
+				"    ],\n" + 
+				"    \"dar_code\" : \"DAR-1000\"\n" + 
+				"}";
 
 		Document doc = Document.parse(jsonlist.toString());
 

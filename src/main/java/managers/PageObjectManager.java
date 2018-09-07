@@ -9,16 +9,20 @@ import pageObjects.AdminConsolePage;
 import pageObjects.DulCollectVotesPage;
 import pageObjects.DulResultRecordPage;
 import pageObjects.DacConsolePage;
+import pageObjects.DarCollectVotesPage;
+import pageObjects.DarPreviewResultsPage;
+import pageObjects.DarSummaryPage;
 import pageObjects.DarVotingPage;
 import pageObjects.DatasetCatalogPage;
 import pageObjects.DulVotingPage;
 import pageObjects.GoogleSignInPage;
 import pageObjects.HeaderPage;
 import pageObjects.HomePage;
+import pageObjects.ManageDarPage;
 import pageObjects.ManageDulPage;
 import pageObjects.ManageUsersPage;
 import pageObjects.ModalPage;
-import pageObjects.PreviewResultsPage;
+import pageObjects.DulPreviewResultsPage;
 import pageObjects.RequestHelpPage;
 import pageObjects.RequestHelpReportsPage;
 
@@ -32,18 +36,22 @@ public class PageObjectManager {
 	private ManageUsersPage manageUsersPage;
 	private HeaderPage headerPage;
 	private ManageDulPage manageDulPage;
+	private ManageDarPage manageDarPage;
 	private ModalPage modalPage;
 	private DacConsolePage dacConsolePage;
 	private DulVotingPage dulVotingPage;
 	private DarVotingPage darVotingPage;
-	private DulCollectVotesPage collectVotesPage;
+	private DulCollectVotesPage dulCollectVotesPage;
+	private DarCollectVotesPage darCollectVotesPage;
 	private DulResultRecordPage dulResultRecordPage;
 	private AddDatasetPage addDatasetPage;
 	private DatasetCatalogPage datasetCatalogPage;
 	private RequestHelpPage requestHelpPage;
 	private RequestHelpReportsPage requestHelpReportsPage;
 	private AddDulPage addDulPage;
-	private PreviewResultsPage previewResultsPage;
+	private DulPreviewResultsPage dulPreviewResultsPage;
+	private DarPreviewResultsPage darPreviewResultsPage;
+	private DarSummaryPage darSummaryPage;
 	
 	public PageObjectManager(WebDriver driver) {
 		this.driver = driver;
@@ -77,6 +85,10 @@ public class PageObjectManager {
 		return (manageDulPage == null) ? manageDulPage = new ManageDulPage(driver) : manageDulPage;
 	}
 	
+	public ManageDarPage getManageDarPage() {
+		return (manageDarPage == null) ? manageDarPage = new ManageDarPage(driver) : manageDarPage;
+	}
+	
 	public ModalPage getModalPage() {
 		return (modalPage == null) ? modalPage = new ModalPage(driver) : modalPage;
 	}
@@ -90,7 +102,11 @@ public class PageObjectManager {
 	}
 	
 	public DulCollectVotesPage getDulCollectVotesPage() {
-		return (collectVotesPage == null) ? collectVotesPage = new DulCollectVotesPage(driver) : collectVotesPage;
+		return (dulCollectVotesPage == null) ? dulCollectVotesPage = new DulCollectVotesPage(driver) : dulCollectVotesPage;
+	}
+	
+	public DarCollectVotesPage getDarCollectVotesPage() {
+		return (darCollectVotesPage == null) ? darCollectVotesPage = new DarCollectVotesPage(driver) : darCollectVotesPage;
 	}
 	
 	public AddDatasetPage getAddDatasetPage() {
@@ -113,8 +129,12 @@ public class PageObjectManager {
 		return (addDulPage == null) ? addDulPage = new AddDulPage(driver) : addDulPage;
 	}
 	
-	public PreviewResultsPage getPreviewResultsPage() {
-		return (previewResultsPage == null) ? previewResultsPage = new PreviewResultsPage(driver) : previewResultsPage;
+	public DulPreviewResultsPage getDulPreviewResultsPage() {
+		return (dulPreviewResultsPage == null) ? dulPreviewResultsPage = new DulPreviewResultsPage(driver) : dulPreviewResultsPage;
+	}
+	
+	public DarPreviewResultsPage getDarPreviewResultsPage() {
+		return (dulPreviewResultsPage == null) ? darPreviewResultsPage = new DarPreviewResultsPage(driver) : darPreviewResultsPage;
 	}
 	
 	public DulResultRecordPage getDulResultRecordPage() {
@@ -123,6 +143,10 @@ public class PageObjectManager {
 	
 	public DarVotingPage getDarVotingPage() {
 		return (darVotingPage == null) ? darVotingPage = new DarVotingPage(driver) : darVotingPage;
+	}
+	
+	public DarSummaryPage getDarSummaryPage() {
+		return (darSummaryPage == null) ? darSummaryPage = new DarSummaryPage(driver) : darSummaryPage;
 	}
 
 }
