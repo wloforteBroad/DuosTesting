@@ -43,6 +43,9 @@ WebDriver driver;
 	@FindBy(how = How.ID, using = "previewUnReviewed") 
 	private WebElement btn_StatusUnReviewed;
 	
+	@FindBy(how = How.ID, using = "ownerApproval") 
+	private WebElement img_Approval;
+	
 	@FindBys(@FindBy(css=".ng-scope[ng-repeat*='searchAccess']"))
 	private List<WebElement> allData;
 	
@@ -133,4 +136,10 @@ WebDriver driver;
 	public List<WebElement> getAllData() {
         return allData;
     }
+	
+	public String getApprovalTooltip() {
+		String tooltip = img_Approval.getAttribute("tooltip");
+		return tooltip;
+	}
+	
 }

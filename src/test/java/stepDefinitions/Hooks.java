@@ -41,7 +41,7 @@ public class Hooks {
 	
 	@Before("@dacmemberDar")
 	public void insertDocumentAndElection() throws Throwable {
-		db.addDataset(FileReaderManager.getInstance().getConfigReader().getObjectIdMember(), FileReaderManager.getInstance().getConfigReader().getConsentIdMember());
+		db.addDataset(FileReaderManager.getInstance().getConfigReader().getObjectIdMember(), FileReaderManager.getInstance().getConfigReader().getConsentIdMember(), 0);
 		db.addElection(FileReaderManager.getInstance().getConfigReader().getConsentIdMember(), "Closed", "TranslateDUL", 1);
 		mongodb.insertDocument(FileReaderManager.getInstance().getConfigReader().getObjectIdMember());
 		String darId = mongodb.getDocumentId();
@@ -87,13 +87,13 @@ public class Hooks {
 	
 	@Before("@adminDar")
 	public void AddDarAdmin() throws Throwable {
-		db.addDataset(FileReaderManager.getInstance().getConfigReader().getObjectIdAdmin(), FileReaderManager.getInstance().getConfigReader().getConsentIdAdminDar());
+		db.addDataset(FileReaderManager.getInstance().getConfigReader().getObjectIdAdmin(), FileReaderManager.getInstance().getConfigReader().getConsentIdAdminDar(), 0);
 		db.addElection(FileReaderManager.getInstance().getConfigReader().getConsentIdAdminDar(), "Closed", "TranslateDUL", 1);
 		mongodb.insertDocument(FileReaderManager.getInstance().getConfigReader().getObjectIdAdmin());
 		
 	}
 	
-	@After("@adminDar")
+	@After("@adminDar, @adminDarApproval")
 	public void deleteDarAdmin() throws Throwable {
 		System.out.println("BORRANDO TODO---------------------------------------------------------");
 		String darId = mongodb.getDocumentId();
@@ -101,6 +101,15 @@ public class Hooks {
 		db.deleteElection(FileReaderManager.getInstance().getConfigReader().getConsentIdAdminDar());
 		db.deleteElection(darId);
 		db.deleteDataset(FileReaderManager.getInstance().getConfigReader().getObjectIdAdmin());
+	}
+	
+
+	@Before("@adminDarApproval")
+	public void AddDarAdminApproval() throws Throwable {
+		db.addDataset(FileReaderManager.getInstance().getConfigReader().getObjectIdAdmin(), FileReaderManager.getInstance().getConfigReader().getConsentIdAdminDar(), 1);
+		db.addElection(FileReaderManager.getInstance().getConfigReader().getConsentIdAdminDar(), "Closed", "TranslateDUL", 1);
+		mongodb.insertDocument(FileReaderManager.getInstance().getConfigReader().getObjectIdAdmin());
+		
 	}
 	
  

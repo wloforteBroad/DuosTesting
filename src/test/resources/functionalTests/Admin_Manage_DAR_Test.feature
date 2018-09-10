@@ -18,14 +18,15 @@
 #Sample Feature Definition Template
 @tag
 Feature: ADMIN MANAGE DAR
-- As an Admin, a user would like to Manage Data Access Requests:****
+- As an Admin, a user would like to Manage Data Access Requests:
 	- View List of DARs
 	- Open Election
 	- Cancel Election
 	- View Application Summary
 	- View Election Preview
 	- Search DAR
-	- DAR that need Data Owner Approval Pending/Approved/Denied
+	- DAR that needs Data Owner Approval Pending/Approved/Denied ****
+	- Researcher Review ****
 	
 	
 	@ignore
@@ -58,7 +59,7 @@ Feature: ADMIN MANAGE DAR
   	Given The user is logged in and in the Admin Console
     And The user clicks on Manage Data Access Request
     When The user clicks on Summary button
-    Then The should see the Application Summary Modal
+    Then The user should see the Application Summary Modal
     
   @ignore
   @adminDar
@@ -67,3 +68,10 @@ Feature: ADMIN MANAGE DAR
     And The user clicks on Manage Data Access Request
     When The user clicks on Election Status for a given DAR
     Then The user should see the preview page of that DAR Election depending on the status
+    
+  @ignore
+  @adminDarApproval
+  Scenario: Manage DAR - View DAR that Needs Data Owner Approval
+  	Given The user is logged in and in the Admin Console
+    When The user clicks on Manage Data Access Request
+    Then The user should see the DAR flagged with an icon saying that it Needs Approval

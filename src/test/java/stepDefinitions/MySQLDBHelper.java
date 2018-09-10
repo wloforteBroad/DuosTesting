@@ -176,11 +176,11 @@ public class MySQLDBHelper {
 		}
 	}
 
-	private void createDataset(String objectId) {
+	private void createDataset(String objectId, Integer approval) {
 		try {
 			String dataset = "INSERT INTO " + DATABASE
 					+ ".`dataset` (`name`, `createDate`, `objectId`, `active`, `needs_approval`) VALUES ('testName', '2018-09-04 16:39:28', '"
-					+ objectId + "', 1, 0)";
+					+ objectId + "', 1, "+approval+")";
 			System.out.println(dataset);
 			PreparedStatement preparedStmt = conn.prepareStatement(dataset);
 			preparedStmt.executeUpdate();
@@ -340,12 +340,12 @@ public class MySQLDBHelper {
 		}
 	}
 
-	public void addDataset(String objectId, String consentId) {
+	public void addDataset(String objectId, String consentId, Integer approval) {
 		open();
 		try {
 			createAssociation(objectId, consentId);
 
-			createDataset(objectId);
+			createDataset(objectId, approval);
 
 			Integer id = getDatasetByObjectId(objectId);
 

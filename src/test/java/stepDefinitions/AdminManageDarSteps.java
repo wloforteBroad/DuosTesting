@@ -4,7 +4,6 @@ import cucumber.TestContext;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import managers.FileReaderManager;
 import pageObjects.AddDulPage;
 import pageObjects.AdminConsolePage;
 import pageObjects.DarCollectVotesPage;
@@ -109,8 +108,8 @@ public class AdminManageDarSteps {
 	    assert manageDarPage.isElectionCanceled();
 	}
 	
-	@Then("^The should see the Application Summary Modal$")
-	public void the_should_see_the_Application_Summary_Modal() throws Throwable {
+	@Then("^The user should see the Application Summary Modal$")
+	public void the_user_should_see_the_Application_Summary_Modal() throws Throwable {
 	    assert darSummaryPage.isUserOnDarSummary();
 	}
 	
@@ -127,5 +126,12 @@ public class AdminManageDarSteps {
 			assert darPreviewResultsPage.isUserOnPreviewResultsPage();
 		}
 	}
+	
+	@Then("^The user should see the DAR flagged with an icon saying that it Needs Approval$")
+	public void the_user_should_see_the_DAR_flagged_with_an_icon_saying_that_it_Needs_Approval() throws Throwable {
+	    manageDarPage.findDar("DAR-1000");
+	    assert manageDarPage.getApprovalTooltip().equals("Needs Approval");
+	}
+
 
 }

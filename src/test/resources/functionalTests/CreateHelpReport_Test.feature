@@ -19,15 +19,10 @@
 
 Feature: CREATE HELP REPORT
   I want to use this template for my feature file
-
-  Background:
-    Given The user is in the Home Page
-    And user navigates to Login Page
-    When user enters correct AdminUserName and AdminPassword
 	
 	@ignore
   Scenario: User creates help report successfuly
-    Given The user is on Dac Console
+    Given The user is logged in and in the Admin Console
     And The user clicks on Request Help on the header
     And The user clicks on Create a Report option
     When User is on Request Help Modal 
