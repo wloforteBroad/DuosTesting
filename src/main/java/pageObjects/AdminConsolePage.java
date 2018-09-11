@@ -28,7 +28,7 @@ public class AdminConsolePage {
 	@FindBy(how = How.XPATH, using = "//span[contains(text(),'Add User')]") 
 	private WebElement btn_AddUser;
 	
-	@FindBy(how = How.XPATH, using = "//span[contains(text(),'Manage Data Access Request')]") 
+	@FindBy(how = How.XPATH, using = "//div[contains(text(),'Manage Data Access Request')]") 
 	private WebElement btn_ManageDar;
 	
 	@FindBy(how = How.XPATH, using = "//span[contains(text(),'Add Datasets')]") 
