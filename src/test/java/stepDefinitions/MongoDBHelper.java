@@ -6,9 +6,7 @@ import com.mongodb.MongoClientURI;
 
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Projections;
-import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
-import static com.mongodb.client.model.Filters.eq;
 
 import org.bson.Document;
 import org.bson.types.ObjectId;
