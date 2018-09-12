@@ -34,9 +34,8 @@ public class LoginHelperSteps {
 		headerPage.clickOn_SignIn();
 		homePage.clickOn_SignInGoogle();
 		testContext.getWebDriverManager().changeWinSignIn(signInPage, FileReaderManager.getInstance().getConfigReader().getAdminUserName(), FileReaderManager.getInstance().getConfigReader().getAdminPassword());
-		headerPage.waitForElementToLoad();
+		headerPage.waitForAdminToLoad();
 		headerPage.clickOn_AdminConsole();
-		assert adminConsolePage.isUserGreetDisplayed();
 	}
 	
 	@Given("^The DAC Member is logged in and in the DAC Console$")
@@ -45,7 +44,16 @@ public class LoginHelperSteps {
 		headerPage.clickOn_SignIn();
 		homePage.clickOn_SignInGoogle();
 		testContext.getWebDriverManager().changeWinSignIn(signInPage, FileReaderManager.getInstance().getConfigReader().getMemberUserName1(), FileReaderManager.getInstance().getConfigReader().getMemberPassword());
-		Thread.sleep(3000);
+		headerPage.waitForDACToLoad();
+	}
+	
+	@Given("^The Chairperson is logged in and in the DAC Console$")
+	public void the_Chairperson_is_logged_in_and_in_the_DAC_Console() throws Throwable {
+		homePage.navigateTo_HomePage();
+		headerPage.clickOn_SignIn();
+		homePage.clickOn_SignInGoogle();
+		testContext.getWebDriverManager().changeWinSignIn(signInPage, FileReaderManager.getInstance().getConfigReader().getAdminUserName(), FileReaderManager.getInstance().getConfigReader().getAdminPassword());
+		headerPage.waitForChairToLoad();
 	}
 
 }

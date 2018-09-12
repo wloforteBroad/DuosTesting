@@ -31,10 +31,10 @@ public class Hooks {
 	
 	@Before("@dacmemberDul")
 	public void openElection() throws Throwable {
-		db.addElection(FileReaderManager.getInstance().getConfigReader().getConsentIdMember(),"Open", "TranslateDUL", null);
+		db.addElection(FileReaderManager.getInstance().getConfigReader().getConsentIdMember(),"Open", "TranslateDUL", null, null);
 	}
 	
-	@After("@dacmemberDul")
+	@After("@dacmemberDul, @chairPerson")
 	public void closeElection() throws Throwable {
 		db.deleteElection(FileReaderManager.getInstance().getConfigReader().getConsentIdMember());
 	}
@@ -42,11 +42,11 @@ public class Hooks {
 	@Before("@dacmemberDar")
 	public void insertDocumentAndElection() throws Throwable {
 		db.addDataset(FileReaderManager.getInstance().getConfigReader().getObjectIdMember(), FileReaderManager.getInstance().getConfigReader().getConsentIdMember(), 0);
-		db.addElection(FileReaderManager.getInstance().getConfigReader().getConsentIdMember(), "Closed", "TranslateDUL", 1);
+		db.addElection(FileReaderManager.getInstance().getConfigReader().getConsentIdMember(), "Closed", "TranslateDUL", 1, 1);
 		mongodb.insertDocument(FileReaderManager.getInstance().getConfigReader().getObjectIdMember());
 		String darId = mongodb.getDocumentId();
-		db.addElection(darId, "Open", "DataAccess", null);	
-		db.addElection(darId, "Open", "RP", null);
+		db.addElection(darId, "Open", "DataAccess", null, null);	
+		db.addElection(darId, "Open", "RP", null, null);
 	}
 	
 	@After("@dacmemberDar")
@@ -88,7 +88,7 @@ public class Hooks {
 	@Before("@adminDar")
 	public void AddDarAdmin() throws Throwable {
 		db.addDataset(FileReaderManager.getInstance().getConfigReader().getObjectIdAdmin(), FileReaderManager.getInstance().getConfigReader().getConsentIdAdminDar(), 0);
-		db.addElection(FileReaderManager.getInstance().getConfigReader().getConsentIdAdminDar(), "Closed", "TranslateDUL", 1);
+		db.addElection(FileReaderManager.getInstance().getConfigReader().getConsentIdAdminDar(), "Closed", "TranslateDUL", 1, 1);
 		mongodb.insertDocument(FileReaderManager.getInstance().getConfigReader().getObjectIdAdmin());
 		
 	}
@@ -107,9 +107,14 @@ public class Hooks {
 	@Before("@adminDarApproval")
 	public void AddDarAdminApproval() throws Throwable {
 		db.addDataset(FileReaderManager.getInstance().getConfigReader().getObjectIdAdmin(), FileReaderManager.getInstance().getConfigReader().getConsentIdAdminDar(), 1);
-		db.addElection(FileReaderManager.getInstance().getConfigReader().getConsentIdAdminDar(), "Closed", "TranslateDUL", 1);
+		db.addElection(FileReaderManager.getInstance().getConfigReader().getConsentIdAdminDar(), "Closed", "TranslateDUL", 1, 1);
 		mongodb.insertDocument(FileReaderManager.getInstance().getConfigReader().getObjectIdAdmin());
 		
+	}
+	
+	@Before("@chairPerson")
+	public void addChairElection() throws Throwable {
+		db.addElection(FileReaderManager.getInstance().getConfigReader().getConsentIdMember(), "Open", "TranslateDUL", 1, 0);
 	}
 	
  

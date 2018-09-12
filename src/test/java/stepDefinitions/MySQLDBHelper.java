@@ -6,7 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -59,7 +61,6 @@ public class MySQLDBHelper {
 		try {
 			String sql = "SELECT user_role.dacUserId FROM consent.dacuser INNER JOIN consent.user_role ON dacuser.dacUserId = user_role.dacUserId WHERE user_role.roleId = "
 					+ roleId + "";
-			System.out.println(sql);
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				memberIds.add(rs.getInt(1));
@@ -74,7 +75,6 @@ public class MySQLDBHelper {
 		List<Integer> electionIds = new ArrayList<>();
 		try {
 			String sql = "SELECT electionId FROM " + DATABASE + ".election WHERE referenceId = '" + referenceId + "'";
-			System.out.println(sql);
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				electionIds.add(rs.getInt(1));
@@ -248,7 +248,7 @@ public class MySQLDBHelper {
 		}
 	}
 
-	public void addElection(String referenceId, String status, String type, Integer vote) {
+	public void addElection(String referenceId, String status, String type, Integer vote, Integer chairVote) {
 		open();
 		try {
 			createElection(referenceId, status, type);
@@ -257,11 +257,11 @@ public class MySQLDBHelper {
 			if (type == "RP") {
 				addMembersVotes(referenceId, vote, electionIds.get(1));
 				addChairVotes(referenceId, vote, "DAC", electionIds.get(1));
-				addChairVotes(referenceId, vote, "CHAIRPERSON", electionIds.get(1));
+				addChairVotes(referenceId, chairVote, "CHAIRPERSON", electionIds.get(1));
 			} else {
 				addMembersVotes(referenceId, vote, electionIds.get(0));
 				addChairVotes(referenceId, vote, "DAC", electionIds.get(0));
-				addChairVotes(referenceId, vote, "CHAIRPERSON", electionIds.get(0));
+				addChairVotes(referenceId, chairVote, "CHAIRPERSON", electionIds.get(0));
 			}
 		} catch (Exception e) {
 			Logger.getLogger(MySQLDBHelper.class.getName()).log(Level.SEVERE, null, e);
@@ -311,6 +311,46 @@ public class MySQLDBHelper {
 			close();
 		}
 		return rationale;
+	}
+	
+	public Integer checkReminder(String consentId) {
+		open();
+		List<Integer> electionIds = new ArrayList<>();
+		Integer reminder = 0;
+		try {
+			electionIds = getElectionIds(consentId);
+			String getReminder = "SELECT reminderSent FROM " + DATABASE+ ".vote WHERE electionId="+electionIds.get(0)+" and dacUserId="+FileReaderManager.getInstance().getConfigReader().getMember1Id()+";";
+			ResultSet rs = stmt.executeQuery(getReminder);
+			while (rs.next()) {
+				reminder = rs.getInt(1);
+			}
+			conn.close();
+		} catch (SQLException e) {
+			Logger.getLogger(MySQLDBHelper.class.getName()).log(Level.SEVERE, null, e);
+		} finally {
+			close();
+		}
+		return reminder;
+	}
+	
+	public void updateVote(String consentId) {
+		open();
+		List<Integer> electionIds = new ArrayList<>();
+		SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	    Date now = new Date();
+	    String today = sdfDate.format(now);
+		try {
+			electionIds = getElectionIds(consentId);
+			String query1 = "UPDATE " + DATABASE+ ".`vote` SET `updateDate`='"+today+"' WHERE electionId="+electionIds.get(0)+" and dacUserId="+FileReaderManager.getInstance().getConfigReader().getMember1Id()+";";
+			System.out.println(query1);
+			PreparedStatement preparedStmt1 = conn.prepareStatement(query1);
+			preparedStmt1.executeUpdate();
+			conn.close();
+		} catch (SQLException e) {
+			Logger.getLogger(MySQLDBHelper.class.getName()).log(Level.SEVERE, null, e);
+		} finally {
+			close();
+		}
 	}
 
 	public void changeRoles() {

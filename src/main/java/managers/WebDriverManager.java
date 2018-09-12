@@ -126,6 +126,10 @@ public class WebDriverManager {
 		driver.quit();
 	}
 	
+	public void refresh() {
+		driver.navigate().refresh();
+	}
+	
 	public void deleteAllCookies() {
 		driver.manage().deleteAllCookies();
 		if (browserName == "chrome") {

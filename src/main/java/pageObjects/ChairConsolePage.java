@@ -2,18 +2,20 @@ package pageObjects;
 
 import java.util.List;
 
-import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class DacConsolePage {
+public class ChairConsolePage {
 WebDriver driver;
 	
-	public DacConsolePage(WebDriver driver) {
+	public ChairConsolePage(WebDriver driver) {
 		this.driver = driver;
 	    PageFactory.initElements(driver, this);
 	}
@@ -27,34 +29,20 @@ WebDriver driver;
 	@FindBy(how = How.ID, using = "searchDar") 
 	private WebElement txtbx_SearchDar;
 	
+	@FindBy(how = How.ID, using = "dulPendingVoteCases") 
+	private WebElement lbl_dulPendingVotesFlag;
+	
 	@FindBy(how = How.XPATH, using = "//span[contains(text(),'Vote')]") 
 	private WebElement btn_Vote;
 	
-	@FindBy(how = How.ID, using = "btn_Edit") 
+	@FindBy(how = How.XPATH, using = "//span[contains(text(),'Edit')]") 
 	private WebElement btn_Edit;
 	
 	@FindBy(how = How.XPATH, using = "//span[contains(text(),'Collect Votes')]") 
 	private WebElement btn_CollectVotes;
 	
-	@FindBy(how = How.XPATH, using = "//span[contains(text(),'Editable')]") 
-	private WebElement lbl_Editable;
-	
-	@FindBy(how = How.XPATH, using = "//span[contains(text(),'Pending')]") 
-	private WebElement lbl_Pending;
-	
-	@FindBy(how = How.XPATH, using = "//span[contains(text(),'ORSP-627')]") 
-	private WebElement lbl_Consent;
-	
 	@FindBys(@FindBy(css=".ng-scope[ng-repeat*='searchDULCases']"))
 	private List<WebElement> allDuls;
-	
-	public boolean isUserOnDacConsole() {
-		try {
-			return lbl_dulReview.isDisplayed();
-		}catch(NoSuchElementException e) {
-			return false;
-		}	
-	}
 	
 	public void clickOn_Vote() {
 		btn_Vote.click();
@@ -78,52 +66,17 @@ WebDriver driver;
 		txtbx_SearchDar.sendKeys(dar);
 	}
 	
-	public void findConsentAndVote(String consent) {
-		txtbx_SearchConsent.clear();
-		txtbx_SearchConsent.sendKeys(consent);
-		btn_Vote.click();
-	}
-	
-	public void findConsentAndCollect(String consent) {
-		txtbx_SearchConsent.clear();
-		txtbx_SearchConsent.sendKeys(consent);
-		btn_Vote.click();
-	}
-	
-	public boolean isVoteEditable() {
-		try {
-			return lbl_Editable.isDisplayed();
-		}catch(NoSuchElementException e) {
-			return false;
-		}	
-	}
-	
-	public boolean isVotePending() {
-		try {
-			return lbl_Pending.isDisplayed();
-		}catch(NoSuchElementException e) {
-			return false;
-		}	
-	}
-	
-	public boolean isCollectVotesDisplayed() {
-		try {
-			return btn_CollectVotes.isDisplayed();
-		}catch(NoSuchElementException e) {
-			return false;
-		}	
-	}
-	
-	public boolean isConsentClosed() {
-		try {
-			return lbl_Consent.isDisplayed();
-		}catch(NoSuchElementException e) {
-			return true;
-		}	
+	public String getPendingCases() {
+		String pending = lbl_dulPendingVotesFlag.getText();
+		return pending;
 	}
 	
 	public List<WebElement> getAllDuls() {
         return allDuls;
+    }
+	
+	public void waitForFlag() {
+        new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.id("dulPendingVoteCases")));
     }
 
 }
