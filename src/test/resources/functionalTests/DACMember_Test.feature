@@ -58,10 +58,16 @@ Feature: DAC MEMBER CAPABILITIES
     
   @ignore
 	@dacmemberDar
-	Scenario: DAC Member Vote - Succesful DAR vote
+	Scenario: DAC Member Vote - Succesful DAR vote [MANUAL REVIEW]
   	Given The DAC Member is logged in and in the DAC Console 
     And user clicks on vote for a given DAR Election
     When user votes with a positive vote and submits DAR vote
     Then the DAR vote status should be Editable
+  
+  @tbd  
+  Scenario: DAC Member Vote - Succesful DAR vote [APPROVE]
+  
+  @tbd  
+  Scenario: DAC Member Vote - Succesful DAR vote [DENY]
  
 

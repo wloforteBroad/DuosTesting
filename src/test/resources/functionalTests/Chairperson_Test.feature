@@ -70,9 +70,18 @@ Feature: DAC CHAIRPERSON CAPABILITIES
 	Scenario: CHAIRPERSON - Collect DAR votes
 	
 	@tbd
-	Scenario: CHAIRPERSON - DAR FINAL vote
+	Scenario: CHAIRPERSON - Collect DAR votes [MANUAL REVIEW]
 	
-	@wip
+	@tbd
+	Scenario: CHAIRPERSON - DAR FINAL vote [APPROVE]
+	
+	@tbd
+	Scenario: CHAIRPERSON - DAR FINAL vote [DENY]
+	
+	@tbd
+	Scenario: CHAIRPERSON - DAR FINAL vote [MANUAL REVIEW]
+	
+	@ignore
 	@chairPerson
 	Scenario: CHAIRPERSON - DUL/DAR Pending votes flag
 		Given The Chairperson is logged in and in the DAC Console

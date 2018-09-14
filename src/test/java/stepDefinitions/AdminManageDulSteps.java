@@ -60,6 +60,7 @@ public class AdminManageDulSteps {
 			modalPage.check_Archive();
 			modalPage.clickOn_Yes();
 		}
+		Thread.sleep(1000);
 	}
 	
 	@Given("^One election is opened$")
@@ -69,6 +70,7 @@ public class AdminManageDulSteps {
 			manageDulPage.clickOn_Create();
 			modalPage.clickOn_Yes();
 		}
+		Thread.sleep(1000);
 	}
 	
 	@When("^The user completes the form with wrong sDul Json format and submits$")

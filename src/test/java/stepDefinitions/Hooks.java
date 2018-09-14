@@ -31,7 +31,7 @@ public class Hooks {
 	
 	@Before("@dacmemberDul")
 	public void openElection() throws Throwable {
-		db.addElection(FileReaderManager.getInstance().getConfigReader().getConsentIdMember(),"Open", "TranslateDUL", null, null);
+		db.addElection(FileReaderManager.getInstance().getConfigReader().getConsentIdMember(),"Open", "TranslateDUL", null, null, null);
 	}
 	
 	@After("@dacmemberDul, @chairPerson")
@@ -42,17 +42,17 @@ public class Hooks {
 	@Before("@dacmemberDar")
 	public void insertDocumentAndElection() throws Throwable {
 		db.addDataset(FileReaderManager.getInstance().getConfigReader().getObjectIdMember(), FileReaderManager.getInstance().getConfigReader().getConsentIdMember(), 0);
-		db.addElection(FileReaderManager.getInstance().getConfigReader().getConsentIdMember(), "Closed", "TranslateDUL", 1, 1);
-		mongodb.insertDocument(FileReaderManager.getInstance().getConfigReader().getObjectIdMember());
-		String darId = mongodb.getDocumentId();
-		db.addElection(darId, "Open", "DataAccess", null, null);	
-		db.addElection(darId, "Open", "RP", null, null);
+		db.addElection(FileReaderManager.getInstance().getConfigReader().getConsentIdMember(), "Closed", "TranslateDUL", 1, 1, null);
+		mongodb.insertDocument(FileReaderManager.getInstance().getConfigReader().getObjectIdMember(), true);
+		String darId = mongodb.getDocumentId(true);
+		db.addElection(darId, "Open", "DataAccess", null, null, null);	
+		db.addElection(darId, "Open", "RP", null, null, null);
 	}
 	
 	@After("@dacmemberDar")
 	public void deleteDocumentAndElection() throws Throwable {
-		String darId = mongodb.getDocumentId();
-		mongodb.deleteDocument();
+		String darId = mongodb.getDocumentId(true);
+		mongodb.deleteDocument(true);
 		db.deleteElection(FileReaderManager.getInstance().getConfigReader().getConsentIdMember());
 		db.deleteElection(darId);
 		db.deleteDataset(FileReaderManager.getInstance().getConfigReader().getObjectIdMember());
@@ -88,16 +88,16 @@ public class Hooks {
 	@Before("@adminDar")
 	public void AddDarAdmin() throws Throwable {
 		db.addDataset(FileReaderManager.getInstance().getConfigReader().getObjectIdAdmin(), FileReaderManager.getInstance().getConfigReader().getConsentIdAdminDar(), 0);
-		db.addElection(FileReaderManager.getInstance().getConfigReader().getConsentIdAdminDar(), "Closed", "TranslateDUL", 1, 1);
-		mongodb.insertDocument(FileReaderManager.getInstance().getConfigReader().getObjectIdAdmin());
+		db.addElection(FileReaderManager.getInstance().getConfigReader().getConsentIdAdminDar(), "Closed", "TranslateDUL", 1, 1, null);
+		mongodb.insertDocument(FileReaderManager.getInstance().getConfigReader().getObjectIdAdmin(), true);
 		
 	}
 	
 	@After("@adminDar, @adminDarApproval")
 	public void deleteDarAdmin() throws Throwable {
 		System.out.println("BORRANDO TODO---------------------------------------------------------");
-		String darId = mongodb.getDocumentId();
-		mongodb.deleteDocument();
+		String darId = mongodb.getDocumentId(true);
+		mongodb.deleteDocument(true);
 		db.deleteElection(FileReaderManager.getInstance().getConfigReader().getConsentIdAdminDar());
 		db.deleteElection(darId);
 		db.deleteDataset(FileReaderManager.getInstance().getConfigReader().getObjectIdAdmin());
@@ -107,14 +107,35 @@ public class Hooks {
 	@Before("@adminDarApproval")
 	public void AddDarAdminApproval() throws Throwable {
 		db.addDataset(FileReaderManager.getInstance().getConfigReader().getObjectIdAdmin(), FileReaderManager.getInstance().getConfigReader().getConsentIdAdminDar(), 1);
-		db.addElection(FileReaderManager.getInstance().getConfigReader().getConsentIdAdminDar(), "Closed", "TranslateDUL", 1, 1);
-		mongodb.insertDocument(FileReaderManager.getInstance().getConfigReader().getObjectIdAdmin());
+		db.addElection(FileReaderManager.getInstance().getConfigReader().getConsentIdAdminDar(), "Closed", "TranslateDUL", 1, 1, null);
+		mongodb.insertDocument(FileReaderManager.getInstance().getConfigReader().getObjectIdAdmin(), true);
 		
 	}
 	
 	@Before("@chairPerson")
 	public void addChairElection() throws Throwable {
-		db.addElection(FileReaderManager.getInstance().getConfigReader().getConsentIdMember(), "Open", "TranslateDUL", 1, 0);
+		db.addElection(FileReaderManager.getInstance().getConfigReader().getConsentIdMember(), "Open", "TranslateDUL", 1, 0, null);
+	}
+	
+	@Before("@dataOwner")
+	public void DataOwner() throws Throwable {
+		db.addDataset(FileReaderManager.getInstance().getConfigReader().getObjectIdAdmin(), FileReaderManager.getInstance().getConfigReader().getConsentIdAdminDar(), 1);
+		db.addElection(FileReaderManager.getInstance().getConfigReader().getConsentIdAdminDar(), "Closed", "TranslateDUL", 1, 1, null);
+		mongodb.insertDocument(FileReaderManager.getInstance().getConfigReader().getObjectIdAdmin(), true);
+		String darId = mongodb.getDocumentId(true);
+		db.dataOwnerDataset(FileReaderManager.getInstance().getConfigReader().getObjectIdAdmin(), FileReaderManager.getInstance().getConfigReader().getAdminId());
+		db.addElection(darId, "Closed", "DataAccess", 1, 1, 1);
+		db.addElection(darId, "Open", "DataSet", null, null, null);
+	}
+	
+	@After("@dataOwner")
+	public void deleteDataOwner() throws Throwable {
+		System.out.println("BORRANDO TODO---------------------------------------------------------");
+		String darId = mongodb.getDocumentId(true);
+		mongodb.deleteDocument(true);
+		db.deleteElection(FileReaderManager.getInstance().getConfigReader().getConsentIdAdminDar());
+		db.deleteElection(darId);
+		db.deleteDataset(FileReaderManager.getInstance().getConfigReader().getObjectIdAdmin());
 	}
 	
  

@@ -36,7 +36,7 @@ public class DacMemberSteps {
 	public void user_has_already_voted_on_a_given_DUL_Election() throws Throwable {
 		dacConsolePage.findConsent(FileReaderManager.getInstance().getConfigReader().getConsentIdMember());
 	    if (dacConsolePage.isVoteEditable() == false) {
-	    	dacConsolePage.clickOn_Vote();
+	    	dacConsolePage.clickOn_Dul_Vote();
 	    	dulVotingPage.voteYes("Because YES");
 		    modalPage.clickOn_Ok();
 	    }
@@ -45,7 +45,7 @@ public class DacMemberSteps {
 	@Given("^user clicks on vote for a given DAR Election$")
 	public void user_clicks_on_vote_for_a_given_DAR_Election() throws Throwable {
 	    dacConsolePage.findDar("DAR-1000");
-	    dacConsolePage.clickOn_Vote();
+	    dacConsolePage.clickOn_Dar_Vote();
 	}
 	
 	@When("^user votes with a positive vote and submits DUL vote$")
@@ -63,7 +63,7 @@ public class DacMemberSteps {
 	@When("^user votes again and edits the rationale$")
 	public void user_votes_again_and_edits_the_rationale() throws Throwable {
 	    dacConsolePage.findConsent(FileReaderManager.getInstance().getConfigReader().getConsentIdMember());
-	    dacConsolePage.clickOn_Edit();
+	    dacConsolePage.clickOn_Dul_Edit();
 	    dulVotingPage.enter_Rationale("Because YES EDITED");
 	    dulVotingPage.clickOn_Vote();
 	    modalPage.clickOn_Ok();
@@ -84,7 +84,7 @@ public class DacMemberSteps {
 	@Then("^the user should see the DUL vote with the new rationale$")
 	public void the_user_should_see_the_DUL_vote_with_the_new_rationale() throws Throwable {
 		dacConsolePage.findConsent(FileReaderManager.getInstance().getConfigReader().getConsentIdMember());
-		dacConsolePage.clickOn_Edit();
+		dacConsolePage.clickOn_Dul_Edit();
 		assert db.checkRationale(FileReaderManager.getInstance().getConfigReader().getConsentIdMember()).equals("Because YES EDITED");
 	}
 	

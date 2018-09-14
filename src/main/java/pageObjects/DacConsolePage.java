@@ -27,11 +27,17 @@ WebDriver driver;
 	@FindBy(how = How.ID, using = "searchDar") 
 	private WebElement txtbx_SearchDar;
 	
-	@FindBy(how = How.XPATH, using = "//span[contains(text(),'Vote')]") 
-	private WebElement btn_Vote;
+	@FindBy(how = How.ID, using = "btn_dul_vote") 
+	private WebElement btn_Dul_Vote;
 	
-	@FindBy(how = How.ID, using = "btn_Edit") 
-	private WebElement btn_Edit;
+	@FindBy(how = How.ID, using = "btn_dul_edit") 
+	private WebElement btn_Dul_Edit;
+	
+	@FindBy(how = How.ID, using = "btn_dar_vote") 
+	private WebElement btn_Dar_Vote;
+	
+	@FindBy(how = How.ID, using = "btn_dar_edit") 
+	private WebElement btn_Dar_Edit;
 	
 	@FindBy(how = How.XPATH, using = "//span[contains(text(),'Collect Votes')]") 
 	private WebElement btn_CollectVotes;
@@ -56,12 +62,20 @@ WebDriver driver;
 		}	
 	}
 	
-	public void clickOn_Vote() {
-		btn_Vote.click();
+	public void clickOn_Dul_Vote() {
+		btn_Dul_Vote.click();
 	}
 	
-	public void clickOn_Edit() {
-		btn_Edit.click();
+	public void clickOn_Dul_Edit() {
+		btn_Dul_Edit.click();
+	}
+	
+	public void clickOn_Dar_Vote() {
+		btn_Dar_Vote.click();
+	}
+	
+	public void clickOn_Dar_Edit() {
+		btn_Dar_Edit.click();
 	}
 	
 	public void clickOn_CollectVotes() {
@@ -81,13 +95,13 @@ WebDriver driver;
 	public void findConsentAndVote(String consent) {
 		txtbx_SearchConsent.clear();
 		txtbx_SearchConsent.sendKeys(consent);
-		btn_Vote.click();
+		btn_Dul_Vote.click();
 	}
 	
 	public void findConsentAndCollect(String consent) {
 		txtbx_SearchConsent.clear();
 		txtbx_SearchConsent.sendKeys(consent);
-		btn_Vote.click();
+		btn_Dul_Vote.click();
 	}
 	
 	public boolean isVoteEditable() {

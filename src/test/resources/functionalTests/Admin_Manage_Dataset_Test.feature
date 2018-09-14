@@ -35,7 +35,7 @@ As an Admin, a user would like to Manage Datasets:
     When The user selects the file and clicks Add button
     Then the uploaded dataset is shown in Dataset Catalog Page
     
-  @ignore
+  @tbd
   Scenario: Manage DATASET - Donwload Selected Datasets ****
     Given The user is logged in and in the Admin Console
     And there are datasets in the Catalog

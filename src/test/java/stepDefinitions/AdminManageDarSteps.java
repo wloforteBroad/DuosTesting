@@ -70,6 +70,7 @@ public class AdminManageDarSteps {
 	@When("^The user clicks on Summary button$")
 	public void the_user_clicks_on_Summary_button() throws Throwable {
 	    manageDarPage.findDar("DAR-1000");
+	    Thread.sleep(1000);
 	    manageDarPage.clickOn_Summary();
 	}
 	

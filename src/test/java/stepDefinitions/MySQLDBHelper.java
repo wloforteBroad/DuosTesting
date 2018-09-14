@@ -85,14 +85,28 @@ public class MySQLDBHelper {
 		return electionIds;
 	}
 
-	private void createElection(String referenceId, String status, String type) {
+	private void createElection(String referenceId, String status, String type, Integer finalAccessVote) {
+		String query1;
+		Integer datasetId = getDatasetByObjectId(FileReaderManager.getInstance().getConfigReader().getObjectIdAdmin());
 		try {
-			// Add Election
-			String query1 = "INSERT INTO `consent`.`election` (`status`, `createDate`, `referenceId`, `useRestriction`, `translatedUseRestriction`, `electionType`, `dataUseLetter`, `dulName`, `archived`, `version`) VALUES ('"
-					+ status + "', '2018-08-28 11:49:48', '" + referenceId
-					+ "', '{\\\"type\\\":\\\"or\\\",\\\"operands\\\":[{\\\"type\\\":\\\"named\\\",\\\"name\\\":\\\"http://purl.obolibrary.org/obo/DUO_0000015\\\"},{\\\"type\\\":\\\"everything\\\"}]}', 'Samples are restricted for use under the following conditions:<br>Data is limited for health/medical/biomedical research. [HMB]<br>Future use for population origins or ancestry research is prohibited. [POA]<br>Commercial use prohibited. [NCU]<br>Data use for methods development research irrespective of the specified data use limitations is not prohibited.<br>Future use as a control set for any type of health/medical/biomedical study is not prohibited.<br>Other restrictions: OTHER TERMS.', '"
-					+ type
-					+ "', 'https://storage.googleapis.com/broad-dsde-dev-consent/57146b0d-34b4-4788-aaac-b01549084730.pdf', 'dulNameConsent.pdf', 0, 1)";
+			if (type == "DataSet") {
+				query1 = "INSERT INTO `"+DATABASE+"`.`election` (`status`, `createDate`, `referenceId`, `datasetId`, `electionType`) VALUES ('"
+						+ status + "', '2018-08-28 11:49:48', '"+referenceId+"', "+datasetId+",'"+type+"')";
+			}else if(type == "DataAccess") {
+				query1 = "INSERT INTO `"+DATABASE+"`.`election` (`status`, `createDate`, `referenceId`, `finalAccessVote`, `useRestriction`, `translatedUseRestriction`, `electionType`, `dataUseLetter`, `dulName`, `archived`, `version`) VALUES ('"
+						+ status + "', '2018-08-28 11:49:48', '" + referenceId
+						+ "',"+finalAccessVote+" ,'{\\\"type\\\":\\\"or\\\",\\\"operands\\\":[{\\\"type\\\":\\\"named\\\",\\\"name\\\":\\\"http://purl.obolibrary.org/obo/DUO_0000015\\\"},{\\\"type\\\":\\\"everything\\\"}]}', 'Samples are restricted for use under the following conditions:<br>Data is limited for health/medical/biomedical research. [HMB]<br>Future use for population origins or ancestry research is prohibited. [POA]<br>Commercial use prohibited. [NCU]<br>Data use for methods development research irrespective of the specified data use limitations is not prohibited.<br>Future use as a control set for any type of health/medical/biomedical study is not prohibited.<br>Other restrictions: OTHER TERMS.', '"
+						+ type
+						+ "', 'https://storage.googleapis.com/broad-dsde-dev-consent/57146b0d-34b4-4788-aaac-b01549084730.pdf', 'dulNameConsent.pdf', 0, 1)";
+			}else {
+				query1 = "INSERT INTO `"+DATABASE+"`.`election` (`status`, `createDate`, `referenceId`, `useRestriction`, `translatedUseRestriction`, `electionType`, `dataUseLetter`, `dulName`, `archived`, `version`) VALUES ('"
+						+ status + "', '2018-08-28 11:49:48', '" + referenceId
+						+ "', '{\\\"type\\\":\\\"or\\\",\\\"operands\\\":[{\\\"type\\\":\\\"named\\\",\\\"name\\\":\\\"http://purl.obolibrary.org/obo/DUO_0000015\\\"},{\\\"type\\\":\\\"everything\\\"}]}', 'Samples are restricted for use under the following conditions:<br>Data is limited for health/medical/biomedical research. [HMB]<br>Future use for population origins or ancestry research is prohibited. [POA]<br>Commercial use prohibited. [NCU]<br>Data use for methods development research irrespective of the specified data use limitations is not prohibited.<br>Future use as a control set for any type of health/medical/biomedical study is not prohibited.<br>Other restrictions: OTHER TERMS.', '"
+						+ type
+						+ "', 'https://storage.googleapis.com/broad-dsde-dev-consent/57146b0d-34b4-4788-aaac-b01549084730.pdf', 'dulNameConsent.pdf', 0, 1)";
+			}
+			
+
 			PreparedStatement preparedStmt = conn.prepareStatement(query1);
 			preparedStmt.executeUpdate();
 		} catch (SQLException e) {
@@ -120,6 +134,23 @@ public class MySQLDBHelper {
 	private void addChairVotes(String consentId, Integer vote, String type, Integer electionId) {
 		List<Integer> memberIds = new ArrayList<>();
 		memberIds = getMembersId(2);
+		memberIds.forEach(memberId -> {
+			try {
+				String query1 = "INSERT INTO `" + DATABASE
+						+ "`.`vote` (`vote`, `dacUserId`, `electionId`, `reminderSent`, `type`, `has_concerns`) VALUES ("
+						+ vote + ", " + memberId + ", ?, 0, '" + type + "', 0)";
+				PreparedStatement preparedStmt = conn.prepareStatement(query1);
+				preparedStmt.setInt(1, electionId);
+				preparedStmt.executeUpdate();
+			} catch (SQLException e) {
+				Logger.getLogger(MySQLDBHelper.class.getName()).log(Level.SEVERE, null, e);
+			}
+		});
+	}
+	
+	private void addDataOwnerVotes(String consentId, Integer vote, String type, Integer electionId) {
+		List<Integer> memberIds = new ArrayList<>();
+		memberIds = getMembersId(6);
 		memberIds.forEach(memberId -> {
 			try {
 				String query1 = "INSERT INTO `" + DATABASE
@@ -248,16 +279,24 @@ public class MySQLDBHelper {
 		}
 	}
 
-	public void addElection(String referenceId, String status, String type, Integer vote, Integer chairVote) {
+	public void addElection(String referenceId, String status, String type, Integer vote, Integer chairVote, Integer finalAccessVote) {
 		open();
 		try {
-			createElection(referenceId, status, type);
+			createElection(referenceId, status, type, finalAccessVote);
 			List<Integer> electionIds = new ArrayList<>();
 			electionIds = getElectionIds(referenceId);
 			if (type == "RP") {
 				addMembersVotes(referenceId, vote, electionIds.get(1));
 				addChairVotes(referenceId, vote, "DAC", electionIds.get(1));
 				addChairVotes(referenceId, chairVote, "CHAIRPERSON", electionIds.get(1));
+			} else if (type == "DataAccess") {
+				addMembersVotes(referenceId, vote, electionIds.get(0));
+				addChairVotes(referenceId, vote, "DAC", electionIds.get(0));
+				addChairVotes(referenceId, chairVote, "CHAIRPERSON", electionIds.get(0));
+				addChairVotes(referenceId, chairVote, "FINAL", electionIds.get(0));
+				addChairVotes(referenceId, chairVote, "AGREEMENT", electionIds.get(0));
+			} else if (type == "DataSet") {
+				addDataOwnerVotes(referenceId, vote, "DATA_OWNER", electionIds.get(1));
 			} else {
 				addMembersVotes(referenceId, vote, electionIds.get(0));
 				addChairVotes(referenceId, vote, "DAC", electionIds.get(0));
@@ -441,6 +480,26 @@ public class MySQLDBHelper {
 		} finally {
 			close();
 		}
+	}
+	
+	public void dataOwnerDataset(String objectId, String userId) {	
+		open();
+		SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	    Date now = new Date();
+	    String today = sdfDate.format(now);
+	    Integer datasetId = getDatasetByObjectId(objectId);
+		try {
+			String dataset = "INSERT INTO " + DATABASE
+					+ ".`dataset_user_association` (`datasetId`, `dacuserId`, `createDate`) VALUES ('"+datasetId+"', '"+userId+"', '"+ today + "')";
+			System.out.println(dataset);
+			PreparedStatement preparedStmt = conn.prepareStatement(dataset);
+			preparedStmt.executeUpdate();
+		} catch (SQLException e) {
+			Logger.getLogger(MySQLDBHelper.class.getName()).log(Level.SEVERE, null, e);
+		} finally {
+			close();
+		}
+
 	}
 
 }
