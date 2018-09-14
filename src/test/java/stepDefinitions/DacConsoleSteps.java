@@ -44,7 +44,7 @@ public class DacConsoleSteps {
 	
 	@Given("^The user clicks on Vote button$")
 	public void the_user_clicks_on_Vote_button() throws Throwable {
-	    dacConsolePage.clickOn_Vote();
+	    dacConsolePage.clickOn_Dul_Vote();
 	}
 	
 	@Given("^The user clicks on Collect Votes button$")

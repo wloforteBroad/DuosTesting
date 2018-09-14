@@ -28,6 +28,7 @@ public class HeaderPageSteps {
 	
 	@When("^clicks on Logout$")
 	public void clicks_on_Logout() throws Throwable {
+		Thread.sleep(1000);
 	    headerPage.clickOn_SignOut();
 	}
 	

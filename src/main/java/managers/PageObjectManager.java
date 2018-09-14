@@ -6,6 +6,7 @@ import pageObjects.AddDatasetPage;
 import pageObjects.AddDulPage;
 import pageObjects.AddUserPage;
 import pageObjects.AdminConsolePage;
+import pageObjects.ChairConsolePage;
 import pageObjects.DulCollectVotesPage;
 import pageObjects.DulResultRecordPage;
 import pageObjects.DacConsolePage;
@@ -39,6 +40,7 @@ public class PageObjectManager {
 	private ManageDarPage manageDarPage;
 	private ModalPage modalPage;
 	private DacConsolePage dacConsolePage;
+	private ChairConsolePage chairConsolePage;
 	private DulVotingPage dulVotingPage;
 	private DarVotingPage darVotingPage;
 	private DulCollectVotesPage dulCollectVotesPage;
@@ -95,6 +97,10 @@ public class PageObjectManager {
 	
 	public DacConsolePage getDacConsolePage() {
 		return (dacConsolePage == null) ? dacConsolePage = new DacConsolePage(driver) : dacConsolePage;
+	}
+	
+	public ChairConsolePage getChairConsolePage() {
+		return (chairConsolePage == null) ? chairConsolePage = new ChairConsolePage(driver) : chairConsolePage;
 	}
 	
 	public DulVotingPage getDulVotingPage() {

@@ -9,8 +9,10 @@ Feature: DATA OWNER CAPABILITIES
 	- View the pending cases for Review.
 	- Search an open case for Review.
 		
+	@dataOwner
 	@tbd
 	Scenario: DATA OWNER - DAR Review Election vote 
+	Given The user is logged in and in the Admin Console
 	
 	@tbd
 	Scenario: DATA OWNER - View Dataset Summary

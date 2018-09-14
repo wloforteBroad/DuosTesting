@@ -167,8 +167,16 @@ WebDriver driver;
 		}	
 	}
 	
-	public void waitForElementToLoad() {
-        new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.id("adminConsole")));
+	public void waitForAdminToLoad() {
+        new WebDriverWait(driver, 30).until(ExpectedConditions.presenceOfElementLocated(By.id("adminConsole")));
+    }
+	
+	public void waitForChairToLoad() {
+        new WebDriverWait(driver, 30).until(ExpectedConditions.presenceOfElementLocated(By.id("chairConsole")));
+    }
+	
+	public void waitForDACToLoad() {
+        new WebDriverWait(driver, 30).until(ExpectedConditions.presenceOfElementLocated(By.id("dacConsole")));
     }
 
 }
