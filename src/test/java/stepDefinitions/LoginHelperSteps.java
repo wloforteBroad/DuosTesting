@@ -55,5 +55,15 @@ public class LoginHelperSteps {
 		testContext.getWebDriverManager().changeWinSignIn(signInPage, FileReaderManager.getInstance().getConfigReader().getAdminUserName(), FileReaderManager.getInstance().getConfigReader().getAdminPassword());
 		headerPage.waitForChairToLoad();
 	}
+	
+	@Given("^The user is logged in and in the Data Owner Console$")
+	public void the_user_is_logged_in_and_in_the_Data_Owner_Console() throws Throwable {
+		homePage.navigateTo_HomePage();
+		headerPage.clickOn_SignIn();
+		homePage.clickOn_SignInGoogle();
+		testContext.getWebDriverManager().changeWinSignIn(signInPage, FileReaderManager.getInstance().getConfigReader().getAdminUserName(), FileReaderManager.getInstance().getConfigReader().getAdminPassword());
+		headerPage.waitForDataOwnerToLoad();
+		headerPage.clickOn_DataOwnerConsole();
+	}
 
 }

@@ -501,5 +501,21 @@ public class MySQLDBHelper {
 		}
 
 	}
+	
+	public void deleteDataOwnerDataset(String objectId, String userId) {	
+		open();
+	    Integer datasetId = getDatasetByObjectId(objectId);
+		try {
+			String delete = "DELETE FROM `"+ DATABASE +"`.`dataset_user_association` WHERE `dacuserId`='"+userId+"' AND `datasetId`='" + datasetId + "'";
+			System.out.println("QUERY TO DELETE DATA OWNER ASSOCIATION"+ delete);
+			PreparedStatement preparedStmt = conn.prepareStatement(delete);
+			preparedStmt.executeUpdate();
+		} catch (SQLException e) {
+			Logger.getLogger(MySQLDBHelper.class.getName()).log(Level.SEVERE, null, e);
+		} finally {
+			close();
+		}
+
+	}
 
 }

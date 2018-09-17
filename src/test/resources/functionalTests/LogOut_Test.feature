@@ -19,15 +19,10 @@
 @tag
 Feature: USER LOG OUT
   I want to use this template for my feature file
-  
-  Background:
-    Given The user is in the Home Page
-    And user navigates to Login Page
-    When user enters correct AdminUserName and AdminPassword
 
 	@ignore
   Scenario: Successful User Logout
-    Given The user is loged in
+  	Given The user is logged in and in the Admin Console
     When user enters clicks on User DropDown
     And clicks on Logout
     Then Sign in button is diplayed in header

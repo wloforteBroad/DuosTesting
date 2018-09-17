@@ -23,6 +23,9 @@ Feature: RESEARCHER CAPABILITIES
 	Scenario: RESEARCHER - Create DAR Application
 	
 	@tbd
+	Scenario: RESEARCHER - Create DAR Application [MANUAL REVIEW]
+	
+	@tbd
 	Scenario: RESEARCHER - Save a DAR Application
 	
 	@tbd

@@ -31,7 +31,7 @@ WebDriver driver;
 	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Join DUOS')]") 
 	private WebElement btn_Join;
 	
-	@FindBy(how = How.XPATH, using = "//a[contains(text(),'DAC Console')]") 
+	@FindBy(how = How.ID, using = "dacConsole") 
 	private WebElement btn_DacConsole;
 	
 	@FindBy(how = How.ID, using = "adminConsole") 
@@ -40,7 +40,7 @@ WebDriver driver;
 	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Researcher Console')]") 
 	private WebElement btn_ResearcherConsole;
 	
-	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Data Owner Console')]") 
+	@FindBy(how = How.ID, using = "dataOwnerConsole") 
 	private WebElement btn_DataOwnerConsole;
 	
 	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Request Application')]") 
@@ -177,6 +177,10 @@ WebDriver driver;
 	
 	public void waitForDACToLoad() {
         new WebDriverWait(driver, 30).until(ExpectedConditions.presenceOfElementLocated(By.id("dacConsole")));
+    }
+	
+	public void waitForDataOwnerToLoad() {
+        new WebDriverWait(driver, 30).until(ExpectedConditions.presenceOfElementLocated(By.id("dataOwnerConsole")));
     }
 
 }
