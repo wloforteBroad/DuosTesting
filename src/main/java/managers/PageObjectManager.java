@@ -14,6 +14,9 @@ import pageObjects.DarCollectVotesPage;
 import pageObjects.DarPreviewResultsPage;
 import pageObjects.DarSummaryPage;
 import pageObjects.DarVotingPage;
+import pageObjects.DataOwnerConsolePage;
+import pageObjects.DataOwnerVotePage;
+import pageObjects.DataSetSummaryPage;
 import pageObjects.DatasetCatalogPage;
 import pageObjects.DulVotingPage;
 import pageObjects.GoogleSignInPage;
@@ -54,6 +57,9 @@ public class PageObjectManager {
 	private DulPreviewResultsPage dulPreviewResultsPage;
 	private DarPreviewResultsPage darPreviewResultsPage;
 	private DarSummaryPage darSummaryPage;
+	private DataOwnerConsolePage dataOwnerConsolePage;
+	private DataOwnerVotePage dataOwnerVotePage;
+	private DataSetSummaryPage dataSetSummaryPage;
 	
 	public PageObjectManager(WebDriver driver) {
 		this.driver = driver;
@@ -153,6 +159,18 @@ public class PageObjectManager {
 	
 	public DarSummaryPage getDarSummaryPage() {
 		return (darSummaryPage == null) ? darSummaryPage = new DarSummaryPage(driver) : darSummaryPage;
+	}
+	
+	public DataOwnerConsolePage getDataOwnerConsolePage() {
+		return (dataOwnerConsolePage == null) ? dataOwnerConsolePage = new DataOwnerConsolePage(driver) : dataOwnerConsolePage;
+	}
+	
+	public DataOwnerVotePage getDataOwnerVotePage() {
+		return (dataOwnerVotePage == null) ? dataOwnerVotePage = new DataOwnerVotePage(driver) : dataOwnerVotePage;
+	}
+	
+	public DataSetSummaryPage getDataSetSummaryPage() {
+		return (dataSetSummaryPage == null) ? dataSetSummaryPage = new DataSetSummaryPage(driver) : dataSetSummaryPage;
 	}
 
 }

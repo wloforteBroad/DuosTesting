@@ -13,7 +13,7 @@ import managers.FileReaderManager;
 @CucumberOptions(
 		features = "src/test/resources/functionalTests", 
 		glue = { "stepDefinitions" },
-		tags = { "~@ignore, ~@tbd" },
+		tags = { "~@ignore", "~@tbd" },
 		plugin = { "com.vimalselvam.cucumber.listener.ExtentCucumberFormatter:target/cucumber-reports/report.html"},
 		monochrome = true
 		)

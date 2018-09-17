@@ -135,6 +135,7 @@ public class Hooks {
 		mongodb.deleteDocument(true);
 		db.deleteElection(FileReaderManager.getInstance().getConfigReader().getConsentIdAdminDar());
 		db.deleteElection(darId);
+		db.deleteDataOwnerDataset(FileReaderManager.getInstance().getConfigReader().getObjectIdAdmin(), FileReaderManager.getInstance().getConfigReader().getAdminId());
 		db.deleteDataset(FileReaderManager.getInstance().getConfigReader().getObjectIdAdmin());
 	}
 	

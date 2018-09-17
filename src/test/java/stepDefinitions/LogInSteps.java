@@ -1,18 +1,36 @@
 package stepDefinitions;
 
 import cucumber.TestContext;
+import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 import managers.FileReaderManager;
 import pageObjects.GoogleSignInPage;
+import pageObjects.HeaderPage;
+import pageObjects.HomePage;
 
-public class GoogleSingInSteps {
+public class LogInSteps {
 	
 	TestContext testContext;
 	GoogleSignInPage googleSignInPage;
+	HomePage homePage;
+	HeaderPage headerPage;
 	
-	public GoogleSingInSteps(TestContext context) {
+	public LogInSteps(TestContext context) {
 		testContext = context;
 		googleSignInPage = testContext.getPageObjectManager().getGoogleSignInPage();
+		homePage = testContext.getPageObjectManager().getHomePage();
+		headerPage = testContext.getPageObjectManager().getHeaderPage();
+	}
+	
+	@Given("^The user is in the Home Page$")
+	public void the_user_is_in_the_Home_Page() {
+		homePage.navigateTo_HomePage();
+	}
+
+	@Given("^user navigates to Login Page$")
+	public void user_navigates_to_Login_Page() {
+		headerPage.clickOn_SignIn();
+		homePage.clickOn_SignInGoogle();
 	}
 	
 	@When("^user enters correct AdminUserName and AdminPassword$")
