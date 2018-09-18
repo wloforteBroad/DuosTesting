@@ -91,6 +91,7 @@ public class ChairpersonSteps {
 	@Then("^the user should see a flag with the amount of cases for review$")
 	public void the_user_should_see_a_flag_with_the_amount_of_cases_for_review() throws Throwable {
 		Thread.sleep(1000);
+		System.out.println(chairConsolePage.getPendingCases());
 	    assert  chairConsolePage.getPendingCases().equalsIgnoreCase("1");
 	}
 

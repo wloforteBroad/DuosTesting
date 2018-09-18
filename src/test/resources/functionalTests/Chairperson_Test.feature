@@ -1,21 +1,4 @@
-#Author: your.email@your.domain.com
-#Keywords Summary :
-#Feature: List of scenarios.
-#Scenario: Business rule through list of steps with arguments.
-#Given: Some precondition step
-#When: Some key actions
-#Then: To observe outcomes or validation
-#And,But: To enumerate more Given,When,Then steps
-#Scenario Outline: List of steps for data-driven as an Examples and <placeholder>
-#Examples: Container for s table
-#Background: List of steps run before each of the scenarios
-#""" (Doc Strings)
-#| (Data Tables)
-#@ (Tags/Labels):To group Scenarios
-#<> (placeholder)
-#""
-## (Comments)
-#Sample Feature Definition Template
+#Author: wloforte@broadinstitute.org
 
 Feature: DAC CHAIRPERSON CAPABILITIES
 - As a Chairperson, a user would like to
@@ -80,10 +63,4 @@ Feature: DAC CHAIRPERSON CAPABILITIES
 	
 	@tbd
 	Scenario: CHAIRPERSON - DAR FINAL vote [MANUAL REVIEW]
-	
-	@ignore
-	@chairPerson
-	Scenario: CHAIRPERSON - DUL/DAR Pending votes flag
-		Given The Chairperson is logged in and in the DAC Console
-    Then the user should see a flag with the amount of cases for review
 	

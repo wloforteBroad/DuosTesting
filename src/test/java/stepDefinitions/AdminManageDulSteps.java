@@ -97,7 +97,7 @@ public class AdminManageDulSteps {
 	    manageDulPage.findConsent(FileReaderManager.getInstance().getConfigReader().getConsentIdAdmin());
 	    manageDulPage.clickOn_Create();
 	    modalPage.clickOn_Yes();
-	    Thread.sleep(2000);
+	    Thread.sleep(2500);
 		this.versionNumber = manageDulPage.getVersion();
 	}
 	

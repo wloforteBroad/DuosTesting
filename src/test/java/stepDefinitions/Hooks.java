@@ -138,7 +138,6 @@ public class Hooks {
 		db.deleteDataOwnerDataset(FileReaderManager.getInstance().getConfigReader().getObjectIdAdmin(), FileReaderManager.getInstance().getConfigReader().getAdminId());
 		db.deleteDataset(FileReaderManager.getInstance().getConfigReader().getObjectIdAdmin());
 	}
-	
  
 	@After (order = 0)
 	public void AfterSteps() {
