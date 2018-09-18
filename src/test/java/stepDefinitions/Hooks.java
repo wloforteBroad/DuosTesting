@@ -1,23 +1,27 @@
 package stepDefinitions;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 
-import com.google.common.io.Files;
 import com.vimalselvam.cucumber.listener.Reporter;
 
 import cucumber.TestContext;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
+import gherkin.deps.net.iharder.Base64;
 import managers.FileReaderManager;
 
 public class Hooks {
 	
 	TestContext testContext;
+	WebDriver driver;
 	MySQLDBHelper db = new MySQLDBHelper();
 	MongoDBHelper mongodb = new MongoDBHelper();
 	 
@@ -148,22 +152,29 @@ public class Hooks {
 	@After(order = 1)
 	public void afterScenario(Scenario scenario) {
 		if (scenario.isFailed()) {
-			String screenshotName = scenario.getName().replaceAll(" ", "_");
 			try {
-				//This takes a screenshot from the driver at save it to the specified location
-				File sourcePath = ((TakesScreenshot) testContext.getWebDriverManager().getDriver()).getScreenshotAs(OutputType.FILE);
-				
-				//Building up the destination path for the screenshot to save
-				File destinationPath = new File(System.getProperty("user.dir") + "/target/cucumber-reports/screenshots/" + screenshotName + ".png");
-				
-				//Copy taken screenshot from source location to destination location
-				Files.copy(sourcePath, destinationPath);   
- 
-				//This attach the specified screenshot to the test
-				Reporter.addScreenCaptureFromPath(destinationPath.toString());
+				Reporter.addScreenCaptureFromPath(addScreenshot(testContext.getWebDriverManager().getDriver()));
 			} catch (IOException e) {
 			} 
 		}
+	}
+	
+	private static String addScreenshot(WebDriver driver) {
+		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+		String encodedBase64 = null;
+		FileInputStream fileInputStreamReader = null;
+		try {
+			fileInputStreamReader = new FileInputStream(scrFile);
+			byte[] bytes = new byte[(int) scrFile.length()];
+			fileInputStreamReader.read(bytes);
+
+			encodedBase64 = new String(Base64.encodeBytes(bytes));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return "data:image/png;base64," + encodedBase64;
 	}
 
 }
