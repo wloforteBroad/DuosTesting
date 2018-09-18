@@ -15,13 +15,13 @@ Feature: ADMIN MANAGE DUL
 	- Search DUL
 
 
-  @ignore
+  @run
   Scenario: Manage DUL - View List of DUL's
   	Given The user is logged in and in the Admin Console
     When The user clicks on Manage Data Use Limitations
     Then the user should see a list of Data Use Limitations
   
-  @ignore
+  @run
   @addDul
   Scenario: Manage DUL - Succesfully Add DUL
   	Given The user is logged in and in the Admin Console
