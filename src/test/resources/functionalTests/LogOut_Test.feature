@@ -3,7 +3,6 @@
 Feature: USER LOG OUT
   I want to use this template for my feature file
 
-	@ignore
   Scenario: Successful User Logout
   	Given The user is logged in and in the Admin Console
     When user enters clicks on User DropDown

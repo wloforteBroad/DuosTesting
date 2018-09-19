@@ -11,7 +11,6 @@ As an Admin, a user would like to Manage Datasets:
 	- View Structured DUL
 	- Download Approved Requestors****
 
-  @ignore
   Scenario: Manage DATASET - Upload correct Dataset
     Given The user is logged in and in the Admin Console
     And The user clicks on Add Dataset button
@@ -25,14 +24,12 @@ As an Admin, a user would like to Manage Datasets:
     When The user selects all Datasets and clicks Download Selection
     Then the file should be downloaded
     
-  @ignore
   Scenario: Manage DATASET - Delete Dataset 
     Given The user is logged in and in the Admin Console
     And there are datasets in the Catalog
     When The user clicks on the bin icon and accepts prompt
     Then dataset is no longer shown in Dataset Catalog Page
     
-  @ignore
   Scenario: Manage DATASET - Disable Dataset 
     Given The user is logged in and in the Admin Console
     And there are datasets in the Catalog
@@ -40,7 +37,6 @@ As an Admin, a user would like to Manage Datasets:
     When The user clicks on the Disable Dataset icon and accepts prompt
     Then dataset appears as disabled in Dataset Catalog Page
     
-  @ignore
   Scenario: Manage DATASET - Enable Dataset 
     Given The user is logged in and in the Admin Console
     And there are datasets in the Catalog
@@ -48,7 +44,6 @@ As an Admin, a user would like to Manage Datasets:
     When The user clicks on the Enable Dataset icon and accepts prompt
     Then dataset appears as enabled in Dataset Catalog Page
     
-  @ignore
   Scenario: Manage DATASET - View Translated DUL 
     Given The user is logged in and in the Admin Console
     And there are datasets in the Catalog

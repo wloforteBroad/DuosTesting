@@ -11,14 +11,12 @@ Feature: ADMIN MANAGE DAR
 	- DAR that needs Data Owner Approval Pending/Approved/Denied ****
 	- Researcher Review ****
 	
-	@ignore
 	@adminDar
   Scenario: Manage DAR - View List of DAR's
   	Given The user is logged in and in the Admin Console
     When The user clicks on Manage Data Access Request
     Then the user should see a list of Data Access Requests
     
-  @ignore
   @adminDar
   Scenario: Manage DARL - Succesfully open election
   	Given The user is logged in and in the Admin Console
@@ -26,7 +24,6 @@ Feature: ADMIN MANAGE DAR
     When The user click on create button for a given Dar
     Then The DAR Election Status should be Open
     
-  @ignore
   @adminDar
   Scenario: Manage DAR - Succesfully cancel election
   	Given The user is logged in and in the Admin Console
@@ -35,7 +32,6 @@ Feature: ADMIN MANAGE DAR
     When The user cancel a given DAR election
     Then The DAR Election Status should be Canceled
     
-  @ignore
   @adminDar
   Scenario: Manage DAR - View Application Summary
   	Given The user is logged in and in the Admin Console
@@ -43,7 +39,6 @@ Feature: ADMIN MANAGE DAR
     When The user clicks on Summary button
     Then The user should see the Application Summary Modal
     
-  @ignore
   @adminDar
   Scenario: Manage DAR - View DAR Election preview
   	Given The user is logged in and in the Admin Console
@@ -51,7 +46,6 @@ Feature: ADMIN MANAGE DAR
     When The user clicks on Election Status for a given DAR
     Then The user should see the preview page of that DAR Election depending on the status
     
-  @ignore
   @adminDarApproval
   Scenario: Manage DAR - View DAR that Needs Data Owner Approval
   	Given The user is logged in and in the Admin Console

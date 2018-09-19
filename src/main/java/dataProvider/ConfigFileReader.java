@@ -46,7 +46,7 @@ public class ConfigFileReader {
 				throw new RuntimeException("Not able to parse value : " + implicitlyWait + " in to Long");
 			}
 		}
-		return 30;		
+		return 30;
 	}
 	
 	public String getApplicationUrl() {

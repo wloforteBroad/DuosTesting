@@ -1,7 +1,5 @@
-#Author: your.email@your.domain.com
+#Author: wloforte@broadinstitute.org
 
-
-@tag
 Feature: RESEARCHER CAPABILITIES
 - As a Researcher, a user would like to:
  - Complete the Profile Page.
