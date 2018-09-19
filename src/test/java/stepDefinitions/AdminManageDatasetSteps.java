@@ -57,6 +57,7 @@ public class AdminManageDatasetSteps {
 	    datasetCatalogPage.findDataset(FileReaderManager.getInstance().getConfigReader().getDatasetId());
 	    if (datasetCatalogPage.isDatasetDisabled() ) {
 	    	datasetCatalogPage.clickOn_Enable();
+		    modalPage.waitForModalToLoad();
 	    	modalPage.clickOn_Yes();
 	    }
 	}
@@ -66,7 +67,7 @@ public class AdminManageDatasetSteps {
 		datasetCatalogPage.findDataset(FileReaderManager.getInstance().getConfigReader().getDatasetId());
 	    if (datasetCatalogPage.isDatasetEnabled() ) {
 	    	datasetCatalogPage.clickOn_Disable();
-	    	Thread.sleep(2000);
+		    modalPage.waitForModalToLoad();
 	    	modalPage.clickOn_Yes();
 	    }
 	}
@@ -75,7 +76,7 @@ public class AdminManageDatasetSteps {
 	public void the_user_clicks_on_the_bin_icon_and_accepts_prompt() throws Throwable {
 	    datasetCatalogPage.findDataset(FileReaderManager.getInstance().getConfigReader().getDatasetId());
 	    datasetCatalogPage.clickOn_Delete();
-	    Thread.sleep(2000);
+	    modalPage.waitForModalToLoad();
 	    modalPage.clickOn_Yes();
 
 	}
@@ -101,14 +102,14 @@ public class AdminManageDatasetSteps {
 	public void the_user_clicks_on_View_translated_DUL() throws Throwable {
 		datasetCatalogPage.findDataset(FileReaderManager.getInstance().getConfigReader().getDatasetId());
 	    datasetCatalogPage.clickOn_ViewTranslatedDul();
-	    Thread.sleep(500);
+	    modalPage.waitForModalToLoad();
 	}
 	
 	@When("^The user clicks on the Disable Dataset icon and accepts prompt$")
 	public void the_user_clicks_on_the_Disable_Dataset_icon_and_accepts_prompt() throws Throwable {
 		datasetCatalogPage.findDataset(FileReaderManager.getInstance().getConfigReader().getDatasetId());
 	    datasetCatalogPage.clickOn_Disable();
-	    Thread.sleep(2000);
+	    modalPage.waitForModalToLoad();
 	    modalPage.clickOn_Yes();
 	}
 	
@@ -116,7 +117,7 @@ public class AdminManageDatasetSteps {
 	public void the_user_clicks_on_the_Enable_Dataset_icon_and_accepts_prompt() throws Throwable {
 		datasetCatalogPage.findDataset(FileReaderManager.getInstance().getConfigReader().getDatasetId());
 	    datasetCatalogPage.clickOn_Enable();
-	    Thread.sleep(2000);
+	    modalPage.waitForModalToLoad();
 	    modalPage.clickOn_Yes();
 	}
 	

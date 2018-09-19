@@ -39,6 +39,7 @@ public class ChairpersonSteps {
 	    chairConsolePage.clickOn_Vote();
 	    dulVotingPage.clickOn_Yes();
 	    dulVotingPage.clickOn_Vote();
+		modalPage.waitForModalToLoad();
 	    modalPage.clickOn_Ok();
 	}
 	
@@ -47,12 +48,14 @@ public class ChairpersonSteps {
 	    dulCollectVotesPage.clickOn_Yes();
 	    dulCollectVotesPage.enter_Rationale("FINAL VOTE!");
 	    dulCollectVotesPage.clickOn_Vote();
+		modalPage.waitForModalToLoad();
 	    modalPage.clickOn_Yes();
 	}
 	
 	@When("^user click on Send a Reminder to a given user$")
 	public void user_click_on_Send_a_Reminder_to_a_given_user() throws Throwable {
 	    dulCollectVotesPage.getAllReminders().get(0).click();
+		modalPage.waitForModalToLoad();
 	    modalPage.clickOn_Ok();
 	}
 	

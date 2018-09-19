@@ -44,6 +44,7 @@ public class AdminManageDarSteps {
 	public void one_DAR_election_is_opened() throws Throwable {
 		manageDarPage.findDar("DAR-1000");
 		manageDarPage.clickOn_Create();
+		modalPage.waitForModalToLoad();
 		modalPage.clickOn_Yes();
 	}
 	
@@ -57,6 +58,7 @@ public class AdminManageDarSteps {
 		manageDarPage.findDar("DAR-1000");
 		Thread.sleep(1000);
 	    manageDarPage.clickOn_Create();
+	    modalPage.waitForModalToLoad();
 	    modalPage.clickOn_Yes();
 	}
 	
@@ -64,6 +66,7 @@ public class AdminManageDarSteps {
 	public void the_user_cancel_a_given_DAR_election() throws Throwable {
 	    manageDarPage.findDar("DAR-1000");
 	    manageDarPage.clickOn_Cancel();
+	    modalPage.waitForModalToLoad();
 	    modalPage.clickOn_Yes();
 	}
 	
