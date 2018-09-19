@@ -1,22 +1,5 @@
-#Author: your.email@your.domain.com
-#Keywords Summary :
-#Feature: List of scenarios.
-#Scenario: Business rule through list of steps with arguments.
-#Given: Some precondition step
-#When: Some key actions
-#Then: To observe outcomes or validation
-#And,But: To enumerate more Given,When,Then steps
-#Scenario Outline: List of steps for data-driven as an Examples and <placeholder>
-#Examples: Container for s table
-#Background: List of steps run before each of the scenarios
-#""" (Doc Strings)
-#| (Data Tables)
-#@ (Tags/Labels):To group Scenarios
-#<> (placeholder)
-#""
-## (Comments)
-#Sample Feature Definition Template
-@tag
+#Author: wloforte@broadinstitute.org
+
 Feature: ADMIN MANAGE USERS
 As an Admin a user would like to Manage Users:
 	- View List of Users
@@ -25,21 +8,19 @@ As an Admin a user would like to Manage Users:
 	- Review Researcher Profile****
 	- Search User
 
-  @ignore
   Scenario: Manage USERS - View list of USERS
   	Given The user is logged in and in the Admin Console
   	When The user clicks on Manage Users
   	Then The user should see a list of Users
   	
-  @ignore
   @deleteUser
   Scenario: Manage USERS - Successfuly create User
     Given The user is logged in and in the Admin Console
     And clicks in Add User button
     When The user complete and submits the User form
     Then new user appears in Manage Users Page
-    
-  @ignore
+  
+  ##Leave user in previous state TBD
   Scenario: Manage USERS - Successfuly edit User
     Given The user is logged in and in the Admin Console
   	When The user clicks on Manage Users

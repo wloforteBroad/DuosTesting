@@ -67,13 +67,19 @@ public class WebDriverManager {
         	System.setProperty(CHROME_DRIVER_PROPERTY, FileReaderManager.getInstance().getConfigReader().getDriverPath());
         	ChromeOptions chromeOpts = new ChromeOptions();
         	chromeOpts.addArguments("start-maximized");
-        	String browserName = chromeOpts.getBrowserName().toLowerCase();
+        	browserName = chromeOpts.getBrowserName().toLowerCase();
         	System.out.println(browserName);
-//        	chromeOpts.addArguments("browser.download.folderList=2");
-//        	chromeOpts.addArguments("browser.helperApps.neverAsk.saveToDisk=text/plain");
-//        	chromeOpts.addArguments("browser.download.dir=" + FileReaderManager.getInstance().getConfigReader().getDownloadPath());
         	driver = new ChromeDriver(chromeOpts);
     		break;
+        case CHROME_HEADLESS : 
+        	System.setProperty(CHROME_DRIVER_PROPERTY, FileReaderManager.getInstance().getConfigReader().getDriverPath());
+        	ChromeOptions chromeHeadlessOpts = new ChromeOptions();
+        	chromeHeadlessOpts.addArguments("--headless");
+        	chromeHeadlessOpts.addArguments("window-size=1920,1080");
+        	browserName = chromeHeadlessOpts.getBrowserName().toLowerCase();
+        	System.out.println(browserName);
+        	driver = new ChromeDriver(chromeHeadlessOpts);
+    	break;
         case INTERNETEXPLORER : 
         	driver = new InternetExplorerDriver();
     		break;

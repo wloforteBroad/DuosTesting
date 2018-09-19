@@ -57,6 +57,7 @@ public class AdminManageDulSteps {
 		manageDulPage.findConsent(FileReaderManager.getInstance().getConfigReader().getConsentIdAdmin());
 		if (manageDulPage.isElectionOpen()) {
 			manageDulPage.clickOn_Cancel();
+			modalPage.waitForModalToLoad();
 			modalPage.check_Archive();
 			modalPage.clickOn_Yes();
 		}
@@ -68,6 +69,7 @@ public class AdminManageDulSteps {
 		manageDulPage.findConsent(FileReaderManager.getInstance().getConfigReader().getConsentIdAdmin());
 		if (!manageDulPage.isElectionOpen()) {
 			manageDulPage.clickOn_Create();
+			modalPage.waitForModalToLoad();
 			modalPage.clickOn_Yes();
 		}
 		Thread.sleep(1000);
@@ -96,8 +98,9 @@ public class AdminManageDulSteps {
 	public void the_user_click_on_create_button_for_a_given_Consent() throws Throwable {
 	    manageDulPage.findConsent(FileReaderManager.getInstance().getConfigReader().getConsentIdAdmin());
 	    manageDulPage.clickOn_Create();
+	    modalPage.waitForModalToLoad();
 	    modalPage.clickOn_Yes();
-	    Thread.sleep(2000);
+	    Thread.sleep(2500);
 		this.versionNumber = manageDulPage.getVersion();
 	}
 	
@@ -105,6 +108,7 @@ public class AdminManageDulSteps {
 	public void the_user_cancel_a_given_election() throws Throwable {
 		manageDulPage.findConsent(FileReaderManager.getInstance().getConfigReader().getConsentIdAdmin());
 		manageDulPage.clickOn_Cancel();
+		modalPage.waitForModalToLoad();
 		modalPage.check_Archive();
 		modalPage.clickOn_Yes();
 	}
@@ -113,6 +117,7 @@ public class AdminManageDulSteps {
 	public void the_user_archive_a_given_election() throws Throwable {
 	    Thread.sleep(1000);
 		manageDulPage.clickOn_Archive();
+		modalPage.waitForModalToLoad();
 	    modalPage.clickOn_Yes();
 	}
 	
@@ -120,6 +125,7 @@ public class AdminManageDulSteps {
 	public void the_user_delete_a_given_election() throws Throwable {
 	    manageDulPage.findConsent("ORSP-Delete");
 	    manageDulPage.clickOn_Delete();
+	    modalPage.waitForModalToLoad();
 	    modalPage.clickOn_Yes();
 	    Thread.sleep(1000);
 	}
@@ -128,6 +134,7 @@ public class AdminManageDulSteps {
 	public void the_user_click_on_create_button_for_the_same_Consent_again() throws Throwable {
 		manageDulPage.findConsent(FileReaderManager.getInstance().getConfigReader().getConsentIdAdmin());
 	    manageDulPage.clickOn_Create();
+	    modalPage.waitForModalToLoad();
 	    modalPage.clickOn_Yes();
 	}
 	

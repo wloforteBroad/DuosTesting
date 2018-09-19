@@ -38,6 +38,7 @@ public class DacMemberSteps {
 	    if (dacConsolePage.isVoteEditable() == false) {
 	    	dacConsolePage.clickOn_Dul_Vote();
 	    	dulVotingPage.voteYes("Because YES");
+			modalPage.waitForModalToLoad();
 		    modalPage.clickOn_Ok();
 	    }
 	}
@@ -51,12 +52,14 @@ public class DacMemberSteps {
 	@When("^user votes with a positive vote and submits DUL vote$")
 	public void user_votes_with_a_positive_vote_and_submits_DUL_vote() throws Throwable {
 	    dulVotingPage.voteYes("Because YES");
+		modalPage.waitForModalToLoad();
 	    modalPage.clickOn_Ok();
 	}
 	
 	@When("^user votes with a positive vote and submits DAR vote$")
 	public void user_votes_with_a_positive_vote_and_submits_DAR_vote() throws Throwable {
 	    darVotingPage.voteYes_Access("Because Yes");
+		modalPage.waitForModalToLoad();
 	    modalPage.clickOn_Ok();
 	}
 	
@@ -66,6 +69,7 @@ public class DacMemberSteps {
 	    dacConsolePage.clickOn_Dul_Edit();
 	    dulVotingPage.enter_Rationale("Because YES EDITED");
 	    dulVotingPage.clickOn_Vote();
+		modalPage.waitForModalToLoad();
 	    modalPage.clickOn_Ok();
 	}
 

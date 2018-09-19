@@ -39,6 +39,7 @@ public class ChairpersonSteps {
 	    chairConsolePage.clickOn_Vote();
 	    dulVotingPage.clickOn_Yes();
 	    dulVotingPage.clickOn_Vote();
+		modalPage.waitForModalToLoad();
 	    modalPage.clickOn_Ok();
 	}
 	
@@ -47,12 +48,14 @@ public class ChairpersonSteps {
 	    dulCollectVotesPage.clickOn_Yes();
 	    dulCollectVotesPage.enter_Rationale("FINAL VOTE!");
 	    dulCollectVotesPage.clickOn_Vote();
+		modalPage.waitForModalToLoad();
 	    modalPage.clickOn_Yes();
 	}
 	
 	@When("^user click on Send a Reminder to a given user$")
 	public void user_click_on_Send_a_Reminder_to_a_given_user() throws Throwable {
 	    dulCollectVotesPage.getAllReminders().get(0).click();
+		modalPage.waitForModalToLoad();
 	    modalPage.clickOn_Ok();
 	}
 	
@@ -91,6 +94,7 @@ public class ChairpersonSteps {
 	@Then("^the user should see a flag with the amount of cases for review$")
 	public void the_user_should_see_a_flag_with_the_amount_of_cases_for_review() throws Throwable {
 		Thread.sleep(1000);
+		System.out.println(chairConsolePage.getPendingCases());
 	    assert  chairConsolePage.getPendingCases().equalsIgnoreCase("1");
 	}
 

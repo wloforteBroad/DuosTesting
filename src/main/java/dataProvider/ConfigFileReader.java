@@ -46,7 +46,7 @@ public class ConfigFileReader {
 				throw new RuntimeException("Not able to parse value : " + implicitlyWait + " in to Long");
 			}
 		}
-		return 30;		
+		return 30;
 	}
 	
 	public String getApplicationUrl() {
@@ -215,6 +215,7 @@ public class ConfigFileReader {
 		String browserName = properties.getProperty("browser");
 		if(browserName == null || browserName.equals("firefox")) return DriverType.FIREFOX;
 		else if(browserName.equalsIgnoreCase("chrome")) return DriverType.CHROME;
+		else if(browserName.equalsIgnoreCase("chrome_headless")) return DriverType.CHROME_HEADLESS;
 		else if(browserName.equals("iexplorer")) return DriverType.INTERNETEXPLORER;
 		else if(browserName.equals("safari")) return DriverType.SAFARI;
 		else if(browserName.equals("firefox_headless")) return DriverType.FIREFOX_HEADLESS;
@@ -226,6 +227,24 @@ public class ConfigFileReader {
 		if(environmentName == null || environmentName.equalsIgnoreCase("local")) return EnvironmentType.LOCAL;
 		else if(environmentName.equals("dev")) return EnvironmentType.DEV;
 		else throw new RuntimeException("Environment Type Key value in Configuration.properties is not matched : " + environmentName);
+	}
+	
+	public String getMongoDbUrl(){
+		String mongoDbUrl = properties.getProperty("mongoDbUrl");
+		if(mongoDbUrl!= null) return mongoDbUrl;
+		else throw new RuntimeException("mongoDbUrl not specified in the Configuration.properties file for the Key:mongoDbUrl");		
+	}
+	
+	public String getMongoDbUser(){
+		String mongoDbUser = properties.getProperty("mongoDbUser");
+		if(mongoDbUser!= null) return mongoDbUser;
+		else throw new RuntimeException("mongoDbUser not specified in the Configuration.properties file for the Key:mongoDbUser");		
+	}
+	
+	public String getMongoDbPass(){
+		String mongoDbPass = properties.getProperty("mongoDbPass");
+		if(mongoDbPass!= null) return mongoDbPass;
+		else throw new RuntimeException("mongoDbPass not specified in the Configuration.properties file for the Key:mongoDbPass");		
 	}
 
 }

@@ -39,6 +39,7 @@ public class DataOwnerSteps {
 	    dataOwnerVotePage.clickOn_Approve();
 	    dataOwnerVotePage.enter_Rationale("I Approve because I can");
 	    dataOwnerVotePage.clickOn_Vote();
+		modalPage.waitForModalToLoad();
 	    modalPage.clickOn_Ok();
 	}
 	

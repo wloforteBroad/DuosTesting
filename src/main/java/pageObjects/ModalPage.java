@@ -1,10 +1,13 @@
 package pageObjects;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ModalPage {
 WebDriver driver;	
@@ -41,5 +44,9 @@ WebDriver driver;
 	public void check_Archive() {
 		chkbx_Archive.click();
 	}
+	
+	public void waitForModalToLoad() {
+        new WebDriverWait(driver, 30).until(ExpectedConditions.presenceOfElementLocated(By.className("modal-content")));
+    }
 
 }
