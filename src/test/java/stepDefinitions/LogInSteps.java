@@ -61,6 +61,7 @@ public class LogInSteps {
 	
 	@Then("^user navigates to Admin Console$")
 	public void user_navigates_to_Admin_Console() throws Throwable {
+		headerPage.waitForAdminToLoad();
 		headerPage.clickOn_AdminConsole();
 	    assert adminConsolePage.isUserGreetDisplayed();
 	}

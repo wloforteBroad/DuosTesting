@@ -66,6 +66,7 @@ public class AdminManageDatasetSteps {
 		datasetCatalogPage.findDataset(FileReaderManager.getInstance().getConfigReader().getDatasetId());
 	    if (datasetCatalogPage.isDatasetEnabled() ) {
 	    	datasetCatalogPage.clickOn_Disable();
+	    	Thread.sleep(2000);
 	    	modalPage.clickOn_Yes();
 	    }
 	}
@@ -74,7 +75,7 @@ public class AdminManageDatasetSteps {
 	public void the_user_clicks_on_the_bin_icon_and_accepts_prompt() throws Throwable {
 	    datasetCatalogPage.findDataset(FileReaderManager.getInstance().getConfigReader().getDatasetId());
 	    datasetCatalogPage.clickOn_Delete();
-	    Thread.sleep(1000);
+	    Thread.sleep(2000);
 	    modalPage.clickOn_Yes();
 
 	}
@@ -107,6 +108,7 @@ public class AdminManageDatasetSteps {
 	public void the_user_clicks_on_the_Disable_Dataset_icon_and_accepts_prompt() throws Throwable {
 		datasetCatalogPage.findDataset(FileReaderManager.getInstance().getConfigReader().getDatasetId());
 	    datasetCatalogPage.clickOn_Disable();
+	    Thread.sleep(2000);
 	    modalPage.clickOn_Yes();
 	}
 	
@@ -114,6 +116,7 @@ public class AdminManageDatasetSteps {
 	public void the_user_clicks_on_the_Enable_Dataset_icon_and_accepts_prompt() throws Throwable {
 		datasetCatalogPage.findDataset(FileReaderManager.getInstance().getConfigReader().getDatasetId());
 	    datasetCatalogPage.clickOn_Enable();
+	    Thread.sleep(2000);
 	    modalPage.clickOn_Yes();
 	}
 	
