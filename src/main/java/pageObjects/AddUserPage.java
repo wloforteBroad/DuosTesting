@@ -14,37 +14,37 @@ WebDriver driver;
 	    PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(how = How.NAME, using = "inputName") 
+	@FindBy(how = How.ID, using = "txt_name") 
 	private WebElement txtbx_Name;
 	
-	@FindBy(how = How.NAME, using = "inputGoogleId") 
+	@FindBy(how = How.ID, using = "txt_email") 
 	private WebElement txtbx_Mail;
 	
-	@FindBy(how = How.XPATH, using = "//label[contains(text(),'Admin')]") 
+	@FindBy(how = How.ID, using = "chk_admin") 
 	private WebElement chkbx_Admin;
 	
-	@FindBy(how = How.XPATH, using = "//label[contains(text(),'Member')]") 
+	@FindBy(how = How.ID, using = "chk_member") 
 	private WebElement chkbx_Member;
 	
-	@FindBy(how = How.XPATH, using = "//label[contains(text(),'Chairperson')]") 
+	@FindBy(how = How.ID, using = "chk_chairperson") 
 	private WebElement chkbx_Chairperson;
 	
-	@FindBy(how = How.XPATH, using = "//label[contains(text(),'Researcher')]") 
+	@FindBy(how = How.ID, using = "chk_researcher") 
 	private WebElement chkbx_Researcher;
 	
-	@FindBy(how = How.XPATH, using = "//label[contains(text(),'Alumni')]") 
+	@FindBy(how = How.ID, using = "chk_alumni") 
 	private WebElement chkbx_Alumni;
 	
-	@FindBy(how = How.XPATH, using = "//label[contains(text(),'Data Owner')]") 
+	@FindBy(how = How.ID, using = "chk_dataOwner") 
 	private WebElement chkbx_DataOwner;
 	
-	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Add')]") 
+	@FindBy(how = How.ID, using = "btn_action") 
 	private WebElement btn_Add;
 	
-	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Save')]") 
+	@FindBy(how = How.ID, using = "btn_action") 
 	private WebElement btn_Save;
 	
-	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Cancel')]") 
+	@FindBy(how = How.ID, using = "btn_cancel") 
 	private WebElement btn_Cancel;
 	
 	public void enter_Name(String name) {

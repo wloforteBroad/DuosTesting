@@ -14,7 +14,7 @@ import managers.FileReaderManager;
 		features = "src/test/resources/functionalTests", 
 		glue = { "stepDefinitions" },
 		tags = { "~@ignore", "~@tbd" },
-		plugin = { "com.vimalselvam.cucumber.listener.ExtentCucumberFormatter:target/cucumber-reports/report.html"},
+		plugin = { "com.vimalselvam.cucumber.listener.ExtentCucumberFormatter:target/cucumber-reports/Test-Report.html"},
 		monochrome = true
 		)
 

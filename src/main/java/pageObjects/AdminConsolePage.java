@@ -13,30 +13,30 @@ public class AdminConsolePage {
 	    PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(how = How.XPATH, using = "//h2[contains(text(),'Welcome Walter Lo Forte!')]")
-	private WebElement lbl_UserName;
+	@FindBy(how = How.ID, using = "adminConsole_title")
+	private WebElement lbl_Title;
 	
-	@FindBy(how = How.XPATH, using = "//div[contains(text(),'Manage Data Use Limitations')]") 
+	@FindBy(how = How.ID, using = "btn_manageDUL") 
 	private WebElement btn_ManageDul;
 	
-	@FindBy(how = How.XPATH, using = "//span[contains(text(),'Add Data Use Limitations')]") 
+	@FindBy(how = How.ID, using = "btn_addDUL") 
 	private WebElement btn_AddDul;
 	
-	@FindBy(how = How.XPATH, using = "//span[contains(text(),'Manage Users')]") 
+	@FindBy(how = How.ID, using = "btn_manageUsers") 
 	private WebElement btn_ManageUsers;
 	
-	@FindBy(how = How.XPATH, using = "//span[contains(text(),'Add User')]") 
+	@FindBy(how = How.ID, using = "btn_addUser") 
 	private WebElement btn_AddUser;
 	
-	@FindBy(how = How.XPATH, using = "//div[contains(text(),'Manage Data Access Request')]") 
+	@FindBy(how = How.ID, using = "btn_manageDAR") 
 	private WebElement btn_ManageDar;
 	
-	@FindBy(how = How.XPATH, using = "//span[contains(text(),'Add Datasets')]") 
+	@FindBy(how = How.ID, using = "btn_addDataset") 
 	private WebElement btn_AddDatasets;
 	
 	public boolean isUserGreetDisplayed() {
 		try {
-			return lbl_UserName.isDisplayed();
+			return lbl_Title.isDisplayed();
 		}catch(NoSuchElementException e) {
 			return false;
 		}	

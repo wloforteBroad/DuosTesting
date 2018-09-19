@@ -15,7 +15,7 @@ WebDriver driver;
 	    PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(how = How.XPATH, using = "//h2[contains(text(),'Data Access Congruence Preview')]") 
+	@FindBy(how = How.XPATH, using = "previewAccess_title") 
 	private WebElement lbl_Title;
 	
 	public boolean isUserOnPreviewResultsPage() {

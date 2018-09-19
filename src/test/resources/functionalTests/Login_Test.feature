@@ -2,7 +2,7 @@
 
 Feature: LOG IN
   I want to use this template for my feature file
-
+	
   Scenario: Successful Login as an admin
     Given The user is in the Home Page
     And user navigates to Login Page

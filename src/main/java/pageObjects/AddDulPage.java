@@ -22,28 +22,28 @@ WebDriver driver;
 	@FindBy(how = How.XPATH, using = "//span[contains(text(),'Add Data Use Limitations')]") 
 	private WebElement lbl_Title;
 	
-	@FindBy(how = How.NAME, using = "inputConsentId") 
+	@FindBy(how = How.ID, using = "txt_consentId") 
 	private WebElement txtbx_UniqueId;
 	
-	@FindBy(how = How.NAME, using = "inputName") 
+	@FindBy(how = How.ID, using = "txt_consentName") 
 	private WebElement txtbx_ConsentName;
 	
-	@FindBy(how = How.CSS, using = ".upload") 
+	@FindBy(how = How.ID, using = "btn_uploadFile") 
 	private WebElement btn_Upload;
 	
-	@FindBy(how = How.NAME, using = "inputSDUL") 
+	@FindBy(how = How.ID, using = "txt_sdul") 
 	private WebElement txtarea_Sdul;
 	
-	@FindBy(how = How.NAME, using = "inputDU") 
+	@FindBy(how = How.ID, using = "txt_dataUse") 
 	private WebElement txtarea_DataUse;
 	
-	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Add')]") 
+	@FindBy(how = How.ID, using = "btn_action") 
 	private WebElement btn_Add;
 	
-	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Cancel')]") 
+	@FindBy(how = How.ID, using = "btn_cancel") 
 	private WebElement btn_Cancel;
 	
-	@FindBy(how = How.CLASS_NAME, using = "alert") 
+	@FindBy(how = How.ID, using = "modal_alert") 
 	private WebElement error_area;
 	
 	public void upload_File() {

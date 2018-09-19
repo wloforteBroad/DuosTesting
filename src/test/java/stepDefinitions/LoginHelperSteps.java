@@ -32,7 +32,7 @@ public class LoginHelperSteps {
 	public void the_user_is_logged_in_and_in_the_Admin_Console() throws Throwable {
 		homePage.navigateTo_HomePage();
 		headerPage.clickOn_SignIn();
-		homePage.clickOn_SignInGoogle();
+		//homePage.clickOn_SignInGoogle();
 		testContext.getWebDriverManager().changeWinSignIn(signInPage, FileReaderManager.getInstance().getConfigReader().getAdminUserName(), FileReaderManager.getInstance().getConfigReader().getAdminPassword());
 		headerPage.waitForAdminToLoad();
 		headerPage.clickOn_AdminConsole();
@@ -42,7 +42,7 @@ public class LoginHelperSteps {
 	public void the_DAC_Member_is_logged_in_and_in_the_DAC_Console() throws Throwable {
 		homePage.navigateTo_HomePage();
 		headerPage.clickOn_SignIn();
-		homePage.clickOn_SignInGoogle();
+		//homePage.clickOn_SignInGoogle();
 		testContext.getWebDriverManager().changeWinSignIn(signInPage, FileReaderManager.getInstance().getConfigReader().getMemberUserName1(), FileReaderManager.getInstance().getConfigReader().getMemberPassword());
 		headerPage.waitForDACToLoad();
 	}
@@ -51,7 +51,7 @@ public class LoginHelperSteps {
 	public void the_Chairperson_is_logged_in_and_in_the_DAC_Console() throws Throwable {
 		homePage.navigateTo_HomePage();
 		headerPage.clickOn_SignIn();
-		homePage.clickOn_SignInGoogle();
+		//homePage.clickOn_SignInGoogle();
 		testContext.getWebDriverManager().changeWinSignIn(signInPage, FileReaderManager.getInstance().getConfigReader().getAdminUserName(), FileReaderManager.getInstance().getConfigReader().getAdminPassword());
 		headerPage.waitForChairToLoad();
 	}
@@ -60,7 +60,7 @@ public class LoginHelperSteps {
 	public void the_user_is_logged_in_and_in_the_Data_Owner_Console() throws Throwable {
 		homePage.navigateTo_HomePage();
 		headerPage.clickOn_SignIn();
-		homePage.clickOn_SignInGoogle();
+		//homePage.clickOn_SignInGoogle();
 		testContext.getWebDriverManager().changeWinSignIn(signInPage, FileReaderManager.getInstance().getConfigReader().getAdminUserName(), FileReaderManager.getInstance().getConfigReader().getAdminPassword());
 		headerPage.waitForDataOwnerToLoad();
 		headerPage.clickOn_DataOwnerConsole();

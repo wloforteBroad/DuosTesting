@@ -34,7 +34,7 @@ public class LogInSteps {
 	@Given("^user navigates to Login Page$")
 	public void user_navigates_to_Login_Page() {
 		headerPage.clickOn_SignIn();
-		homePage.clickOn_SignInGoogle();
+		//homePage.clickOn_SignInGoogle();
 	}
 	
 	@When("^user enters correct AdminUserName and AdminPassword$")

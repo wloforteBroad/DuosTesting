@@ -19,58 +19,61 @@ WebDriver driver;
 	    PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(how = How.XPATH, using = "//a[contains(text(),'About')]") 
+	@FindBy(how = How.ID, using = "link_about") 
 	private WebElement btn_About;
 	
-	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Help')]") 
+	@FindBy(how = How.ID, using = "link_help") 
 	private WebElement btn_Help;
 	
-	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Sign In')]") 
+	@FindBy(how = How.ID, using = "link_signIn") 
 	private WebElement btn_SignIn;
 	
-	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Join DUOS')]") 
+	@FindBy(how = How.ID, using = "link_join") 
 	private WebElement btn_Join;
 	
-	@FindBy(how = How.ID, using = "dacConsole") 
+	@FindBy(how = How.ID, using = "link_memberConsole") 
 	private WebElement btn_DacConsole;
+
+	@FindBy(how = How.ID, using = "link_chairConsole") 
+	private WebElement btn_ChairConsole;
 	
-	@FindBy(how = How.ID, using = "adminConsole") 
+	@FindBy(how = How.ID, using = "link_adminConsole") 
 	private WebElement btn_AdminConsole;
 	
-	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Researcher Console')]") 
+	@FindBy(how = How.ID, using = "link_researcherConsole") 
 	private WebElement btn_ResearcherConsole;
 	
-	@FindBy(how = How.ID, using = "dataOwnerConsole") 
+	@FindBy(how = How.ID, using = "link_dataOwnerConsole") 
 	private WebElement btn_DataOwnerConsole;
 	
-	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Request Application')]") 
+	@FindBy(how = How.ID, using = "link_requestApplication") 
 	private WebElement btn_RequestApplication;
 	
-	@FindBy(how = How.XPATH, using = "//div[contains(text(),'Statistics')]") 
+	@FindBy(how = How.ID, using = "sel_statistics") 
 	private WebElement btn_Stats;
 	
-	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Votes Statistics')]") 
+	@FindBy(how = How.ID, using = "link_statistics") 
 	private WebElement btn_VotesStats;
 	
-	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Reviewed Cases Record')]") 
+	@FindBy(how = How.ID, using = "link_reviewedCases") 
 	private WebElement btn_ReviewedCases;
 	
 	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Dataset Catalog')]") 
 	private WebElement btn_DatasetCatalog;
 	
-	@FindBy(how = How.XPATH, using = "//div[contains(text(),'Request Help')]") 
+	@FindBy(how = How.ID, using = "sel_requestHelp") 
 	private WebElement btn_RequestHelp;
 	
-	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Create a Report')]") 
+	@FindBy(how = How.ID, using = "link_helpModal") 
 	private WebElement btn_CreateReport;
 	
-	@FindBy(how = How.XPATH, using = "//a[contains(text(),'List of Reports')]") 
+	@FindBy(how = How.ID, using = "link_reportList") 
 	private WebElement btn_ListReports;
 	
-	@FindBy(how = How.ID, using = "dacUserMail") 
+	@FindBy(how = How.ID, using = "sel_dacUser") 
 	private WebElement btn_User;
 	
-	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Sign out')]") 
+	@FindBy(how = How.ID, using = "link_signOut") 
 	private WebElement btn_SignOut;
 	
 	
@@ -88,6 +91,10 @@ WebDriver driver;
 	
 	public void clickOn_DacConsole() {
 		btn_DacConsole.click();
+	}
+	
+	public void clickOn_ChairConsole() {
+		btn_ChairConsole.click();
 	}
 	
 	public void clickOn_AdminConsole() {
@@ -168,19 +175,19 @@ WebDriver driver;
 	}
 	
 	public void waitForAdminToLoad() {
-        new WebDriverWait(driver, 30).until(ExpectedConditions.presenceOfElementLocated(By.id("adminConsole")));
+        new WebDriverWait(driver, 30).until(ExpectedConditions.presenceOfElementLocated(By.id("link_adminConsole")));
     }
 	
 	public void waitForChairToLoad() {
-        new WebDriverWait(driver, 30).until(ExpectedConditions.presenceOfElementLocated(By.id("chairConsole")));
+        new WebDriverWait(driver, 30).until(ExpectedConditions.presenceOfElementLocated(By.id("link_chairConsole")));
     }
 	
 	public void waitForDACToLoad() {
-        new WebDriverWait(driver, 30).until(ExpectedConditions.presenceOfElementLocated(By.id("dacConsole")));
+        new WebDriverWait(driver, 30).until(ExpectedConditions.presenceOfElementLocated(By.id("link_memberConsole")));
     }
 	
 	public void waitForDataOwnerToLoad() {
-        new WebDriverWait(driver, 30).until(ExpectedConditions.presenceOfElementLocated(By.id("dataOwnerConsole")));
+        new WebDriverWait(driver, 30).until(ExpectedConditions.presenceOfElementLocated(By.id("link_dataOwnerConsole")));
     }
 
 }

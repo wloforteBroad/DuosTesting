@@ -15,8 +15,14 @@ WebDriver driver;
 	    PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(how = How.XPATH, using = "//h2[contains(text(),'Collect votes for Data Access Congruence Review')]") 
+	@FindBy(how = How.ID, using = "collectAccess_title") 
 	private WebElement lbl_darCollectTitle;
+	
+	@FindBy(how = How.ID, using = "btn_collapse_accessCollectVotes") 
+	private WebElement btn_Collapse_Access;
+	
+	@FindBy(how = How.ID, using = "btn_collapse_rpCollectVotes") 
+	private WebElement btn_Collapse_RP;
 	
 	public boolean isUserOnDarCollectPage() {
 		try {

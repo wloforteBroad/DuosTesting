@@ -23,10 +23,10 @@ WebDriver driver;
 	@FindBy(how = How.XPATH, using = "//h2[contains(text(),'Data Use Limitations Review')]") 
 	private WebElement lbl_dulReview;
 	
-	@FindBy(how = How.ID, using = "searchDul") 
+	@FindBy(how = How.ID, using = "txt_search_chairConsoleDul") 
 	private WebElement txtbx_SearchConsent;
 	
-	@FindBy(how = How.ID, using = "searchDar") 
+	@FindBy(how = How.ID, using = "txt_search_chairConsoleAccess") 
 	private WebElement txtbx_SearchDar;
 	
 	@FindBy(how = How.ID, using = "dulPendingVoteCases") 

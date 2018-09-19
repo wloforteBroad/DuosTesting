@@ -19,16 +19,16 @@ WebDriver driver;
 	
 	String filePath = System.getProperty("user.dir") + FileReaderManager.getInstance().getConfigReader().getCorrectDatasetPath();
 	
-	@FindBy(how = How.CSS, using = ".upload") 
+	@FindBy(how = How.ID, using = "btn_uploadFile") 
 	private WebElement btn_Upload;
 	
 	@FindBy(how = How.XPATH, using = "//span[contains(text(),'Add Datasets')]") 
 	private WebElement lbl_Title;
 	
-	@FindBy(how = How.XPATH, using = "//label[contains(text(),'Overwrite existing Datasets')]") 
+	@FindBy(how = How.ID, using = "chk_overwrite") 
 	private WebElement lbl_Overwrite;
 	
-	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Add')]") 
+	@FindBy(how = How.ID, using = "btn_action") 
 	private WebElement btn_Add;
 	
 	public void upload_CorrectDataset() {
