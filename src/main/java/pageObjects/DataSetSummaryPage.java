@@ -18,7 +18,7 @@ WebDriver driver;
 	@FindBy(how = How.XPATH, using = "//h2[contains(text(),'Dataset Summary')]")
 	private WebElement lbl_Title;
 	
-	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Close')]")
+	@FindBy(how = How.ID, using = "btn_action")
 	private WebElement btn_Close;
 	
 	public boolean isUserOnDataSetSummary() {

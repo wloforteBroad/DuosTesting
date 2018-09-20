@@ -18,13 +18,13 @@ WebDriver driver;
 	@FindBy(how = How.XPATH, using = "//span[contains(text(),'Request Help')]") 
 	private WebElement lbl_Title;
 	
-	@FindBy(how = How.NAME, using = "helpSubject") 
+	@FindBy(how = How.ID, using = "txt_subject") 
 	private WebElement txtbx_Subject;
 	
-	@FindBy(how = How.NAME, using = "textarea") 
+	@FindBy(how = How.ID, using = "txt_description") 
 	private WebElement txtbx_Description;
 	
-	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Submit')]") 
+	@FindBy(how = How.ID, using = "btn_action") 
 	private WebElement btn_Submit;
 	
 	public boolean isUserOnRequestHelpPage() {

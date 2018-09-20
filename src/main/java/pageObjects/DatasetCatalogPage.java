@@ -18,13 +18,13 @@ WebDriver driver;
 	    PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(how = How.CSS, using = ".users-search") 
+	@FindBy(how = How.ID, using = "txt_search_datasetCatalog") 
 	private WebElement txtbx_SearchDataset;
 	
-	@FindBy(how = How.XPATH, using = "//h2[contains(text(),'Dataset Catalog')]")
+	@FindBy(how = How.ID, using = "datasetCatalog_title")
 	private WebElement lbl_Title;
 	
-	@FindBy(how = How.ID, using = "check-all")
+	@FindBy(how = How.ID, using = "all")
 	private WebElement chkbx_All;
 	
 	@FindBy(how = How.CSS, using = ".glyphicon-trash") 

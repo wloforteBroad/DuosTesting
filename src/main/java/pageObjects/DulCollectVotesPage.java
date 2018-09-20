@@ -18,33 +18,33 @@ WebDriver driver;
 	    PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(how = How.XPATH, using = "//h2[contains(text(),'Collect votes for Data Use Limitations Congruence Review')]") 
-	private WebElement lbl_dulCollectTitle;
+	@FindBy(how = How.ID, using = "collectDul_title") 
+	private WebElement lbl_Title;
 	
-	@FindBy(how = How.XPATH, using = "//*[@id=\"voteForm\"]/div[1]/div/div/label[1]") 
+	@FindBy(how = How.ID, using = "lbl_positive_dulCollect") 
 	private WebElement lbl_Yes;
 	
-	@FindBy(how = How.XPATH, using = "//*[@id=\"voteForm\"]/div[1]/div/div/label[2]") 
+	@FindBy(how = How.ID, using = "lbl_negative_dulCollect") 
 	private WebElement lbl_No;
 	
-	@FindBy(how = How.NAME, using = "inputRationale") 
+	@FindBy(how = How.ID, using = "txt_rationale_dulCollect") 
 	private WebElement txtbx_Rationale;
 	
-	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Vote')]") 
+	@FindBy(how = How.ID, using = "btn_submit_dulCollect") 
 	private WebElement btn_Vote;
 	
 	@FindBy(how = How.CLASS_NAME, using = "vote-update") 
 	private WebElement lbl_updated;
 	
-	@FindBy(how = How.CLASS_NAME, using = "sendReminder") 
+	@FindBy(how = How.CLASS_NAME, using = "vote-reminder") 
 	private WebElement btn_Reminder;
 	
-	@FindBys(@FindBy(css=".sendReminder"))
+	@FindBys(@FindBy(css=".vote-reminder"))
 	private List<WebElement> reminders;
 	
 	public boolean isUserOnDulCollectPage() {
 		try {
-			return lbl_dulCollectTitle.isDisplayed();
+			return lbl_Title.isDisplayed();
 		}catch(NoSuchElementException e) {
 			return false;
 		}	

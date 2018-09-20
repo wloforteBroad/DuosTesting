@@ -15,7 +15,7 @@ WebDriver driver;
 	    PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(how = How.XPATH, using = "//h2[contains(text(),'Data Use Limitations Congruence Preview')]") 
+	@FindBy(how = How.ID, using = "previewDul_title") 
 	private WebElement lbl_Title;
 	
 	public boolean isUserOnPreviewResultsPage() {

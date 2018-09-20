@@ -19,16 +19,16 @@ WebDriver driver;
 	    PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(how = How.CSS, using = ".users-search") 
+	@FindBy(how = How.ID, using = "txt_search_manageAccess") 
 	private WebElement txtbx_SearchDar;
 	
-	@FindBy(how = How.XPATH, using = "//div[contains(text(),'Create')]") 
+	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Cancel')]") 
 	private WebElement btn_Create;
 	
-	@FindBy(how = How.XPATH, using = "//span[contains(text(),'Cancel')]") 
+	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Cancel')]") 
 	private WebElement btn_Cancel;
 	
-	@FindBy(how = How.XPATH, using = "//span[contains(text(),'Summary')]") 
+	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Summary')]") 
 	private WebElement btn_Summary;
 	
 	@FindBy(how = How.ID, using = "previewOpen") 
@@ -46,13 +46,13 @@ WebDriver driver;
 	@FindBy(how = How.ID, using = "ownerApproval") 
 	private WebElement img_Approval;
 	
-	@FindBys(@FindBy(css=".ng-scope[ng-repeat*='searchAccess']"))
+	@FindBys(@FindBy(className="tableRow"))
 	private List<WebElement> allData;
 	
 	public void findDar(String darId) {
 		txtbx_SearchDar.clear();
 		txtbx_SearchDar.sendKeys(darId);
-	} 
+	}
 	
 	public void clickOn_Create() {
 		btn_Create.click();

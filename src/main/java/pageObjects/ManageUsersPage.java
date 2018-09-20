@@ -17,16 +17,16 @@ WebDriver driver;
 	    PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(how = How.CSS, using = ".users-search") 
+	@FindBy(how = How.ID, using = "txt_search_manageUsers") 
 	private WebElement txtbx_SearchUser;
 	
 	@FindBy(how = How.XPATH, using = "//span[contains(text(),'Member')]") 
 	private WebElement lbl_Member;
 	
-	@FindBy(how = How.CLASS_NAME, using = "admin-manage-buttons") 
+	@FindBy(how = How.NAME, using = "btn_editUser") 
 	private WebElement btn_Edit;
 	
-	@FindBys(@FindBy(css=".ng-scope[ng-repeat*='searchUsers']"))
+	@FindBys(@FindBy(className="tableRow"))
 	private List<WebElement> allUsers;
 	
 	

@@ -15,24 +15,24 @@ WebDriver driver;
 	    PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(how = How.XPATH, using = "//h2[contains(text(),'Data Use Limitations Congruence Review')]") 
-	private WebElement lbl_dulVotingTitle;
+	@FindBy(how = How.ID, using = "dulReview_title") 
+	private WebElement lbl_Title;
 	
-	@FindBy(how = How.XPATH, using = "//label[contains(text(),'Yes')]") 
+	@FindBy(how = How.ID, using = "lbl_positive_dulReview") 
 	private WebElement lbl_Yes;
 	
-	@FindBy(how = How.XPATH, using = "//label[contains(text(),'No')]") 
+	@FindBy(how = How.ID, using = "lbl_negative_dulReview") 
 	private WebElement lbl_No;
 	
-	@FindBy(how = How.NAME, using = "inputRationale") 
+	@FindBy(how = How.ID, using = "txt_rationaledulReview") 
 	private WebElement txtbx_Rationale;
 	
-	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Vote')]") 
+	@FindBy(how = How.ID, using = "btn_submit_dulReview") 
 	private WebElement btn_Vote;
 	
 	public boolean isUserOnVotingPage() {
 		try {
-			return lbl_dulVotingTitle.isDisplayed();
+			return lbl_Title.isDisplayed();
 		}catch(NoSuchElementException e) {
 			return false;
 		}	

@@ -14,7 +14,7 @@ WebDriver driver;
 	    PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(how = How.XPATH, using = "//h2[contains(text(),'Data Use Limitations - Results Record')]") 
+	@FindBy(how = How.ID, using = "recordsDul_title") 
 	private WebElement lbl_Title;
 	
 	public boolean isUserOnDulResultRecordPage() {

@@ -14,28 +14,28 @@ WebDriver driver;
 	    PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(how = How.ID, using = "access-yes") 
+	@FindBy(how = How.ID, using = "rad_negative_accessReview") 
 	private WebElement lbl_Access_Yes;
 	
-	@FindBy(how = How.ID, using = "access-no") 
+	@FindBy(how = How.ID, using = "rad_negative_accessReview") 
 	private WebElement lbl_Access_No;
 	
-	@FindBy(how = How.ID, using = "rp-yes") 
+	@FindBy(how = How.ID, using = "rad_positive_rpReview") 
 	private WebElement lbl_RP_Yes;
 	
-	@FindBy(how = How.ID, using = "rp-no") 
+	@FindBy(how = How.ID, using = "rad_negative_rpReview") 
 	private WebElement lbl_RP_No;
 	
-	@FindBy(how = How.ID, using = "access-rationale") 
+	@FindBy(how = How.ID, using = "txt_rationale_accessReview") 
 	private WebElement txtbx_Access_Rationale;
 	
-	@FindBy(how = How.ID, using = "rp-rationale") 
+	@FindBy(how = How.ID, using = "txt_rationale_rpReview") 
 	private WebElement txtbx_RP_Rationale;
 	
-	@FindBy(how = How.ID, using = "access-vote") 
+	@FindBy(how = How.ID, using = "btn_submit_accessReview") 
 	private WebElement btn_Access_Vote;
 	
-	@FindBy(how = How.ID, using = "rp-vote") 
+	@FindBy(how = How.ID, using = "btn_submit_rpReview") 
 	private WebElement btn_RP_Vote;
 	
 	public void clickOn_Access_Yes() {

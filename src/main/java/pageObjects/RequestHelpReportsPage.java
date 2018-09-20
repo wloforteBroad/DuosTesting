@@ -19,10 +19,10 @@ WebDriver driver;
 	    PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(how = How.XPATH, using = "//h2[contains(text(),'Request Help Reports')]") 
+	@FindBy(how = How.ID, using = "helpReports_title") 
 	private WebElement lbl_Title;
 	
-	@FindBy(how = How.CSS, using = ".users-search") 
+	@FindBy(how = How.ID, using = "txt_search_helpReports") 
 	private WebElement txtbx_SearchReport;
 	
 	public boolean isUserOnReportsPage() {

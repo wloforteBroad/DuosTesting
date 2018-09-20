@@ -17,16 +17,16 @@ WebDriver driver;
 	    PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Yes')]") 
+	@FindBy(how = How.ID, using = "btn_action") 
 	private WebElement btn_Yes;
 	
-	@FindBy(how = How.XPATH, using = "//button[contains(text(),'No')]") 
+	@FindBy(how = How.ID, using = "btn_cancel") 
 	private WebElement btn_No;
 	
-	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Ok')]") 
+	@FindBy(how = How.ID, using = "btn_action") 
 	private WebElement btn_Ok;
 	
-	@FindBy(how = How.CLASS_NAME, using = "regular-checkbox") 
+	@FindBy(how = How.ID, using = "chk_archiveCancelElection") 
 	private WebElement chkbx_Archive;
 	
 	public void clickOn_Yes() {

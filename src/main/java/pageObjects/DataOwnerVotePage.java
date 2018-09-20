@@ -20,19 +20,19 @@ WebDriver driver;
 	@FindBy(how = How.ID, using = "datasetSummary") 
 	private WebElement btn_DatasetSummary;
 	
-	@FindBy(how = How.ID, using = "yes") 
+	@FindBy(how = How.ID, using = "rad_dataOwnerReview_0") 
 	private WebElement btn_Approve;
 	
-	@FindBy(how = How.ID, using = "no") 
+	@FindBy(how = How.ID, using = "rad_dataOwnerReview_1")
 	private WebElement btn_Disapprove;
 	
-	@FindBy(how = How.ID, using = "concern") 
+	@FindBy(how = How.ID, using = "rad_dataOwnerReview_2") 
 	private WebElement btn_RaiseConcern;
 	
-	@FindBy(how = How.NAME, using = "inputRationale") 
+	@FindBy(how = How.NAME, using = "txt_rationale_dataOwnerReview") 
 	private WebElement txtbx_Rationale;
 	
-	@FindBy(how = How.ID, using = "btn_vote") 
+	@FindBy(how = How.ID, using = "btn_submit_dataOwnerReview") 
 	private WebElement btn_Vote;
 	
 	public void clickOn_AppSummary() {

@@ -17,16 +17,16 @@ WebDriver driver;
 	    PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(how = How.XPATH, using = "//h2[contains(text(),'Dataset Access Request Review')]") 
-	private WebElement lbl_dulReview;
+	@FindBy(how = How.ID, using = "dataOwnerConsole_title") 
+	private WebElement lbl_Title;
 	
-	@FindBy(how = How.ID, using = "searchDataOwner") 
+	@FindBy(how = How.ID, using = "txt_search_dataOwnerConsole") 
 	private WebElement txtbx_SearchCase;
 	
-	@FindBy(how = How.ID, using = "btn_vote") 
+	@FindBy(how = How.ID, using = "dataOwnerConsole_btn_vote") 
 	private WebElement btn_Vote;
 	
-	@FindBys(@FindBy(id="pendingCases"))
+	@FindBys(@FindBy(className="tableRow"))
 	private List<WebElement> allCases;
 	
 	public void clickOn_Vote() {

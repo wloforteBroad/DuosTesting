@@ -21,10 +21,10 @@ WebDriver driver;
 	    PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(how = How.CSS, using = ".users-search") 
+	@FindBy(how = How.ID, using = "txt_search_manageDul") 
 	private WebElement txtbx_SearchConsent;
 	
-	@FindBy(how = How.XPATH, using = "//span[contains(text(),'Add Data Use Limitations')]") 
+	@FindBy(how = How.ID, using = "manageDul_title") 
 	private WebElement btn_AddDul;
 	
 	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Create')]") 
@@ -60,7 +60,7 @@ WebDriver driver;
 	@FindBy(how = How.ID, using = "previewDul") 
 	private WebElement btn_PreviewDul;
 	
-	@FindBys(@FindBy(css=".ng-scope[ng-repeat*='searchDUL']"))
+	@FindBys(@FindBy(className="tableRow"))
 	private List<WebElement> allData;
 	
 	public void findConsent(String consentName) {
