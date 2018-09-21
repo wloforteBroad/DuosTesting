@@ -19,8 +19,11 @@ WebDriver driver;
 	
 	String filePath = System.getProperty("user.dir") + FileReaderManager.getInstance().getConfigReader().getCorrectDatasetPath();
 	
-	@FindBy(how = How.XPATH, using = "//span[contains(text(),'Add Data Use Limitations')]") 
+	@FindBy(how = How.ID, using = "addDulModal_title") 
 	private WebElement lbl_Title;
+	
+	@FindBy(how = How.ID, using = "addDulModal_description") 
+	private WebElement lbl_Description;
 	
 	@FindBy(how = How.ID, using = "txt_consentId") 
 	private WebElement txtbx_UniqueId;
@@ -45,6 +48,9 @@ WebDriver driver;
 	
 	@FindBy(how = How.ID, using = "modal_alert") 
 	private WebElement error_area;
+	
+	private String title = "Add Data Use Limitations";
+	private String description = "Catalog a Data Use Limitations Record";
 	
 	public void upload_File() {
 		btn_Upload.sendKeys(filePath);

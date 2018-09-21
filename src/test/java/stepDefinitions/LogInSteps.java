@@ -63,7 +63,7 @@ public class LogInSteps {
 	public void user_navigates_to_Admin_Console() throws Throwable {
 		headerPage.waitForAdminToLoad();
 		headerPage.clickOn_AdminConsole();
-	    assert adminConsolePage.isUserGreetDisplayed();
+	    assert adminConsolePage.isUserOnAdminConsole();
 	}
 
 }

@@ -30,13 +30,13 @@ public class ChairpersonSteps {
 	@Given("^user clicks on Collect Votes for a given DUL Election$")
 	public void user_clicks_on_Collect_Votes_for_a_given_DUL_Election() throws Throwable {
 	    chairConsolePage.findConsent(FileReaderManager.getInstance().getConfigReader().getConsentIdMember());
-	    chairConsolePage.clickOn_CollectVotes();
+	    chairConsolePage.clickOn_DulCollectVotes();
 	}
 	
 	@Given("^The user already voted as Member$")
 	public void the_user_already_voted_as_Member() throws Throwable {
 		chairConsolePage.findConsent(FileReaderManager.getInstance().getConfigReader().getConsentIdMember());
-	    chairConsolePage.clickOn_Vote();
+	    chairConsolePage.clickOn_DulVote();
 	    dulVotingPage.clickOn_Yes();
 	    dulVotingPage.clickOn_Vote();
 		modalPage.waitForModalToLoad();

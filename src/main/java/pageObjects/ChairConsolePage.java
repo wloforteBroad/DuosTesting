@@ -20,8 +20,23 @@ WebDriver driver;
 	    PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(how = How.XPATH, using = "//h2[contains(text(),'Data Use Limitations Review')]") 
-	private WebElement lbl_dulReview;
+	@FindBy(how = How.ID, using = "chairConsole_title") 
+	private WebElement lbl_Title;
+	
+	@FindBy(how = How.ID, using = "chairConsole_description") 
+	private WebElement lbl_Description;
+	
+	@FindBy(how = How.ID, using = "chairConsoleDul_title") 
+	private WebElement lbl_DulTitle;
+	
+	@FindBy(how = How.ID, using = "chairConsoleDul_description") 
+	private WebElement lbl_DulDescription;
+	
+	@FindBy(how = How.ID, using = "chairConsoleAccess_title") 
+	private WebElement lbl_AccessTitle;
+	
+	@FindBy(how = How.ID, using = "chairConsoleAccess_description") 
+	private WebElement lbl_AccessDescription;
 	
 	@FindBy(how = How.ID, using = "txt_search_chairConsoleDul") 
 	private WebElement txtbx_SearchConsent;
@@ -32,28 +47,33 @@ WebDriver driver;
 	@FindBy(how = How.ID, using = "dulPendingVoteCases") 
 	private WebElement lbl_dulPendingVotesFlag;
 	
-	@FindBy(how = How.XPATH, using = "//span[contains(text(),'Vote')]") 
-	private WebElement btn_Vote;
+	@FindBy(how = How.NAME, using = "btn_voteDul") 
+	private WebElement btn_DulVote;
 	
-	@FindBy(how = How.XPATH, using = "//span[contains(text(),'Edit')]") 
-	private WebElement btn_Edit;
+	@FindBy(how = How.NAME, using = "btn_voteDul") 
+	private WebElement btn_DulEdit;
 	
-	@FindBy(how = How.XPATH, using = "//span[contains(text(),'Collect Votes')]") 
-	private WebElement btn_CollectVotes;
+	@FindBy(how = How.NAME, using = "btn_collectDul") 
+	private WebElement btn_DulCollectVotes;
 	
-	@FindBys(@FindBy(css=".ng-scope[ng-repeat*='searchDULCases']"))
+	@FindBys(@FindBy(className="tableRow"))
 	private List<WebElement> allDuls;
 	
-	public void clickOn_Vote() {
-		btn_Vote.click();
+	private String dulTitle = "Data Use Limitations Review";
+	private String dulDescription = "Were data use limitations accurately converted to a structured format?";
+	private String darTitle = "Data Access Request Review";
+	private String darDescription = "Should data access be granted to this applicant?";
+	
+	public void clickOn_DulVote() {
+		btn_DulVote.click();
 	}
 	
-	public void clickOn_Edit() {
-		btn_Edit.click();
+	public void clickOn_DulEdit() {
+		btn_DulEdit.click();
 	}
 	
-	public void clickOn_CollectVotes() {
-		btn_CollectVotes.click();
+	public void clickOn_DulCollectVotes() {
+		btn_DulCollectVotes.click();
 	}
 	
 	public void findConsent(String consent) {

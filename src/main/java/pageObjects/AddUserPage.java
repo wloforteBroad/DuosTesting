@@ -14,6 +14,12 @@ WebDriver driver;
 	    PageFactory.initElements(driver, this);
 	}
 	
+	@FindBy(how = How.ID, using = "addUserModal_title") 
+	private WebElement lbl_Title;
+	
+	@FindBy(how = How.ID, using = "addUserModal_description") 
+	private WebElement lbl_Description;
+	
 	@FindBy(how = How.ID, using = "txt_name") 
 	private WebElement txtbx_Name;
 	
@@ -46,6 +52,9 @@ WebDriver driver;
 	
 	@FindBy(how = How.ID, using = "btn_cancel") 
 	private WebElement btn_Cancel;
+	
+	private String title = "Add User";
+	private String description = "Catalog a new User in the system";
 	
 	public void enter_Name(String name) {
 		txtbx_Name.sendKeys(name);

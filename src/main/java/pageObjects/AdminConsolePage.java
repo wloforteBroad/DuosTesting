@@ -16,6 +16,9 @@ public class AdminConsolePage {
 	@FindBy(how = How.ID, using = "adminConsole_title")
 	private WebElement lbl_Title;
 	
+	@FindBy(how = How.ID, using = "adminConsole_description")
+	private WebElement lbl_Description;
+	
 	@FindBy(how = How.ID, using = "btn_manageDUL") 
 	private WebElement btn_ManageDul;
 	
@@ -34,7 +37,20 @@ public class AdminConsolePage {
 	@FindBy(how = How.ID, using = "btn_addDataset") 
 	private WebElement btn_AddDatasets;
 	
-	public boolean isUserGreetDisplayed() {
+	@FindBy(how = How.ID, using = "btn_addDataset") 
+	private WebElement btn_ElectionTimeout;
+	
+	@FindBy(how = How.ID, using = "btn_addDataset") 
+	private WebElement btn_InvalidRestrictions;
+	
+	@FindBy(how = How.ID, using = "btn_addDataset") 
+	private WebElement btn_ManageOntologies;
+	
+	@FindBy(how = How.ID, using = "btn_addDataset") 
+	private WebElement btn_AddOntologies;
+	
+	
+	public boolean isUserOnAdminConsole() {
 		try {
 			return lbl_Title.isDisplayed();
 		}catch(NoSuchElementException e) {

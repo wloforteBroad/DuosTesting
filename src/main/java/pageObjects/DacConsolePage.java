@@ -18,8 +18,23 @@ WebDriver driver;
 	    PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(how = How.XPATH, using = "//h2[contains(text(),'Data Use Limitations Review')]") 
-	private WebElement lbl_dulReview;
+	@FindBy(how = How.ID, using = "memberConsole_title") 
+	private WebElement lbl_Title;
+	
+	@FindBy(how = How.ID, using = "memberConsole_description") 
+	private WebElement lbl_Description;
+	
+	@FindBy(how = How.ID, using = "memberConsoleDul_title") 
+	private WebElement lbl_DulTitle;
+	
+	@FindBy(how = How.ID, using = "memberConsoleDul_description") 
+	private WebElement lbl_DulDescription;
+	
+	@FindBy(how = How.ID, using = "memberConsoleAccess_title") 
+	private WebElement lbl_AccessTitle;
+	
+	@FindBy(how = How.ID, using = "memberConsoleAccess_description") 
+	private WebElement lbl_AccessDescription;
 	
 	@FindBy(how = How.ID, using = "txt_search_memberConsoleDul") 
 	private WebElement txtbx_SearchConsent;
@@ -27,36 +42,36 @@ WebDriver driver;
 	@FindBy(how = How.ID, using = "txt_search_memberConsoleAccess") 
 	private WebElement txtbx_SearchDar;
 	
-	@FindBy(how = How.ID, using = "btn_dul_vote") 
+	@FindBy(how = How.NAME, using = "btn_voteDul") 
 	private WebElement btn_Dul_Vote;
 	
-	@FindBy(how = How.ID, using = "btn_dul_edit") 
+	@FindBy(how = How.NAME, using = "btn_voteDul") 
 	private WebElement btn_Dul_Edit;
 	
-	@FindBy(how = How.ID, using = "btn_dar_vote") 
+	@FindBy(how = How.NAME, using = "btn_voteAccess") 
 	private WebElement btn_Dar_Vote;
 	
-	@FindBy(how = How.ID, using = "btn_dar_edit") 
+	@FindBy(how = How.NAME, using = "btn_voteAccess") 
 	private WebElement btn_Dar_Edit;
 	
-	@FindBy(how = How.XPATH, using = "//span[contains(text(),'Collect Votes')]") 
-	private WebElement btn_CollectVotes;
 	
-	@FindBy(how = How.XPATH, using = "//span[contains(text(),'Editable')]") 
-	private WebElement lbl_Editable;
+	@FindBy(how = How.NAME, using = "statusDul") 
+	private WebElement lbl_Status;
 	
-	@FindBy(how = How.XPATH, using = "//span[contains(text(),'Pending')]") 
-	private WebElement lbl_Pending;
-	
-	@FindBy(how = How.XPATH, using = "//span[contains(text(),'ORSP-627')]") 
-	private WebElement lbl_Consent;
-	
-	@FindBys(@FindBy(css=".ng-scope[ng-repeat*='searchDULCases']"))
+	@FindBys(@FindBy(className="tableRowDul"))
 	private List<WebElement> allDuls;
+	
+	@FindBys(@FindBy(className="tableRowAccess"))
+	private List<WebElement> allDars;
+	
+	private String dulTitle = "Data Use Limitations Review";
+	private String dulDescription = "Were data use limitations accurately converted to a structured format?";
+	private String darTitle = "Data Access Request Review";
+	private String darDescription = "Should data access be granted to this applicant?";
 	
 	public boolean isUserOnDacConsole() {
 		try {
-			return lbl_dulReview.isDisplayed();
+			return lbl_Title.isDisplayed();
 		}catch(NoSuchElementException e) {
 			return false;
 		}	
@@ -76,10 +91,6 @@ WebDriver driver;
 	
 	public void clickOn_Dar_Edit() {
 		btn_Dar_Edit.click();
-	}
-	
-	public void clickOn_CollectVotes() {
-		btn_CollectVotes.click();
 	}
 	
 	public void findConsent(String consent) {
@@ -106,7 +117,7 @@ WebDriver driver;
 	
 	public boolean isVoteEditable() {
 		try {
-			return lbl_Editable.isDisplayed();
+			return lbl_Status.getText().equals("Editable");
 		}catch(NoSuchElementException e) {
 			return false;
 		}	
@@ -114,30 +125,18 @@ WebDriver driver;
 	
 	public boolean isVotePending() {
 		try {
-			return lbl_Pending.isDisplayed();
+			return lbl_Status.getText().equals("Pending");
 		}catch(NoSuchElementException e) {
 			return false;
-		}	
-	}
-	
-	public boolean isCollectVotesDisplayed() {
-		try {
-			return btn_CollectVotes.isDisplayed();
-		}catch(NoSuchElementException e) {
-			return false;
-		}	
-	}
-	
-	public boolean isConsentClosed() {
-		try {
-			return lbl_Consent.isDisplayed();
-		}catch(NoSuchElementException e) {
-			return true;
 		}	
 	}
 	
 	public List<WebElement> getAllDuls() {
         return allDuls;
+    }
+	
+	public List<WebElement> getAllDars() {
+        return allDars;
     }
 
 }

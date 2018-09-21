@@ -22,14 +22,20 @@ WebDriver driver;
 	@FindBy(how = How.ID, using = "btn_uploadFile") 
 	private WebElement btn_Upload;
 	
-	@FindBy(how = How.XPATH, using = "//span[contains(text(),'Add Datasets')]") 
+	@FindBy(how = How.ID, using = "addDatasetModal_title") 
 	private WebElement lbl_Title;
+	
+	@FindBy(how = How.ID, using = "addDatasetModal_description") 
+	private WebElement lbl_Description;
 	
 	@FindBy(how = How.ID, using = "chk_overwrite") 
 	private WebElement lbl_Overwrite;
 	
 	@FindBy(how = How.ID, using = "btn_action") 
 	private WebElement btn_Add;
+	
+	private String title = "Add Datasets";
+	private String description = "Store Datasets associated with Data Use Limitations";
 	
 	public void upload_CorrectDataset() {
 		btn_Upload.sendKeys(filePath);
