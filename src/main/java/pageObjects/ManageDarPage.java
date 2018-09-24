@@ -22,28 +22,28 @@ WebDriver driver;
 	@FindBy(how = How.ID, using = "txt_search_manageAccess") 
 	private WebElement txtbx_SearchDar;
 	
-	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Cancel')]") 
+	@FindBy(how = How.NAME, using = "btn_create") 
 	private WebElement btn_Create;
 	
-	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Cancel')]") 
+	@FindBy(how = How.NAME, using = "btn_cancel") 
 	private WebElement btn_Cancel;
 	
-	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Summary')]") 
+	@FindBy(how = How.NAME, using = "btn_summary") 
 	private WebElement btn_Summary;
 	
-	@FindBy(how = How.ID, using = "previewOpen") 
+	@FindBy(how = How.NAME, using = "link_open") 
 	private WebElement btn_StatusOpen;
 	
-	@FindBy(how = How.ID, using = "previewCanceled") 
+	@FindBy(how = How.NAME, using = "link_canceled") 
 	private WebElement btn_StatusCanceled;
 	
-	@FindBy(how = How.ID, using = "previewReviewed") 
+	@FindBy(how = How.NAME, using = "link_reviewed") 
 	private WebElement btn_StatusReviewed;
 	
-	@FindBy(how = How.ID, using = "previewUnReviewed") 
+	@FindBy(how = How.NAME, using = "link_unreviewed") 
 	private WebElement btn_StatusUnReviewed;
 	
-	@FindBy(how = How.ID, using = "ownerApproval") 
+	@FindBy(how = How.NAME, using = "flag_darId") 
 	private WebElement img_Approval;
 	
 	@FindBys(@FindBy(className="tableRow"))

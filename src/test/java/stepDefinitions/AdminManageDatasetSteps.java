@@ -123,7 +123,9 @@ public class AdminManageDatasetSteps {
 	
 	@Then("^the uploaded dataset is shown in Dataset Catalog Page$")
 	public void the_uploaded_dataset_is_shown_in_Dataset_Catalog_Page() throws Throwable {
-		assert datasetCatalogPage.isDatasetOnTable();
+		Thread.sleep(1000);
+	    datasetCatalogPage.findDataset(FileReaderManager.getInstance().getConfigReader().getDatasetId());
+	    assert datasetCatalogPage.getAllDatasets().size() == 1;
 	}
 	
 	@Then("^the file should be downloaded$")
@@ -154,7 +156,7 @@ public class AdminManageDatasetSteps {
 	@Then("^correct translated DUL should appear in the Modal$")
 	public void correct_translated_DUL_should_appear_in_the_Modal() throws Throwable {
 	    //assert FileReaderManager.getInstance().getConfigReader().getStructuredDul().replaceAll("<br */?>", "\n").equals(datasetCatalogPage.getText());
-		assert "TranslateMock".equals(datasetCatalogPage.getText());
+		assert "TranslateMock".equals(datasetCatalogPage.getTranslatedText());
 	}
 
 }

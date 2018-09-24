@@ -58,7 +58,7 @@ WebDriver driver;
 	@FindBy(how = How.ID, using = "link_reviewedCases") 
 	private WebElement btn_ReviewedCases;
 	
-	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Dataset Catalog')]") 
+	@FindBy(how = How.ID, using = "link_datasetCatalog") 
 	private WebElement btn_DatasetCatalog;
 	
 	@FindBy(how = How.ID, using = "sel_requestHelp") 

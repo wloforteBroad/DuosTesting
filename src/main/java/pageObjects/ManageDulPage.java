@@ -24,25 +24,28 @@ WebDriver driver;
 	@FindBy(how = How.ID, using = "txt_search_manageDul") 
 	private WebElement txtbx_SearchConsent;
 	
-	@FindBy(how = How.ID, using = "manageDul_title") 
+	@FindBy(how = How.ID, using = "btn_addDUL") 
 	private WebElement btn_AddDul;
 	
-	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Create')]") 
+	@FindBy(how = How.ID, using = "manageDul_description") 
+	private WebElement btn_Description;
+	
+	@FindBy(how = How.NAME, using = "btn_create") 
 	private WebElement btn_Create;
 	
-	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Cancel')]") 
+	@FindBy(how = How.NAME, using = "btn_cancel") 
 	private WebElement btn_Cancel;
 	
-	@FindBy(how = How.ID, using = "previewOpen") 
+	@FindBy(how = How.NAME, using = "link_open") 
 	private WebElement btn_StatusOpen;
 	
-	@FindBy(how = How.ID, using = "previewCanceled") 
+	@FindBy(how = How.NAME, using = "link_canceled") 
 	private WebElement btn_StatusCanceled;
 	
-	@FindBy(how = How.ID, using = "previewReviewed") 
+	@FindBy(how = How.NAME, using = "link_reviewed") 
 	private WebElement btn_StatusReviewed;
 	
-	@FindBy(how = How.ID, using = "previewUnReviewed") 
+	@FindBy(how = How.NAME, using = "link_unreviewed") 
 	private WebElement btn_StatusUnReviewed;
 	
 	@FindBy(how = How.CLASS_NAME, using = "flagged") 
@@ -54,14 +57,17 @@ WebDriver driver;
 	@FindBy(how = How.CLASS_NAME, using = "glyphicon-trash") 
 	private WebElement btn_Delete;
 	
-	@FindBy(how = How.ID, using = "versionNumber") 
+	@FindBy(how = How.NAME, using = "version") 
 	private WebElement lbl_versionNumber;
 	
-	@FindBy(how = How.ID, using = "previewDul") 
+	@FindBy(how = How.NAME, using = "consentId") 
 	private WebElement btn_PreviewDul;
 	
 	@FindBys(@FindBy(className="tableRow"))
 	private List<WebElement> allData;
+	
+	private String title = "Manage Data Use Limitations";
+	private String description = "Select and manage Data Use Limitations for DAC review";
 	
 	public void findConsent(String consentName) {
 		txtbx_SearchConsent.clear();
@@ -175,7 +181,7 @@ WebDriver driver;
 	}
 	
 	public void waitForElementToLoad() {
-        new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.id("versionNumber")));
+        new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.name("version")));
     }
 
 }

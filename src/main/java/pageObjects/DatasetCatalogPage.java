@@ -24,6 +24,9 @@ WebDriver driver;
 	@FindBy(how = How.ID, using = "datasetCatalog_title")
 	private WebElement lbl_Title;
 	
+	@FindBy(how = How.ID, using = "datasetCatalog_description")
+	private WebElement lbl_Description;
+	
 	@FindBy(how = How.ID, using = "all")
 	private WebElement chkbx_All;
 	
@@ -33,14 +36,11 @@ WebDriver driver;
 	@FindBy(how = How.CSS, using = ".glyphicon-ban-circle") 
 	private WebElement btn_Enable;
 
-	@FindBy(how = How.ID, using = "translatedDul") 
+	@FindBy(how = How.ID, using = "txt_translatedRestrictions") 
 	private WebElement txt_translatedDul;
 	
 	@FindBy(how = How.CSS, using = ".glyphicon-ok-circle") 
 	private WebElement btn_Disable;
-	
-	@FindBy(how = How.XPATH, using = "//p[contains(text(),'SC-20659')]") 
-	private WebElement lbl_DatasetId;
 	
 	@FindBy(how = How.XPATH, using = "//span[contains(text(),'Download selection')]") 
 	private WebElement btn_Download;
@@ -48,8 +48,11 @@ WebDriver driver;
 	@FindBy(how = How.XPATH, using = "//span[contains(text(),'Translated Use Restriction')]") 
 	private WebElement btn_TranslatedDul;
 	
-	@FindBys(@FindBy(css=".ng-scope[ng-repeat*='searchDataset']"))
+	@FindBys(@FindBy(className="tableRow"))
 	private List<WebElement> allDatasets;
+	
+	private String title = "Dataset Catalog";
+	private String description = "Datasets with an associated DUL to apply for secondary use.";
 	
 	public void findDataset(String searchTerm) {
 		txtbx_SearchDataset.clear();
@@ -80,21 +83,13 @@ WebDriver driver;
 		btn_TranslatedDul.click();
 	}
 	
-	public String getText() {
+	public String getTranslatedText() {
 		return txt_translatedDul.getText();
 	}
 	
 	public boolean isUserOnDatasetCatalog() {
 		try {
 			return lbl_Title.isDisplayed();
-		}catch(NoSuchElementException e) {
-			return false;
-		}	
-	}
-	
-	public boolean isDatasetOnTable() {
-		try {
-			return lbl_DatasetId.isDisplayed();
 		}catch(NoSuchElementException e) {
 			return false;
 		}	

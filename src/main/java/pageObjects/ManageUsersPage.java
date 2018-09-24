@@ -20,8 +20,8 @@ WebDriver driver;
 	@FindBy(how = How.ID, using = "txt_search_manageUsers") 
 	private WebElement txtbx_SearchUser;
 	
-	@FindBy(how = How.XPATH, using = "//span[contains(text(),'Member')]") 
-	private WebElement lbl_Member;
+	@FindBys(@FindBy(name="userRoles"))
+	private List<WebElement> allRoles;
 	
 	@FindBy(how = How.NAME, using = "btn_editUser") 
 	private WebElement btn_Edit;

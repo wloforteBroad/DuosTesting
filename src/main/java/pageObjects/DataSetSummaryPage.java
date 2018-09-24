@@ -15,7 +15,7 @@ WebDriver driver;
 	    PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(how = How.XPATH, using = "//h2[contains(text(),'Dataset Summary')]")
+	@FindBy(how = How.ID, using = "datasetSummaryModal_title")
 	private WebElement lbl_Title;
 	
 	@FindBy(how = How.ID, using = "btn_action")

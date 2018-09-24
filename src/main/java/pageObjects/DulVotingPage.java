@@ -18,6 +18,9 @@ WebDriver driver;
 	@FindBy(how = How.ID, using = "dulReview_title") 
 	private WebElement lbl_Title;
 	
+	@FindBy(how = How.CLASS_NAME, using = "accordion-title") 
+	private WebElement lbl_Description;
+	
 	@FindBy(how = How.ID, using = "lbl_positive_dulReview") 
 	private WebElement lbl_Yes;
 	
@@ -29,6 +32,9 @@ WebDriver driver;
 	
 	@FindBy(how = How.ID, using = "btn_submit_dulReview") 
 	private WebElement btn_Vote;
+	
+	private String title = "Data Use Limitations Congruence Review";
+	private String description = "Were the data use limitations in the Data Use Letter accurately converted to structured limitations?";
 	
 	public boolean isUserOnVotingPage() {
 		try {

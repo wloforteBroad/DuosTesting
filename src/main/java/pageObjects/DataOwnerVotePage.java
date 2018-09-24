@@ -14,10 +14,10 @@ WebDriver driver;
 	    PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(how = How.ID, using = "appSummary") 
+	@FindBy(how = How.ID, using = "link_applicationSummary") 
 	private WebElement btn_AppSummary;
 	
-	@FindBy(how = How.ID, using = "datasetSummary") 
+	@FindBy(how = How.ID, using = "link_datasetSummary") 
 	private WebElement btn_DatasetSummary;
 	
 	@FindBy(how = How.ID, using = "rad_dataOwnerReview_0") 

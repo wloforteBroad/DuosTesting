@@ -39,7 +39,7 @@ WebDriver driver;
 	@FindBy(how = How.CLASS_NAME, using = "vote-reminder") 
 	private WebElement btn_Reminder;
 	
-	@FindBys(@FindBy(css=".vote-reminder"))
+	@FindBys(@FindBy(className="vote-reminder"))
 	private List<WebElement> reminders;
 	
 	public boolean isUserOnDulCollectPage() {

@@ -29,6 +29,18 @@ public class GoogleSignInPage {
 	@FindBy(how = How.ID, using = "passwordNext") 
 	private WebElement btn_PasswordNext;
 	
+	@FindBy(how = How.NAME, using = "Email") 
+	private WebElement txtbx_UserNameOld;
+	
+	@FindBy(how = How.ID, using = "next") 
+	private WebElement btn_NextOld;
+	
+	@FindBy(how = How.NAME, using = "Passwd") 
+	private WebElement txtbx_PasswordOld;
+	
+	@FindBy(how = How.NAME, using = "signIn") 
+	private WebElement btn_PasswordNextOld;
+	
 	
 	public void enter_UserName(String name) {
 		txtbx_UserName.sendKeys(name);
@@ -46,15 +58,41 @@ public class GoogleSignInPage {
 		btn_PasswordNext.click();
 	}
 	
+	public void enter_UserNameOld(String name) {
+		txtbx_UserNameOld.sendKeys(name);
+	}
+	
+	public void enter_PasswordOld(String pass) {
+		txtbx_PasswordOld.sendKeys(pass);
+	}
+	
+	public void clickOn_NextOld() {
+		btn_NextOld.click();
+	}
+	
+	public void clickOn_PasswordNextOld() {
+		btn_PasswordNextOld.click();
+	}
+	
 	public void signIn(String user, String password) throws InterruptedException {
 
 			Thread.sleep(1000);
-			enter_UserName(user);
-			clickOn_Next();
-			new WebDriverWait(driver, 30).until(ExpectedConditions.presenceOfElementLocated(By.name("password")));
-			Thread.sleep(1000);
-			enter_Password(password);
-			clickOn_PasswordNext();
+			if (txtbx_UserName.isDisplayed()) {
+				enter_UserName(user);
+				clickOn_Next();
+				new WebDriverWait(driver, 30).until(ExpectedConditions.presenceOfElementLocated(By.name("password")));
+				Thread.sleep(1000);
+				enter_Password(password);
+				clickOn_PasswordNext();
+			} else {
+				enter_UserNameOld(user);
+				clickOn_NextOld();
+				new WebDriverWait(driver, 30).until(ExpectedConditions.presenceOfElementLocated(By.name("Passwd")));
+				Thread.sleep(1000);
+				enter_PasswordOld(password);
+				clickOn_PasswordNextOld();
+			}
+
 
 	}
 	

@@ -15,7 +15,7 @@ WebDriver driver;
 	    PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(how = How.XPATH, using = "//span[contains(text(),'Request Help')]") 
+	@FindBy(how = How.ID, using = "helpModal_title") 
 	private WebElement lbl_Title;
 	
 	@FindBy(how = How.ID, using = "txt_subject") 
