@@ -5,7 +5,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
-import managers.FileReaderManager;
 
 
 public class HomePage {
@@ -19,10 +18,6 @@ public class HomePage {
 	
 	@FindBy(how = How.XPATH, using = "//span[contains(text(),'Sign in with Google')]") 
 	private WebElement btn_SignInGoogle;
-	
-	public void navigateTo_HomePage() {
-		driver.get(FileReaderManager.getInstance().getConfigReader().getApplicationUrl());
-	}
 	
 	public void clickOn_SignInGoogle() {
 		btn_SignInGoogle.click();

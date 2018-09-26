@@ -9,7 +9,7 @@ Feature: DAC MEMBER CAPABILITIES
 	- view all DUL pending cases for review in the Console.
 	- view all DAR pending cases for review in the Console.
 	- search DAR/DUL elections in console.
-	
+
 	@dacmemberDul
 	Scenario: DAC Member Vote - Succesful DUL vote
   	Given The DAC Member is logged in and in the DAC Console 

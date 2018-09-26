@@ -169,7 +169,7 @@ public class AdminManageDulSteps {
 	
 	@Then("^The user should see the error message$")
 	public void the_user_should_see_the_error_message() throws Throwable {
-	    assert addDulPage.isErrorDisplayed();
+	    assert modalPage.isErrorDisplayed();
 	}
 	
 	@Then("^cancel button should be disabled$")

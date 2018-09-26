@@ -14,26 +14,24 @@ Feature: ADMIN MANAGE DUL
 	- View Election Preview
 	- Search DUL
 
-
   Scenario: Manage DUL - View List of DUL's
   	Given The user is logged in and in the Admin Console
     When The user clicks on Manage Data Use Limitations
     Then the user should see a list of Data Use Limitations
-  
+    
   @addDul
   Scenario: Manage DUL - Succesfully Add DUL
   	Given The user is logged in and in the Admin Console
     And The user clicks on Manage Data Use Limitations
     And The user clicks on Add Data Use Limitations
     When The user completes the form and submits
-    Then the user should see the new DUL on the Manage Dul list
-    
+    Then the user should see the new DUL on the Manage Dul list 
   Scenario: Manage DUL - Cancel button disabled on empty form
   	Given The user is logged in and in the Admin Console
     And The user clicks on Manage Data Use Limitations
     When The user clicks on Add Data Use Limitations
     Then cancel button should be disabled
-    
+ 
   @deleteDul
   Scenario: Manage DUL - Add DUL with same Name
   	Given The user is logged in and in the Admin Console
@@ -41,7 +39,7 @@ Feature: ADMIN MANAGE DUL
     And The user clicks on Add Data Use Limitations
     When The user completes the form and submits
     Then The user should see the error message
-    
+
   Scenario: Manage DUL - Add DUL with wrong sDUL Json
   	Given The user is logged in and in the Admin Console
     And The user clicks on Manage Data Use Limitations

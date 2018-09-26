@@ -146,7 +146,7 @@ public class Hooks {
 	@After (order = 0)
 	public void AfterSteps() {
 		System.out.println("CLOSING DRIVER---------------------------------------------------------");
-		testContext.getWebDriverManager().closeDriver();
+		testContext.getWebDriverManager().quitDriver();
 	}
 	
 	@After(order = 1)

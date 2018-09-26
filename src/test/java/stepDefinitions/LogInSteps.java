@@ -28,7 +28,7 @@ public class LogInSteps {
 	
 	@Given("^The user is in the Home Page$")
 	public void the_user_is_in_the_Home_Page() {
-		homePage.navigateTo_HomePage();
+		testContext.getWebDriverManager().navigateToUrl(FileReaderManager.getInstance().getConfigReader().getApplicationUrl());
 	}
 
 	@Given("^user navigates to Login Page$")

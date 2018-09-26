@@ -71,15 +71,15 @@ WebDriver driver;
 	}
 	
 	public void voteYes(String rationale) {
-		lbl_Yes.click();
-		txtbx_Rationale.sendKeys(rationale);
-		btn_Vote.click();
+		clickOn_Yes();
+		enter_Rationale(rationale);
+		clickOn_Vote();
 	}
 	
 	public void voteNo(String rationale) {
-		lbl_No.click();
-		txtbx_Rationale.sendKeys(rationale);
-		btn_Vote.click();
+		clickOn_No();
+		enter_Rationale(rationale);
+		clickOn_Vote();
 	}
 	
 	public String getRationale() {

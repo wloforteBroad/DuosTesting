@@ -4,6 +4,7 @@ import cucumber.TestContext;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import managers.FileReaderManager;
 import pageObjects.AddDulPage;
 import pageObjects.AdminConsolePage;
 import pageObjects.DarCollectVotesPage;
@@ -115,6 +116,7 @@ public class AdminManageDarSteps {
 	@Then("^The user should see the Application Summary Modal$")
 	public void the_user_should_see_the_Application_Summary_Modal() throws Throwable {
 	    assert darSummaryPage.isUserOnDarSummary();
+	    assert darSummaryPage.isUserOnCorrectDarSummary("DAR-1000");
 	}
 	
 	@Then("^The user should see the preview page of that DAR Election depending on the status$")

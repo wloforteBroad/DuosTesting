@@ -15,8 +15,29 @@ WebDriver driver;
 	    PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(how = How.XPATH, using = "applicationSummaryModal_title")
+	@FindBy(how = How.ID, using = "applicationSummaryModal_title")
 	private WebElement lbl_AppSummaryTitle;
+	
+	@FindBy(how = How.ID, using = "txt_darCode")
+	private WebElement lbl_DarId;
+	
+	@FindBy(how = How.ID, using = "txt_PI")
+	private WebElement lbl_Pi;
+	
+//	@FindBy(how = How.ID, using = "TBD")
+//	private WebElement lbl_Researcher;
+	
+	@FindBy(how = How.ID, using = "txt_institution")
+	private WebElement lbl_Institution;
+	
+	@FindBy(how = How.ID, using = "txt_projectTitle")
+	private WebElement lbl_Project;
+	
+//	@FindBys(@FindBy(id="TBD"))
+//	private List<WebElement> allDatasets;
+//	
+//	@FindBys(@FindBy(id="TBD"))
+//	private List<WebElement> allResearchTypes;
 	
 	@FindBy(how = How.ID, using = "btn_action")
 	private WebElement btn_Close;
@@ -28,6 +49,16 @@ WebDriver driver;
 			return false;
 		}	
 	}
+	
+	public boolean isUserOnCorrectDarSummary(String darId) {
+		try {
+			return lbl_DarId.equals(darId);
+		}catch(NoSuchElementException e) {
+			return false;
+		}	
+	}
+	
+	
 	
 	public void clickOn_Close() {
 		btn_Close.click();

@@ -19,10 +19,11 @@
 @tag
 Feature: Title of your feature
   I want to use this template for my feature file
-
-  @ignore
+	
+	@run
   Scenario: DUL election Approved
-    Given the Admin user opens a DUL election
+  	Given The user is logged in and in the Admin Console
+    And the Admin user opens a DUL election
     When all DAC users votes on it
     And Chairperson collect votes
     Then the election is closed as Approved

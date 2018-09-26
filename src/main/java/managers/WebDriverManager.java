@@ -127,9 +127,19 @@ public class WebDriverManager {
 		// Switch back to parent window
 		switchWindow(parent);
 	}
+	
+	public void navigateToUrl(String url) {
+		driver.get(url);
+	}
  
-	public void closeDriver() {
+	public void quitDriver() {
 		driver.quit();
+	}
+	
+	public void restartDriver() {
+		driver.close();
+		driver.quit();
+		driver = null;
 	}
 	
 	public void refresh() {

@@ -1,6 +1,7 @@
 package pageObjects;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -29,6 +30,9 @@ WebDriver driver;
 	@FindBy(how = How.ID, using = "chk_archiveCancelElection") 
 	private WebElement chkbx_Archive;
 	
+	@FindBy(how = How.CLASS_NAME, using = "alert-wrapper") 
+	private WebElement error_area;
+	
 	public void clickOn_Yes() {
 		btn_Yes.click();
 	}
@@ -45,8 +49,16 @@ WebDriver driver;
 		chkbx_Archive.click();
 	}
 	
+	public boolean isErrorDisplayed() {
+		try {
+			return error_area.isDisplayed();
+		}catch(NoSuchElementException e) {
+			return false;
+		}	
+	}
+	
 	public void waitForModalToLoad() {
-        new WebDriverWait(driver, 30).until(ExpectedConditions.presenceOfElementLocated(By.className("modal-content")));
+        new WebDriverWait(driver, 30).until(ExpectedConditions.presenceOfElementLocated(By.className("ReactModal__Content")));
     }
 
 }

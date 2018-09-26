@@ -2,7 +2,7 @@
 
 Feature: CREATE HELP REPORT
   I want to use this template for my feature file
-	
+
   Scenario: User creates help report successfuly
     Given The user is logged in and in the Admin Console
     And The user clicks on Request Help on the header
