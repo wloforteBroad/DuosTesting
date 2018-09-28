@@ -27,8 +27,11 @@ WebDriver driver;
 	@FindBy(how = How.ID, using = "btn_addDUL") 
 	private WebElement btn_AddDul;
 	
+	@FindBy(how = How.ID, using = "manageDul_title") 
+	private WebElement lbl_Title;
+	
 	@FindBy(how = How.ID, using = "manageDul_description") 
-	private WebElement btn_Description;
+	private WebElement lbl_Description;
 	
 	@FindBy(how = How.NAME, using = "btn_create") 
 	private WebElement btn_Create;
@@ -180,7 +183,23 @@ WebDriver driver;
 		return lbl_versionNumber.getText();
 	}
 	
-	public void waitForElementToLoad() {
+	public boolean isTitleOk() {
+		try {
+			return lbl_Title.getText().equals(title);
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+	}
+	
+	public boolean isDescriptionOk() {
+		try {
+			return lbl_Description.getText().equals(description);
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+	}
+	
+	public void waitForVersionToLoad() {
         new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.name("version")));
     }
 

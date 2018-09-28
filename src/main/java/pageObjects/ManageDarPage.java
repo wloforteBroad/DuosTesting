@@ -22,6 +22,12 @@ WebDriver driver;
 	@FindBy(how = How.ID, using = "txt_search_manageAccess") 
 	private WebElement txtbx_SearchDar;
 	
+	@FindBy(how = How.ID, using = "manageAccess_title") 
+	private WebElement lbl_Title;
+	
+	@FindBy(how = How.ID, using = "manageAccess_description") 
+	private WebElement lbl_Description;
+	
 	@FindBy(how = How.NAME, using = "btn_create") 
 	private WebElement btn_Create;
 	
@@ -48,6 +54,9 @@ WebDriver driver;
 	
 	@FindBys(@FindBy(className="tableRow"))
 	private List<WebElement> allData;
+	
+	private String title = "Manage Data Access Request";
+	private String description = "Select and manage Data Access Request for DAC review";
 	
 	public void findDar(String darId) {
 		txtbx_SearchDar.clear();
@@ -140,6 +149,22 @@ WebDriver driver;
 	public String getApprovalTooltip() {
 		String tooltip = img_Approval.getAttribute("tooltip");
 		return tooltip;
+	}
+	
+	public boolean isTitleOk() {
+		try {
+			return lbl_Title.getText().equals(title);
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+	}
+	
+	public boolean isDescriptionOk() {
+		try {
+			return lbl_Description.getText().equals(description);
+		} catch (NoSuchElementException e) {
+			return false;
+		}
 	}
 	
 }

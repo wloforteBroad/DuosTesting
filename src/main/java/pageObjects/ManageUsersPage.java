@@ -2,6 +2,7 @@ package pageObjects;
 
 import java.util.List;
 
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -20,6 +21,12 @@ WebDriver driver;
 	@FindBy(how = How.ID, using = "txt_search_manageUsers") 
 	private WebElement txtbx_SearchUser;
 	
+	@FindBy(how = How.ID, using = "manageUsers_title") 
+	private WebElement lbl_Title;
+	
+	@FindBy(how = How.ID, using = "manageUsers_description") 
+	private WebElement lbl_Description;
+	
 	@FindBys(@FindBy(name="userRoles"))
 	private List<WebElement> allRoles;
 	
@@ -28,6 +35,9 @@ WebDriver driver;
 	
 	@FindBys(@FindBy(className="tableRow"))
 	private List<WebElement> allUsers;
+	
+	private String title = "Manage Users";
+	private String description = "Select and manage users and their roles";
 	
 	
 	public void clickOn_Edit() {
@@ -43,5 +53,20 @@ WebDriver driver;
         return allUsers;
     }
 	
-
+	public boolean isTitleOk() {
+		try {
+			return lbl_Title.getText().equals(title);
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+	}
+	
+	public boolean isDescriptionOk() {
+		try {
+			return lbl_Description.getText().equals(description);
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+	}
+	
 }

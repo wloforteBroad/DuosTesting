@@ -39,6 +39,7 @@ public class AdminManageDulSteps {
 	
 	@When("^The user clicks on Manage Data Use Limitations$")
 	public void the_user_clicks_on_Manage_Data_Use_Limitations() throws Throwable {
+		Thread.sleep(1000);
 	    adminConsolePage.clickOn_ManageDul();
 	}
 
@@ -202,7 +203,7 @@ public class AdminManageDulSteps {
 	
 	@Then("^The Election Status should be Open and the new version should be increased by one$")
 	public void the_Election_Status_should_be_Open_and_the_new_version_should_be_increased_by_one() throws Throwable {
-	    manageDulPage.waitForElementToLoad();
+	    manageDulPage.waitForVersionToLoad();
 	    assert manageDulPage.isElectionOpen();
 		assert Integer.valueOf(manageDulPage.getVersion()) == Integer.valueOf(this.versionNumber)+1; 
 	}

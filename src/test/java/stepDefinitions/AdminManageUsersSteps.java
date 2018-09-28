@@ -27,11 +27,13 @@ public class AdminManageUsersSteps {
 	
 	@Given("^clicks in Add User button$")
 	public void clicks_in_Add_User_button() throws Throwable {
+		Thread.sleep(1000);
 		adminConsolePage.clickOn_AddUser();
 	}
 	
 	@When("^The user clicks on Manage Users$")
 	public void the_user_clicks_on_Manage_Users() throws Throwable {
+		Thread.sleep(1000);
 	    adminConsolePage.clickOn_ManageUsers();
 	}
 	

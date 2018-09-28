@@ -100,5 +100,21 @@ WebDriver driver;
 		enter_Sdul(sdul);
 		enter_DataUse(dataUse);
 	}
+	
+	public boolean isTitleOk() {
+		try {
+			return lbl_Title.getText().equals(title);
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+	}
+	
+	public boolean isDescriptionOk() {
+		try {
+			return lbl_Description.getText().equals(description);
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+	}
 
 }

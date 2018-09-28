@@ -1,5 +1,6 @@
 package pageObjects;
 
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -105,6 +106,22 @@ WebDriver driver;
 		this.enter_Mail(mail);
 		this.check_AdminRole();
 		this.clickOn_Add();
+	}
+	
+	public boolean isTitleOk() {
+		try {
+			return lbl_Title.getText().equals(title);
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+	}
+	
+	public boolean isDescriptionOk() {
+		try {
+			return lbl_Description.getText().equals(description);
+		} catch (NoSuchElementException e) {
+			return false;
+		}
 	}
 	
 }

@@ -4,7 +4,6 @@ import cucumber.TestContext;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import managers.FileReaderManager;
 import pageObjects.AddDulPage;
 import pageObjects.AdminConsolePage;
 import pageObjects.DarCollectVotesPage;
@@ -51,6 +50,7 @@ public class AdminManageDarSteps {
 	
 	@When("^The user clicks on Manage Data Access Request$")
 	public void the_user_clicks_on_Manage_Data_Access_Request() throws Throwable {
+		Thread.sleep(1000);
 	    adminConsolePage.clickOn_ManageDar();
 	}
 	

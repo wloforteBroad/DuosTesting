@@ -38,11 +38,13 @@ public class AdminManageDatasetSteps {
 	
 	@Given("^The user clicks on Add Dataset button$")
 	public void the_user_clicks_on_Add_Dataset_button() throws Throwable {
+		Thread.sleep(1000);
 	    adminConsolePage.clickOn_AddDatasets();
 	}
 	
 	@Given("^The user clicks on Dataset Catalog$")
 	public void the_user_clicks_on_Dataset_Catalog() throws Throwable {
+		Thread.sleep(1000);
 	    headerPage.clickOn_DatasetCatalog();
 	}
 	
