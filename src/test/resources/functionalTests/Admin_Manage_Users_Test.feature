@@ -20,7 +20,8 @@ As an Admin a user would like to Manage Users:
     When The user complete and submits the User form
     Then new user appears in Manage Users Page
   
-  ##Leave user in previous state TBD
+
+  @editUser
   Scenario: Manage USERS - Successfuly edit User
     Given The user is logged in and in the Admin Console
   	When The user clicks on Manage Users

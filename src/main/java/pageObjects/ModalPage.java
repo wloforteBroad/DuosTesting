@@ -27,10 +27,10 @@ WebDriver driver;
 	@FindBy(how = How.ID, using = "btn_action") 
 	private WebElement btn_Ok;
 	
-	@FindBy(how = How.ID, using = "chk_archiveCancelElection") 
+	@FindBy(how = How.ID, using = "lbl_archiveCancelElection") 
 	private WebElement chkbx_Archive;
 	
-	@FindBy(how = How.CLASS_NAME, using = "alert-wrapper") 
+	@FindBy(how = How.ID, using = "dialog_alert") 
 	private WebElement error_area;
 	
 	public void clickOn_Yes() {

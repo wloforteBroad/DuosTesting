@@ -73,7 +73,7 @@ public class AdminManageDulSteps {
 			modalPage.waitForModalToLoad();
 			modalPage.clickOn_Yes();
 		}
-		Thread.sleep(1000);
+		manageDulPage.waitForElectionToBeOpened();
 	}
 	
 	@When("^The user completes the form with wrong sDul Json format and submits$")
@@ -112,6 +112,7 @@ public class AdminManageDulSteps {
 		modalPage.waitForModalToLoad();
 		modalPage.check_Archive();
 		modalPage.clickOn_Yes();
+		manageDulPage.waitForElectionToBeCanceled();
 	}
 	
 	@When("^The user archive a given election$")
@@ -170,7 +171,12 @@ public class AdminManageDulSteps {
 	
 	@Then("^The user should see the error message$")
 	public void the_user_should_see_the_error_message() throws Throwable {
-	    assert modalPage.isErrorDisplayed();
+	    assert addDulPage.isErrorDisplayed();
+	}
+	
+	@Then("^The user should see the error message in Confirmation Modal$")
+	public void the_user_should_see_the_error_message_in_Confirmation_Modal() throws Throwable {
+		assert modalPage.isErrorDisplayed();
 	}
 	
 	@Then("^cancel button should be disabled$")

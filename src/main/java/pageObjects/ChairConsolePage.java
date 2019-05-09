@@ -3,6 +3,7 @@ package pageObjects;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -98,5 +99,37 @@ WebDriver driver;
 	public void waitForFlag() {
         new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.id("dulPendingVoteCases")));
     }
+	
+	public boolean isDulTitleOk() {
+		try {
+			return lbl_Title.getText().equals(dulTitle);
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+	}
+	
+	public boolean isDulDescriptionOk() {
+		try {
+			return lbl_Description.getText().equals(dulDescription);
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+	}
+	
+	public boolean isDarTitleOk() {
+		try {
+			return lbl_Title.getText().equals(darTitle);
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+	}
+	
+	public boolean isDarDescriptionOk() {
+		try {
+			return lbl_Description.getText().equals(darDescription);
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+	}
 
 }

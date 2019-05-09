@@ -234,6 +234,20 @@ public class MySQLDBHelper {
 		}
 		return id;
 	}
+	
+	public void editUser(String userName, String userId) {
+		open();
+		try {
+			String sql = "UPDATE " + DATABASE + ".`dacuser` SET `displayName`='"+ userName +"' WHERE `dacUserId`="+userId+";";
+			System.out.println("QUERY:" + sql);
+			PreparedStatement preparedStmt1 = conn.prepareStatement(sql);
+			preparedStmt1.executeUpdate();
+		} catch (SQLException e) {
+			Logger.getLogger(MySQLDBHelper.class.getName()).log(Level.SEVERE, null, e);
+		} finally {
+			close();
+		}
+	}
 
 	public void addDulToDelete() {
 		open();

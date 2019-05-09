@@ -1,7 +1,10 @@
 #Author: wloforte@broadinstitute.org
 
 Feature: CREATE HELP REPORT
-  I want to use this template for my feature file
+As a user I would like to Create Reports:
+	- Create Help Report
+	- View List of my reports
+	- As an Admin view list of all reports****
 
   Scenario: User creates help report successfuly
     Given The user is logged in and in the Admin Console

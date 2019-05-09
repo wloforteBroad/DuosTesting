@@ -85,6 +85,12 @@ public class ConfigFileReader {
 		else throw new RuntimeException("memberUserName not specified in the Configuration.properties file.");
 	}
 	
+	public String getMemberDisplayName3() {
+		String displayName = properties.getProperty("displayName3");
+		if(displayName != null) return displayName;
+		else throw new RuntimeException("displayName3 not specified in the Configuration.properties file.");
+	}
+	
 	public String getMockUserName() {
 		String mockUserName = properties.getProperty("mockUserName");
 		if(mockUserName != null) return mockUserName;

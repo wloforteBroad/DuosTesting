@@ -1,0 +1,8 @@
+Dataset Name	Data Type	Species	Phenotype/Indication	# of participants	Description	dbGAP	Data Depositor	Principal Investigator(PI)	Sample Collection ID	Consent ID
+(Bucienne Monco) - Muc-1 Kidney Disease -1	DNA, whole genome	human	muc-1, kidney disease	31	muc-1 patients that developed cancer , 5 weeks after treatment	http://....	John Doe	Mark Smith	SC-20657	
+(Bucienne Monco) - Muc-1 Kidney Disease -2	DNA, whole genome	alien	muc-1, kidney disease	32	muc-1 patients that developed cancer , 5 weeks after treatment	http://....	Jane Doe	Hercules Poirot	SC-20658	
+(Bucienne Monco) - Muc-1 Kidney Disease -3	DNA, whole genome	alien	muc-1, kidney disease	33	muc-1 patients that developed cancer , 5 weeks after treatment	http://....	Jhon Rambo	Sherlock	SC-20659	
+(Bucienne Monco) - Muc-1 Kidney Disease -4	DNA, whole genome	human	muc-1, kidney disease	34	muc-1 patients that developed cancer , 5 weeks after treatment	http://....	Jhon Matrix	Lupin	SC-20660	
+(Bucienne Monco) - Muc-1 Kidney Disease -5	DNA, whole genome	human	muc-1, kidney disease	34	muc-1 patients that developed cancer , 5 weeks after treatment	http://....	Jane Doe	Jane Smith	SC-20700	
+Melanoma-Regev-Izar-Garraway-DFCI-ICR	DNA, whole genome	human	muc-1, kidney disease	31	Description 1	http://....	John Doe	Mark Smith		OD-12
+Melanoma_Regev	DNA, whole genome	alien	muc-1, kidney disease	32	Description 2	http://....	Jane Doe	Miss Marple		OD-231

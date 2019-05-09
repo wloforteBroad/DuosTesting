@@ -52,7 +52,10 @@ WebDriver driver;
 	private WebElement btn_StatusUnReviewed;
 	
 	@FindBy(how = How.CLASS_NAME, using = "flagged") 
-	private WebElement lbl_Archived;
+	private WebElement lbl_Archived; 
+	
+	@FindBy(how = How.NAME, using = "flag_consentId") 
+	private WebElement lbl_Edited;
 	
 	@FindBy(how = How.CLASS_NAME, using = "glyphicon-inbox") 
 	private WebElement btn_Archive;
@@ -63,7 +66,7 @@ WebDriver driver;
 	@FindBy(how = How.NAME, using = "version") 
 	private WebElement lbl_versionNumber;
 	
-	@FindBy(how = How.NAME, using = "consentId") 
+	@FindBy(how = How.NAME, using = "link_consentName") 
 	private WebElement btn_PreviewDul;
 	
 	@FindBys(@FindBy(className="tableRow"))
@@ -127,6 +130,14 @@ WebDriver driver;
 	public boolean isElectionCanceled() {
 		try {
 			return btn_StatusCanceled.isDisplayed();
+		}catch(NoSuchElementException e) {
+			return false;
+		}	
+	}
+	
+	public boolean isConsentEdited() {
+		try {
+			return lbl_Edited.isDisplayed();
 		}catch(NoSuchElementException e) {
 			return false;
 		}	
@@ -201,6 +212,14 @@ WebDriver driver;
 	
 	public void waitForVersionToLoad() {
         new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.name("version")));
+    }
+	
+	public void waitForElectionToBeOpened() {
+        new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.name("link_open")));
+    }
+	
+	public void waitForElectionToBeCanceled() {
+        new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.name("link_canceled")));
     }
 
 }

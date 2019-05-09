@@ -138,5 +138,37 @@ WebDriver driver;
 	public List<WebElement> getAllDars() {
         return allDars;
     }
+	
+	public boolean isDulTitleOk() {
+		try {
+			return lbl_Title.getText().equals(dulTitle);
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+	}
+	
+	public boolean isDulDescriptionOk() {
+		try {
+			return lbl_Description.getText().equals(dulDescription);
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+	}
+	
+	public boolean isDarTitleOk() {
+		try {
+			return lbl_Title.getText().equals(darTitle);
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+	}
+	
+	public boolean isDarDescriptionOk() {
+		try {
+			return lbl_Description.getText().equals(darDescription);
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+	}
 
 }

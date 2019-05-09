@@ -43,6 +43,11 @@ public class Hooks {
 		db.deleteElection(FileReaderManager.getInstance().getConfigReader().getConsentIdMember());
 	}
 	
+	@After("@editUser")
+	public void editUser() throws Throwable {
+		db.editUser(FileReaderManager.getInstance().getConfigReader().getMemberDisplayName3(), FileReaderManager.getInstance().getConfigReader().getMember3Id());
+	}
+	
 	@Before("@dacmemberDar")
 	public void insertDocumentAndElection() throws Throwable {
 		db.addDataset(FileReaderManager.getInstance().getConfigReader().getObjectIdMember(), FileReaderManager.getInstance().getConfigReader().getConsentIdMember(), 0);

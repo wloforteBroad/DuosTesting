@@ -46,6 +46,9 @@ WebDriver driver;
 	@FindBy(how = How.ID, using = "btn_cancel") 
 	private WebElement btn_Cancel;
 	
+	@FindBy(how = How.ID, using = "modal_alert") 
+	private WebElement error_area;
+	
 	private String title = "Add Data Use Limitations";
 	private String description = "Catalog a Data Use Limitations Record";
 	
@@ -115,6 +118,14 @@ WebDriver driver;
 		} catch (NoSuchElementException e) {
 			return false;
 		}
+	}
+	
+	public boolean isErrorDisplayed() {
+		try {
+			return error_area.isDisplayed();
+		}catch(NoSuchElementException e) {
+			return false;
+		}	
 	}
 
 }

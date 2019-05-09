@@ -52,7 +52,7 @@ WebDriver driver;
 	
 	public boolean isUserOnCorrectDarSummary(String darId) {
 		try {
-			return lbl_DarId.equals(darId);
+			return lbl_DarId.getText().equals(darId);
 		}catch(NoSuchElementException e) {
 			return false;
 		}	

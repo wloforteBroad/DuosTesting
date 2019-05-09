@@ -84,6 +84,22 @@ WebDriver driver;
 	
 	public String getRationale() {
 		return txtbx_Rationale.getText();
-	}	
+	}
+	
+	public boolean isTitleOk() {
+		try {
+			return lbl_Title.getText().equals(title);
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+	}
+	
+	public boolean isDescriptionOk() {
+		try {
+			return lbl_Description.getText().equals(description);
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+	}
 
 }

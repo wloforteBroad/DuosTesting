@@ -28,7 +28,7 @@ WebDriver driver;
 	@FindBy(how = How.ID, using = "addDatasetModal_description") 
 	private WebElement lbl_Description;
 	
-	@FindBy(how = How.ID, using = "chk_overwrite") 
+	@FindBy(how = How.ID, using = "lbl_overwrite") 
 	private WebElement lbl_Overwrite;
 	
 	@FindBy(how = How.ID, using = "btn_action") 

@@ -27,22 +27,22 @@ WebDriver driver;
 	@FindBy(how = How.ID, using = "txt_email") 
 	private WebElement txtbx_Mail;
 	
-	@FindBy(how = How.ID, using = "chk_admin") 
+	@FindBy(how = How.ID, using = "lbl_admin") 
 	private WebElement chkbx_Admin;
 	
-	@FindBy(how = How.ID, using = "chk_member") 
+	@FindBy(how = How.ID, using = "lbl_member") 
 	private WebElement chkbx_Member;
 	
-	@FindBy(how = How.ID, using = "chk_chairperson") 
+	@FindBy(how = How.ID, using = "lbl_chairperson") 
 	private WebElement chkbx_Chairperson;
 	
-	@FindBy(how = How.ID, using = "chk_researcher") 
+	@FindBy(how = How.ID, using = "lbl_researcher") 
 	private WebElement chkbx_Researcher;
 	
-	@FindBy(how = How.ID, using = "chk_alumni") 
+	@FindBy(how = How.ID, using = "lbl_alumni") 
 	private WebElement chkbx_Alumni;
 	
-	@FindBy(how = How.ID, using = "chk_dataOwner") 
+	@FindBy(how = How.ID, using = "lbl_dataOwner") 
 	private WebElement chkbx_DataOwner;
 	
 	@FindBy(how = How.ID, using = "btn_action") 

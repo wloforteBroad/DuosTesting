@@ -6,7 +6,10 @@ import pageObjects.AddDatasetPage;
 import pageObjects.AddDulPage;
 import pageObjects.AddUserPage;
 import pageObjects.AdminConsolePage;
+import pageObjects.ChairConsolePage;
+import pageObjects.DacConsolePage;
 import pageObjects.DatasetCatalogPage;
+import pageObjects.DulVotingPage;
 import pageObjects.ManageDarPage;
 import pageObjects.ManageDulPage;
 import pageObjects.ManageUsersPage;
@@ -21,6 +24,9 @@ public class TitleAndTextSteps {
 	AddUserPage addUserPage;
 	AddDatasetPage addDatasetPage;
 	DatasetCatalogPage datasetCatalogPage;
+	ChairConsolePage chairConsolePage;
+	DacConsolePage dacConsolePage;
+	DulVotingPage dulVotingPage;
 	
 	public TitleAndTextSteps(TestContext context) {
 		testContext = context;
@@ -32,6 +38,9 @@ public class TitleAndTextSteps {
 		addUserPage = testContext.getPageObjectManager().getAddUserPage();
 		addDatasetPage = testContext.getPageObjectManager().getAddDatasetPage();
 		datasetCatalogPage = testContext.getPageObjectManager().getDatasetCatalogPage();
+		chairConsolePage = testContext.getPageObjectManager().getChairConsolePage();
+		dacConsolePage = testContext.getPageObjectManager().getDacConsolePage();
+		dulVotingPage = testContext.getPageObjectManager().getDulVotingPage();
 	}
 	
 	@Then("^All titles are correct$")
@@ -84,6 +93,28 @@ public class TitleAndTextSteps {
 	public void dataset_Catalog_Title_and_description_are_correct() throws Throwable {
 	    datasetCatalogPage.isTitleOk();
 	    datasetCatalogPage.isDescriptionOk();
+	}
+	
+	@Then("^Chair Console Title and description are correct$")
+	public void chair_Console_Title_and_description_are_correct() throws Throwable {
+	    chairConsolePage.isDulDescriptionOk();
+	    chairConsolePage.isDulTitleOk();
+	    chairConsolePage.isDarTitleOk();
+	    chairConsolePage.isDarDescriptionOk();
+	}
+
+	@Then("^DAC Member Console Title and description are correct$")
+	public void dac_Member_Console_Title_and_description_are_correct() throws Throwable {
+		dacConsolePage.isDulDescriptionOk();
+		dacConsolePage.isDulTitleOk();
+		dacConsolePage.isDarTitleOk();
+		dacConsolePage.isDarDescriptionOk();
+	}
+	
+	@Then("^Dul Review Page Title and Description are correct$")
+	public void dul_Review_Page_Title_and_Description_are_correct() throws Throwable {
+	    dulVotingPage.isTitleOk();
+	    dulVotingPage.isTitleOk();
 	}
 
 }

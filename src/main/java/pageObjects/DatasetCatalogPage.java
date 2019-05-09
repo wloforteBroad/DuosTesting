@@ -42,10 +42,10 @@ WebDriver driver;
 	@FindBy(how = How.CSS, using = ".glyphicon-ok-circle") 
 	private WebElement btn_Disable;
 	
-	@FindBy(how = How.XPATH, using = "//span[contains(text(),'Download selection')]") 
+	@FindBy(how = How.ID, using = "btn_downloadSelection") 
 	private WebElement btn_Download;
 	
-	@FindBy(how = How.XPATH, using = "//span[contains(text(),'Translated Use Restriction')]") 
+	@FindBy(how = How.NAME, using = "link_translatedDul") 
 	private WebElement btn_TranslatedDul;
 	
 	@FindBys(@FindBy(className="tableRow"))
